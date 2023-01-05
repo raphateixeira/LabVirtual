@@ -11,7 +11,21 @@ Compartilhamos aqui alguns conteúdos que estamos desenvolvendo buscando formata
 - [Manim](https://www.manim.community/) : Pacote de animação para matemática/ciência/engenharia - Integração com LaTeX.
 
 
-
 ## Conteúdo em desenvolvimento:
 
 [Simulação de sistema dinâmico com python](ManimEDO.html)
+
+## Sistemas de interesse:
+
+Sistemas possíveis:
+- 1 - Maglev
+- 2 - pêndulo invertido no carro
+- 3 - pêndulo de múltiplos estágios
+- 4 - pêndulo rotacional
+- 5 - massa mola (múltiplas massas)
+- 6 - suspensão de veículo
+- 7 - ball beam
+- 8 - ball plate
+- 9 - drone (precisa mais informação)
+- 10 - Motor DC ou Indução
+   

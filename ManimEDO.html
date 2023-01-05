@@ -102,6 +102,50 @@ Ou simplesmente:
 $$ \dot{x} = Ax + Bu $$
 
 
+---
+# Simulação do MMA em python
+
+Vamos a simulação do massa mola amortecedor, ela seguirá os seguintes passos:
+
+- Importação de bibliotecas python;
+
+- Parâmetros do sistema e declaração do modelo;
+
+- Simulação (integração) do modelo dinâmico;
+
+- Apresentação gráfica dos resultados.
+
+---
+
+# Importando bibliotecas python:
+
+Penso que todos estejam falimiariados em como carregar as bibliotecas e funções necessárias:
+
+```python
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+```
+
+## Parâmetros do sistema:
+
+No caso de simulação de um sistema dinâmico qualquer, 
+pode-se iniciar com a declaração dos seus parâmetros.
+
+Para o MMA tem-se então:
+
+
+
+```python
+m = 1.0 # Massa;
+b = 0.8 # Coeficiente de amortecimento;
+k = 1.2 # Constante elástica da mola;
+```
+
+--- 
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
