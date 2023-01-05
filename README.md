@@ -22,7 +22,7 @@ Compartilhamos aqui alguns conteúdos que estamos desenvolvendo buscando formata
 ## Sistemas de interesse:
 
 Sistemas possíveis:
-- 1 - Maglev
+- 1 - [Maglev](/simulacao_maglev/README.md)
 - 2 - pêndulo invertido no carro
 - 3 - pêndulo de múltiplos estágios
 - 4 - pêndulo rotacional
