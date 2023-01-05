@@ -65,9 +65,13 @@ Basicamente, fazendo $x_1(t) = y(t)$ e $x_2(t) = y'(t)$ pode-se escrever uma
 equação de primeira ordem para cada variável.
 
 $$
-\dot{x}_1 = f_1(\bm{x}) = x_2
+\begin{align}
+\dot{x}_1 &= f_1(x,u) = x_2\\
+\dot{x}_2 &= f_2(x,u) = -\frac{k}{m}x_1 -\frac{b}{m}x_2 + \frac{1}{m}u
+\end{align}
 $$
 
+Como  o sistema é LIT, pode-se representar o sistema de equações na forma vetorial-matricial.
 $$
 \begin{bmatrix}
   \dot{x}_1 \\
