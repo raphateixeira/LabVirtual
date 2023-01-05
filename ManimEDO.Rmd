@@ -1,0 +1,95 @@
+---
+title: "Ferramentas e Pacotes Computacionais"
+subtitle: "Laboratório Virtual"
+institute: "UFPA - CAMTUC - FEE"
+
+output:
+  xaringan::moon_reader:
+    # css: [default, metropolis, metropolis-fonts]
+    css: [default,ufpa-fontes.css, ufpa.css]
+    lib_dir: libs
+    seal: true
+    transition: slower
+    in_header: header.tex
+    nature:
+      #titleSlideClass: ["right", "top"]
+      highlightStyle: github
+      highlightLines: true
+      #highlightLanguage: ["r"]
+      countIncrementalSlides: false
+      ratio: "16:10"
+header-includes:
+   - \usepackage{usetikzlibrary}
+---
+
+# Programação e IDE 
+
+Algumas anotações aqui sobre nossa abordagem e ferramentas.
+
+Para iniciar temos um bom concenso, vamos de
+
+  <img src="https://www.python.org/static/img/python-logo@2x.png" alt="drawing" width="300"/>
+
+Com python podemos simular nossos sistemas, fazer animações, sites e até mesmo interface gráfica. Basta escolher o pacote certo. Ao final teremos um arquivo *.py* ou um *.ipynb*. É desejável que você conheça a diferença.
+
+  
+  Como IDE de programação gosto do VsCode, mas isso é uma questão pessoal mesmo, alguns preferem Anaconda, Pytorch, Bloco de notas, ...
+  
+  <img src="https://www.shanebart.com/wp-content/uploads/2019/05/5k4h36j3h4j.png" alt="drawing" width="300"/>
+
+  A regra aqui é: Instale python, depois instale sua IDE e tente um *hello world* para começar.
+
+---
+
+# Massa mola amortecedor
+
+Faremos a simulação de um sistema conhecido por todos, o massa mola amortecedor:
+
+<img src="mma.png" width="300" />
+
+Você deve saber como chegar na EDO:
+
+$$ m\frac{d^2y(t)}{dt^2} + b\frac{dy(t)}{dt} + ky(t) = u(t)$$
+
+E a partir dela na função de transferência:
+
+$$ G(s) = \frac{1}{ms^2 + bs + c} $$
+
+---
+
+# Massa mola amortecedor
+
+A terceira e última forma de interesse é a representação em espaço de estados.
+
+Basicamente, fazendo $x_1(t) = y(t)$ e $x_2(t) = y'(t)$ pode-se escrever uma 
+equação de primeira ordem para cada variável.
+
+$$
+\dot{x}_1 = f_1(\bm{x}) = x_2
+$$
+
+$$
+\begin{bmatrix}
+  \dot{x}_1 \\
+  \dot{x}_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+  0 & 1 \\
+  -k/m & -b/m
+\end{bmatrix}
+\begin{bmatrix}
+  {x}_1 \\
+  {x}_2
+\end{bmatrix}
++
+\begin{bmatrix}
+  0 \\
+  1/m
+\end{bmatrix}
+u(t)
+$$
+
+Ou
+
+
