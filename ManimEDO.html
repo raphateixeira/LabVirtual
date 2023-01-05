@@ -123,7 +123,7 @@ Penso que todos estejam falimiariados em como carregar as bibliotecas e funçõe
 
 ```python
 import numpy as np
-from scipy.integrate import solve_ivp
+from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 ```
 
@@ -144,8 +144,56 @@ k = 1.2 # Constante elástica da mola;
 
 --- 
 
+# O modelo dinâmico
+
+- Vamos usar o modelo por espaço de estados:
+
+`$$\dot{x} = f(x,u)$$`
 
 
+```python
+def MMA(x,t):                           # Define o nome da função que modela o sistema;
+  x1, x2 = x                            # Variáveis de estado a partir do vetor de estados;
+  dx1 = x2                              # Função de estado dx1 = f(x,u)
+  dx2 = -(k/m)*x1 - (b/m)*x2 +(1/m)*0   # Função de estado dx2 = f(x,u)
+    
+  dx = np.array([x1, x2])               # Derivada do vetor de estados
+    
+  return dx                             # Retorna a derivada do vetor de estados
+```
+
+
+
+---
+
+# Integração numérica modelo dinâmico:
+
+```python
+T = 60                        # Tempo total de simulação
+Ts = 0.1                      # Período de amostragem (passo de integração)
+t = Ts*np.arange(0,T+Ts, Ts)
+x0 = [0.1, -0.5]
+
+# Integração numérica: odeint integra a função MMA com condição inicial x0 durante o tempo t.
+x = odeint(MMA, x0, t)
+```
+
+Note que a sa
+
+---
+
+# Resultado gráfico
+
+```python
+plt.figure(figsize = (10,5))
+plt.subplot(211)
+plt.plot(t,x[:,0])
+plt.grid()
+plt.subplot(212)
+plt.plot(t,x[:,1])
+plt.grid()
+```
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
