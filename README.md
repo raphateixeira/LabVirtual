@@ -10,6 +10,10 @@ Compartilhamos aqui alguns conteúdos que estamos desenvolvendo buscando formata
 
 - [Manim](https://www.manim.community/) : Pacote de animação para matemática/ciência/engenharia - Integração com LaTeX.
 
+- [PyMunk](https://www.pymunk.org/en/latest/) :
+
+- [vPython](https://vpython.org/) : Simulação 3D;
+
 
 ## Conteúdo em desenvolvimento:
 
