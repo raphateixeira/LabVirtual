@@ -4,7 +4,7 @@ Compartilhamos aqui alguns conteúdos que estamos desenvolvendo buscando formata
 
 ## Ferramentas do nosso interesse:
 
-- [Python](https://www.python.org/) : Junto com os pacotes [Numpy](https://numpy.org/), [Scipy][SciPy](https://scipy.org/) e [Matplotlib](https://matplotlib.org/) formam nossa base para programação.
+- [Python](https://www.python.org/) : Junto com os pacotes [Numpy](https://numpy.org/), [SciPy](https://scipy.org/) e [Matplotlib](https://matplotlib.org/) formam nossa base para programação.
 - [VScode](https://code.visualstudio.com/ : A nossa IDE de programação e interface entre o computador e o GitHub. 
 
 ## Conteúdo em desenvolvimento:
