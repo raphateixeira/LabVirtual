@@ -23,7 +23,7 @@ Compartilhamos aqui alguns conteúdos que estamos desenvolvendo buscando formata
 
 Sistemas possíveis:
 - 1 - [Maglev](/simulacao_maglev/README.md)
-- 2 - pêndulo invertido no carro
+- 2 - [Pêndulo invertido](/simulacao_pendulo_invertido/README.md) 
 - 3 - pêndulo de múltiplos estágios
 - 4 - pêndulo rotacional
 - 5 - massa mola (múltiplas massas)
