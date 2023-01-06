@@ -10,14 +10,20 @@ Os Drones são uma subclasse de Veículos Aérios Não Tripulados (VANT) que tem
 <div align="center">
     <img src="utils/quadrotor.png" width=30% align="center"/>
 </div>
-<span> Figure 1: Estrutura Drone QuadRotor </span>
+
+<div align="center">
+  <span> Figure 1: Estrutura Drone QuadRotor </span>
+</div>
 
 <br/>
 
 <div align="center">
     <img src="utils/hexacopter.png" width=30% align="center"/>
 </div>
-<span> Figure 2: Estrutura Drone QuadCopter </span>
+
+<div align="center">
+  <span> Figure 2: Estrutura Drone QuadCopter </span>
+</div>
 
 <br/>
 
