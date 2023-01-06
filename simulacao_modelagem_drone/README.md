@@ -6,21 +6,11 @@ Os Drones são uma subclasse de Veículos Aérios Não Tripulados (VANT) que tem
 
 <br/>
 
-<style>
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-  }
-
-  div.box {
-	width: 40%;
-	display: inline-block;
-    margin-left: auto;
-    margin-right: 20px;
-}
-  </style>
+<html>
+    <head>
+        <link rel="stylesheet" href="utils/style.css">
+    </head>
+</html>
 
 <div class="box">
     <img src="utils/quadrotor.png"/>
