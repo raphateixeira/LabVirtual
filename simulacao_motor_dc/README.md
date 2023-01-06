@@ -70,6 +70,7 @@ Fator de amortecimento viscose
 $B_{eq} = 4\cdot 10^{-3}$
 
 A função transferência do motor é dada por:
+
 $$
 \frac{\theta_l(s)}{V_m(s)}=\frac{0.3334}{0.00512 s^2 + 0.1894s}=\frac{65}{ s^2 + 37s}
 $$
