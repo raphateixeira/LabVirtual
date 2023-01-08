@@ -20,7 +20,7 @@ button(text='Pause', pos = scene.title_anchor, bind=Run)
 
 posicao_esfera = vec(2,2,2)
 esfera = sphere(radius = 0.2,
-                make_trail = True
+                make_trail = True,
                 color = color.red )
 dt = 0.1
 t = 0
