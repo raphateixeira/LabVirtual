@@ -74,8 +74,6 @@ def estadosmf(t,x,ref,planta,comp):
   ddt[2:] = comp.Ar@z + comp.Br@u
   return ddt
 
-
-
 ## Simulação e animação
 scene.width = 600
 scene.height = 600
@@ -109,6 +107,7 @@ wt = wtext(text='{:1.2f}'.format(sl.value))
 scene.append_to_caption('\n\n')
 
 yplot = gcurve(color=color.red)
+rplot = gcurve(color=color.blue)
 
 while True:
     rate(fps)
@@ -116,6 +115,7 @@ while True:
     sol = solve_ivp(estadosmf,t_span=[t,t+dt],y0=y, args=(sinal,mag,comp))
     y = sol.y[:,-1]+ruido(0)
     yplot.plot(t,y[0])
+    rplot.plot(t,sinal(t)+mag.x0)
     #print(y[0])
     cil.pos = converte_posicao(y[0])
     t += dt
