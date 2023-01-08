@@ -28,3 +28,35 @@ Os Drones são uma subclasse de Veículos Aérios Não Tripulados (VANT) que tem
 
 Para esse projeto vamos focar na modelagem e simulação de um QuadRotor na configuração "+".
 
+---
+
+## Etapas do Projeto
+
+<br/>
+
+> ### 1° Revisão Bibliográfica
+
+>> + Quadros de Coordenadas
+>> + Transformações
+>> + Linearização
+
+<br/>
+
+> ### 2° Modelagem Dinâmica do QuadRotor
+
+>> + caracteristicas da Configuração "+" 
+>> + Equações de Movimento
+
+<br/>
+
+> ### 3° Simulador Gráfico
+
+>> + Projeto de um simulador usando Python
+
+<br/>
+
+> ### 4° Projeto de Controlador
+
+>> + Estrutura para o sistema de controle
+>> +  Projeto de controle de altitude usando PID
+
