@@ -26,5 +26,5 @@ Os Drones são uma subclasse de Veículos Aérios Não Tripulados (VANT) que tem
 
 <br/>
 
-Para esse projeto vamos focar na modelagem e simulação de um QuadRotor na configuração "X".
+Para esse projeto vamos focar na modelagem e simulação de um QuadRotor na configuração "+".
 
