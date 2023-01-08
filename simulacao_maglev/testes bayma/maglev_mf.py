@@ -113,7 +113,7 @@ while True:
     rate(fps)
     sinal = lambda t: ref(sl.value*t)
     sol = solve_ivp(estadosmf,t_span=[t,t+dt],y0=y, args=(sinal,mag,comp))
-    y = sol.y[:,-1]+ruido(0)
+    y = sol.y[:,-1]+ruido(1e-6)
     yplot.plot(t,y[0])
     rplot.plot(t,sinal(t)+mag.x0)
     #print(y[0])
