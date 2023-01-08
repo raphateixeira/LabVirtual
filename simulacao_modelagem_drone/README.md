@@ -2,7 +2,7 @@
 
 ## Introdução
 
-Os Drones são uma subclasse de Veículos Aérios Não Tripulados (VANT) que tem como principal caracterísca asas rotatívas, sendo que a quantidade de braços podem ser diferente, dependendo do modelo, a Figura 1 mostra o modelo Quadrotor, já Figura 2 mostra um modelo Hexacopter.
+Os Drones são uma subclasse de Veículos Aérios Não Tripulados (VANT) que tem como principal caracterísca asas rotatívas, sendo que a quantidade de braços pode variar dependendo do modelo, a Figura 1 mostra o modelo Quadrotor, já Figura 2 mostra um modelo Hexacopter.
 
 <br/>
 
@@ -34,7 +34,7 @@ Para esse projeto vamos focar na modelagem e simulação de um QuadRotor na conf
 
 <br/>
 
-> ### 1° Revisão Bibliográfica
+> ### 1° - Revisão Bibliográfica
 
 >> + Quadros de Coordenadas
 >> + Transformações
@@ -42,20 +42,20 @@ Para esse projeto vamos focar na modelagem e simulação de um QuadRotor na conf
 
 <br/>
 
-> ### 2° Modelagem Dinâmica do QuadRotor
+> ### 2° - Modelagem Dinâmica do QuadRotor
 
 >> + caracteristicas da Configuração "+" 
 >> + Equações de Movimento
 
 <br/>
 
-> ### 3° Simulador Gráfico
+> ### 3° - Simulador Gráfico
 
 >> + Projeto de um simulador usando Python
 
 <br/>
 
-> ### 4° Projeto de Controlador
+> ### 4° - Projeto de Controlador
 
 >> + Estrutura para o sistema de controle
 >> +  Projeto de controle de altitude usando PID
