@@ -27,27 +27,34 @@ class Maglev:
 class Compensador:
   def __init__(self, planta, P, Q):
     
+    # Ordem do sistema
     n = planta.A.shape[0]
 
+    # Projeto numérico do regulador integral
     Aa = np.block([[planta.A,np.zeros((n,1))],[-planta.C,0]])
     Ba = np.block([[planta.B],[0]])
     Ka = ct.acker(Aa,Ba,P)
     K = Ka[:,:n]
     Ki = Ka[:,n]
 
+    # Projeto numérico do observador
     L = ct.acker(planta.A.T,planta.C.T,Q).T
 
+    # Matrizes para implementação do compensador
     Ar = np.block([[planta.A-planta.B@K-L@planta.C, -planta.B*Ki],[np.zeros((1,n+1))]])
     Br = np.block([[L,np.zeros((n,1))],[-1,1]])
 
+    # Armazena atributos do objeto
     self.Ar = Ar
     self.Br = Br
     self.K = K[0,:]
     self.Ki = Ki
     self.Ka = Ka[0,:]
     self.L = L
-    self.estados = [0]*(n+1)
 
+## -----------------------------------------------------------------
+
+# Cria objetos da planta e controlador para simular 
 mag = Maglev(m=29e-3, k=9.55e-6, mu=2.19e-3, I0=1)
 comp = Compensador(mag, [-3*mag.lamda]*3,[-8*mag.lamda]*2)
 
@@ -55,7 +62,7 @@ comp = Compensador(mag, [-3*mag.lamda]*3,[-8*mag.lamda]*2)
 def ref(t):
     return (0.1*mag.x0*np.sin(2*pi*t))
 
-## Sistema em espaço de estados em malha fechada
+## Equações de estados em malha fechada
 def estadosmf(t,x,ref,planta,comp):
   # Separa os estados do controlador
   z = x[2:]
@@ -74,49 +81,75 @@ def estadosmf(t,x,ref,planta,comp):
   ddt[2:] = comp.Ar@z + comp.Br@u
   return ddt
 
+# Função para ajustar coordenadas do modelo às coordenadas do VPython
+def converte_posicao(y_maglev):
+  return bobina.pos + vec(0,-y_maglev,0)
+
+# Função para implementar ruído gaussiano
+def ruido(amp):
+  return amp*np.random.normal(loc=0,scale=amp)
+
 ## Simulação e animação
+
+# Dimensões da cena
 scene.width = 600
 scene.height = 600
 
+# Criação da bobina (cilindro azul)
 L_bobina = 10e-2
 r_bobina = 1e-2
 bobina = cylinder(pos = vec(0,0,0), color = color.blue, radius = r_bobina, axis = vec(0,L_bobina,0))
 
-def converte_posicao(y_maglev):
-  return bobina.pos + vec(0,-y_maglev,0)
-
-def ruido(amp):
-  return amp*np.random.normal(loc=0,scale=amp)
-
+# Cria o cilindro flutuante
 L_cilindro = 5e-2
 r_cilindro = 1e-2
 cil = cylinder(pos = converte_posicao(mag.x0), axis = vec(0,-L_cilindro,0), radius = r_cilindro)
 
-fps = 50
-dt = 1/fps
-t = 0
-y = [mag.x0*1.05, 0, 0, 0, 0]
+# Parâmetros de simulação
+fps = 50                           # Taxa de quadros
+dt = 1/fps                         # Intervalo de tempo real de atualização
+t = 0                              # Armazena tempo, tempo inicial
+y = [mag.x0*1.05, 0, 0, 0, 0]      # Estado, estado inicial
 
 
+# slider e container: controles em tempo real (teste)
+
+# Função para mostrar o valor de frequência ajustado pelo slider
 def setfreq(s):
     wt.text = '{:1.2f}'.format(s.value)
-
 scene.append_to_caption('\n\n')
+
+# Slider para controlar a frequência do sinal de referência senoidal
 sl = slider(pos=scene.caption_anchor, min=0.1, max=4, value=1., length=220, right=15, bind=setfreq)
+# Caixa de texto para mostrar o valor real da frequência
 wt = wtext(text='{:1.2f}'.format(sl.value))
 scene.append_to_caption('\n\n')
 
-yplot = gcurve(color=color.red)
-rplot = gcurve(color=color.blue)
+# Gráficos para mostrar sinais
+yplot = gcurve(color=color.red)         # Curva da posição real
+rplot = gcurve(color=color.blue)        # Curva do sinal de referência
 
+# Loop infinito
 while True:
     rate(fps)
+    
+    # Atualiza o sinal de referência para enviar para o solver
     sinal = lambda t: ref(sl.value*t)
+
+    # Chama o solver para atualizar os estados do maglev
     sol = solve_ivp(estadosmf,t_span=[t,t+dt],y0=y, args=(sinal,mag,comp))
+    
+    # Recupera os resultados da simulação
     y = sol.y[:,-1]+ruido(1e-6)
+    
+    # Atualiza os gráficos
     yplot.plot(t,y[0])
     rplot.plot(t,sinal(t)+mag.x0)
     #print(y[0])
+
+    # Atualiza a posição do cilindro
     cil.pos = converte_posicao(y[0])
+    
+    # Atualiza o tempo
     t += dt
 
