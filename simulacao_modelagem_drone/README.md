@@ -26,7 +26,7 @@ Drone é uma subclasse de Veículos Aérios Não Tripulados (VANT) que tem como 
 
 <br/>
 
-Para esse projeto vamos focar na modelagem e simulação de um QuadRotor na configuração "+".
+Para esse projeto vamos focar na modelagem e simulação de um QuadRotor na configuração "+", para isso, será necessário seguir alguns passos.
 
 ---
 
