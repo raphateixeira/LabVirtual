@@ -1,10 +1,25 @@
+# **Modelagem e simulação de um Motor DC com Python**
+
+Este projeto tem por objetivo servir como auxílio para a compreensão da dinâmica de um motor de corrente contínua. Através de controles interativos será possível observar o comportamento do sistema, no qual os dados serão fornecidos pelo usúario, o que torna a experiência mais livre e didática.
+
+
 # Motor DC
+## **Introdução**
+
+Um motor é uma máquina que converte energia elétrica em energia mecânica de rotação.O funcionamento dos motores CC baseia-se no princípio do eletromagnetismo clássico pelo qual um condutor carregando uma corrente e mergulhado em um fluxo magnético fica submetido a uma força eletromagnética.
 
 Realizaremos uma simulação de um sistema contendo um motor DC:
 
-<img src="motordc.png" width="400" />
+<br/>
 
+<div align="center">
+   <img src="motordc.png" width="400" />
+</div>
+<div align="center">
+  <span> Figura 1: Circuito do Motor DC </span>
+</div>
 
+## **Modelagem do Motor**
 Usando a Lei de Kirchhoff, a tensão contra eletromotriz pode ser descrita por:
 
 
