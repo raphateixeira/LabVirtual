@@ -109,23 +109,23 @@ def ruido(amp):
 scene.width = 600
 scene.height = 600
 
-# Criação da bobina (cilindro azul)
+# Criação da mesa, suporte e eletroimã
 mesa = box(pos=vec(5e-2, -9.5e-2, 0), size=vec(20e-2,
            1e-2, 10e-2), color=vec(0.359, 0.097, 0))
 
-bobina5 = cylinder(pos=vec(10e-2, -9.5e-2, 0), size=vector(18e-2,
-                   0.8e-2, 0.8e-2), color=vec(0.618, 0.668, 0.636), axis=vec(0, 1, 0))
+sup5 = cylinder(pos=vec(10e-2, -9.5e-2, 0), size=vector(18e-2,
+                                                        0.8e-2, 0.8e-2), color=vec(0.618, 0.668, 0.636), axis=vec(0, 1, 0))
 
 cnx2 = sphere(pos=vec(9.9e-2, 8e-2, 0), radius=1e-2,
               color=vec(0.618, 0.668, 0.636))
 
-bobina4 = cylinder(pos=vec(0, 8.5e-2, 0), size=vector(10e-2, 0.8e-2,
-                   0.8e-2), color=vec(0.618, 0.668, 0.636), axis=vec(0, 0, 0))
+sup4 = cylinder(pos=vec(0, 8.5e-2, 0), size=vector(10e-2, 0.8e-2,
+                                                   0.8e-2), color=vec(0.618, 0.668, 0.636), axis=vec(0, 0, 0))
 
 cnx1 = sphere(pos=vec(0, 8e-2, 0), radius=1e-2, color=vec(0.618, 0.668, 0.636))
 
-bobina3 = cylinder(pos=vec(0, 5e-2, 0), size=vector(3e-2, 0.8e-2,
-                   0.8e-2), color=vec(0.618, 0.668, 0.636), axis=vec(0, 1, 0))
+sup3 = cylinder(pos=vec(0, 5e-2, 0), size=vector(3e-2, 0.8e-2,
+                                                 0.8e-2), color=vec(0.618, 0.668, 0.636), axis=vec(0, 1, 0))
 
 bobina2 = cylinder(pos=vec(0, 4.5e-2, 0), size=vector(0.5e-2,
                    6e-2, 6e-2), color=vec(0.0, 0.568, 0.864), axis=vec(0, 1, 0))
@@ -133,8 +133,8 @@ bobina2 = cylinder(pos=vec(0, 4.5e-2, 0), size=vector(0.5e-2,
 bobina1 = cylinder(pos=vec(0, 0.5e-2, 0), size=vector(4e-2,
                    4e-2, 4e-2), color=vec(1.0, 0.387, 0.0), axis=vec(0, 1, 0))
 
-L_bobina = 10e-2
-r_bobina = 1e-2
+# L_bobina = 10e-2
+# r_bobina = 1e-2
 bobina = cylinder(pos=vec(0, 0, 0), size=vector(
     0.5e-2, 6e-2, 6e-2), color=vec(0.0, 0.568, 0.864), axis=vec(0, 1, 0))
 
