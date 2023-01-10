@@ -38,6 +38,7 @@ $$
 $$
 
 A tensão contra eletromotriz pode ser descrita por:
+
 $$
 \begin{align}
   E_{emf}=K_m \ddot{\theta_m}
@@ -45,6 +46,7 @@ $$
 $$
 
 No eixo do motor é conectado um redutor de velocidade, com relação de redução $K_g$ e eficiência $\eta_g$. Assim, aplicando a segunda lei de Newton no eixo do motor, temos:
+
 $$
 \begin{align}
   J_m\ddot{\theta }=T_m-\frac{T_l}{\eta_g K_g}
@@ -54,13 +56,14 @@ $$
 o torque devido a carga que está conectada ao redutor é dado por $\frac{T_l}{\eta_g K_g }$
 
 Aplicando a segunda lei de Newton na carga conectada ao redutor, temos:
+
 $$
 \begin{align}
   J_l\ddot{\theta_l }=T_l-B_{eq}\dot{\theta_l}
 \end{align}
 $$
 
-Sendo $B_{eq}$ o fator de amortecimento viscoso.$
+Sendo $B_{eq}$ o fator de amortecimento viscoso.
 
 Substituindo a equação (4) em (5) e organizando:
 
@@ -70,10 +73,12 @@ $$
 \end{align}
 $$
 
-Sabendo que, considerando a redução, $\theta_m = K_g \theta_l$, e que o torque no motor elétrico vale
+Sabendo que, considerando a redução, $\theta_m = K_g \theta_l$, e que o torque no motor elétrico vale:
+
 $$
 T_m = \eta_m K_t I_m
 $$
+
  (sendo $\eta_m$ a eficiência do motor), pode-se reescrever a equação
 (4) como:
 
@@ -84,6 +89,7 @@ $$
 $$
 
 Finalmente combinando as equações elétrica (2) e mecânica (7):
+
 $$
 \begin{align}
   \left ( J_l+\eta_g K^2_g J_m \right )R_m\ddot{\theta } + \left ( B_{eq}R_m+\eta_g \eta_m K_m K_t K^2_g  \right )R_m\dot{\theta } = \eta_g \eta_m K_g K_t V_m
@@ -98,15 +104,9 @@ $$
 \end{align}
 $$
 
-
-
-
-
-
 Sendo $J_{eq}=J_l + \eta_g K^2_g J_m$ o momento de inércia equivalente do motor.
 
 Assumindo os seguintes valores para as constantes acima:
-
 
 
 Eficiência da redução
@@ -131,8 +131,6 @@ $J_{m} = 3.87\cdot 10^{-7}$
 Momento de inércia equivalente do sistema
 $J_{eq} = 2\cdot 10^{-3}$
 
-
-
 Resistência de armadura 
 $R_m=2.6$
 
@@ -140,7 +138,6 @@ Fator de amortecimento viscose
 $B_{eq} = 4\cdot 10^{-3}$
 
 A função transferência do motor é dada por:
-
 
 $$
 \begin{align}
