@@ -17,7 +17,7 @@ Compartilhamos aqui alguns conteúdos que estamos desenvolvendo buscando formata
 
 ## Conteúdo em desenvolvimento:
 
-[Simulação de sistema dinâmico com python](ManimEDO.html)
+[Simulação de sistema dinâmico com python](Notas\IntegracaoNumerica\ManimEDO.html)
 
 ## Sistemas de interesse:
 
