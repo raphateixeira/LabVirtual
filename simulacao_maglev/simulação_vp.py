@@ -105,6 +105,19 @@ def ruido(amp):
 # Simulação e animação
 
 
+# Button
+executar = False
+
+
+def acionar_btn(b):
+    global executar
+    if executar:
+        b.text = "Executar"
+    else:
+        b.text = "Pausar"
+    executar = not executar
+
+
 # Dimensões da cena
 scene.width = 600
 scene.height = 600
@@ -144,6 +157,31 @@ r_cilindro = 1e-2
 cil = cylinder(pos=converte_posicao(mag.x0), axis=vec(
     0, -L_cilindro, 0), color=vec(0.902, 0.827, 0), radius=r_cilindro)
 
+scene.append_to_caption('\nSinal de Referência:\n\n')
+
+# Criando o menu
+
+
+def Menu(m):
+    if m.selected == "Onda Senoidal":
+        print('Onda Senoidal')
+
+    elif m.selected == "Onda Quadrada":
+        print('Onda Quadrada')
+
+    else:
+        print('Degrau')
+
+
+M = menu(choices=['Onda Senoidal', 'Onda Quadrada', 'Degrau'], bind=Menu)
+scene.append_to_caption('\n\n')
+
+# Criando o botão executar
+
+
+button(text="Executar", bind=acionar_btn)
+
+
 # Parâmetros de simulação
 fps = 50                           # Taxa de quadros
 dt = 1/fps                         # Intervalo de tempo real de atualização
@@ -168,29 +206,36 @@ wt = wtext(text='{:1.2f}'.format(sl.value))
 scene.append_to_caption('\n\n')
 
 # Gráficos para mostrar sinais
-yplot = gcurve(color=color.red)         # Curva da posição real
-rplot = gcurve(color=color.blue)        # Curva do sinal de referência
+grafico = graph(title='Resposta do sistema a um sinal de referência', xtitle='Tempo (s)',
+                ytitle='Posição (mm)', fast=False)
+# Curva da posição real
+yplot = gdots(color=color.red, size=2, label='Sistema')
+# Curva do sinal de referência
+rplot = gcurve(color=color.blue, label='Referência')
 
 # Loop infinito
 while True:
     rate(fps)
 
-    # Atualiza o sinal de referência para enviar para o solver
-    def sinal(t): return ref(sl.value*t)
+    if executar:
 
-    # Chama o solver para atualizar os estados do maglev
-    sol = solve_ivp(estadosmf, t_span=[t, t+dt], y0=y, args=(sinal, mag, comp))
+        # Atualiza o sinal de referência para enviar para o solver
+        def sinal(t): return ref(sl.value*t)
 
-    # Recupera os resultados da simulação
-    y = sol.y[:, -1]+ruido(1e-6)
+        # Chama o solver para atualizar os estados do maglev
+        sol = solve_ivp(estadosmf, t_span=[
+                        t, t+dt], y0=y, args=(sinal, mag, comp))
 
-    # Atualiza os gráficos
-    yplot.plot(t, y[0])
-    rplot.plot(t, sinal(t)+mag.x0)
-    # print(y[0])
+        # Recupera os resultados da simulação
+        y = sol.y[:, -1]+ruido(1e-6)
 
-    # Atualiza a posição do cilindro
-    cil.pos = converte_posicao(y[0])
+        # Atualiza os gráficos
+        yplot.plot(t, y[0])
+        rplot.plot(t, sinal(t)+mag.x0)
+        # print(y[0])
 
-    # Atualiza o tempo
-    t += dt
+        # Atualiza a posição do cilindro
+        cil.pos = converte_posicao(y[0])
+
+        # Atualiza o tempo
+        t += dt
