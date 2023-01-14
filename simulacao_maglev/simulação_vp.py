@@ -66,8 +66,13 @@ comp = Compensador(mag, [-3*mag.lamda]*3, [-8*mag.lamda]*2)
 # Sinal de referência para rastreamento
 
 
-def ref(t):
-    return (0.1*mag.x0*np.sin(2*pi*t))
+def ref_seno(t):
+    return (mag.x0*np.sin(2*pi*t))
+
+
+def ref_quad(t):
+    return (mag.x0)*(np.sin(2*pi*t) >= 0)
+
 
 # Equações de estados em malha fechada
 
@@ -105,8 +110,8 @@ def ruido(amp):
 # Simulação e animação
 
 
-# Button
 executar = False
+reset = False
 
 
 def acionar_btn(b):
@@ -116,6 +121,14 @@ def acionar_btn(b):
     else:
         b.text = "Pausar"
     executar = not executar
+
+
+def acionar_btn2(c):
+    global reset
+    if reset:
+        c.text = "Resetar"
+    else:
+        c.text = "Resetado"
 
 
 # Dimensões da cena
@@ -157,31 +170,6 @@ r_cilindro = 1e-2
 cil = cylinder(pos=converte_posicao(mag.x0), axis=vec(
     0, -L_cilindro, 0), color=vec(0.902, 0.827, 0), radius=r_cilindro)
 
-scene.append_to_caption('\nSinal de Referência:\n\n')
-
-# Criando o menu
-
-
-def Menu(m):
-    if m.selected == "Onda Senoidal":
-        print('Onda Senoidal')
-
-    elif m.selected == "Onda Quadrada":
-        print('Onda Quadrada')
-
-    else:
-        print('Degrau')
-
-
-M = menu(choices=['Onda Senoidal', 'Onda Quadrada', 'Degrau'], bind=Menu)
-scene.append_to_caption('\n\n')
-
-# Criando o botão executar
-
-
-button(text="Executar", bind=acionar_btn)
-
-
 # Parâmetros de simulação
 fps = 50                           # Taxa de quadros
 dt = 1/fps                         # Intervalo de tempo real de atualização
@@ -191,12 +179,26 @@ y = [mag.x0*1.05, 0, 0, 0, 0]      # Estado, estado inicial
 
 # slider e container: controles em tempo real (teste)
 
+# Criando o botão executar
+scene.append_to_caption('\n<b>Controles Básicos:</b>\n\n')
+button(text="Executar", bind=acionar_btn)
+
+button(text="Resetar", bind=acionar_btn2)
+scene.append_to_caption('\n\n')
+
+
 # Função para mostrar o valor de frequência ajustado pelo slider
+
+
 def setfreq(s):
     wt.text = '{:1.2f}'.format(s.value)
 
 
-scene.append_to_caption('\n\n')
+def setAmp(a):
+    ampl.text = '{:1.2f}'.format(a.value)
+
+
+scene.append_to_caption('\n<b>Frequência do Sinal:<b>\n\n')
 
 # Slider para controlar a frequência do sinal de referência senoidal
 sl = slider(pos=scene.caption_anchor, min=0.1, max=4,
@@ -204,6 +206,29 @@ sl = slider(pos=scene.caption_anchor, min=0.1, max=4,
 # Caixa de texto para mostrar o valor real da frequência
 wt = wtext(text='{:1.2f}'.format(sl.value))
 scene.append_to_caption('\n\n')
+
+scene.append_to_caption('\n<b>Amplitude do Sinal:<b>\n\n')
+
+# Slider para controlar a amplitude do sinal de referência senoidal
+sl2 = slider(pos=scene.caption_anchor, min=0.1, max=1,
+             value=.1, length=220, right=15, bind=setAmp)
+# Caixa de texto para mostrar o valor real da frequência
+ampl = wtext(text='{:1.2f}'.format(sl2.value))
+scene.append_to_caption('\n\n')
+
+
+# Cria menu e associa função evento
+
+scene.append_to_caption('\n<b>Sinal de Referência:</b>\n\n')
+
+
+def Menu(m):
+    print('ok')
+
+
+M = menu(choices=['Onda Senoidal', 'Onda Quadrada'], bind=Menu)
+scene.append_to_caption('\n\n')
+
 
 # Gráficos para mostrar sinais
 grafico = graph(title='Resposta do sistema a um sinal de referência', xtitle='Tempo (s)',
@@ -213,6 +238,8 @@ yplot = gdots(color=color.red, size=2, label='Sistema')
 # Curva do sinal de referência
 rplot = gcurve(color=color.blue, label='Referência')
 
+restart = True
+
 # Loop infinito
 while True:
     rate(fps)
@@ -220,7 +247,11 @@ while True:
     if executar:
 
         # Atualiza o sinal de referência para enviar para o solver
-        def sinal(t): return ref(sl.value*t)
+        match M.index:
+            case 0 | None:
+                def sinal(t): return ref_seno(sl.value*t)*(sl2.value)
+            case 1:
+                def sinal(t): return ref_quad(sl.value*t)*(sl2.value)
 
         # Chama o solver para atualizar os estados do maglev
         sol = solve_ivp(estadosmf, t_span=[
