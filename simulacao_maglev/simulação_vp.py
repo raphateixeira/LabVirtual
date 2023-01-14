@@ -187,7 +187,7 @@ button(text="Resetar", bind=acionar_btn2)
 scene.append_to_caption('\n\n')
 
 
-# Função para mostrar o valor de frequência ajustado pelo slider
+# Função para mostrar o valor de frequência e da amplitude ajustado pelo slider
 
 
 def setfreq(s):
