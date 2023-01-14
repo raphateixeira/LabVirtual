@@ -66,8 +66,12 @@ comp = Compensador(mag, [-3*mag.lamda]*3, [-8*mag.lamda]*2)
 # Sinal de referência para rastreamento
 
 
-def ref(t):
+def ref_seno(t):
     return (0.1*mag.x0*np.sin(2*pi*t))
+
+def ref_quad(t):
+    return (0.1*mag.x0)*(np.sin(2*pi*t)>=0)
+
 
 # Equações de estados em malha fechada
 
@@ -167,6 +171,16 @@ sl = slider(pos=scene.caption_anchor, min=0.1, max=4,
 wt = wtext(text='{:1.2f}'.format(sl.value))
 scene.append_to_caption('\n\n')
 
+
+# Cria menu e associa função evento
+def Menu(m):
+    print('ok')
+
+M = menu(choices=['Onda Senoidal', 'Onda Quadrada'], bind=Menu)
+scene.append_to_caption('\n\n')
+opcoes_ref = [ref_seno, ref_quad]
+
+
 # Gráficos para mostrar sinais
 yplot = gcurve(color=color.red)         # Curva da posição real
 rplot = gcurve(color=color.blue)        # Curva do sinal de referência
@@ -176,7 +190,11 @@ while True:
     rate(fps)
 
     # Atualiza o sinal de referência para enviar para o solver
-    def sinal(t): return ref(sl.value*t)
+    match M.index:
+        case 0 | None:
+            sinal = lambda t: ref_seno(sl.value*t)
+        case 1:
+            sinal = lambda t: ref_quad(sl.value*t)
 
     # Chama o solver para atualizar os estados do maglev
     sol = solve_ivp(estadosmf, t_span=[t, t+dt], y0=y, args=(sinal, mag, comp))
