@@ -65,7 +65,6 @@ comp = Compensador(mag, [-3*mag.lamda]*3, [-8*mag.lamda]*2)
 
 # Sinal de referência para rastreamento
 
-
 def ref_seno(t):
     return (mag.x0*np.sin(2*pi*t))
 
@@ -231,6 +230,16 @@ M = menu(pos=scene.title_anchor, choices=[
 scene.append_to_title('\n\n')
 
 
+
+# Cria menu e associa função evento
+def Menu(m):
+    print('ok')
+
+M = menu(choices=['Onda Senoidal', 'Onda Quadrada'], bind=Menu)
+scene.append_to_caption('\n\n')
+opcoes_ref = [ref_seno, ref_quad]
+
+
 # Gráficos para mostrar sinais
 grafico = graph(width=700, height=400, align='left', title='Resposta do sistema a um sinal de referência', xtitle='Tempo (s)',
                 ytitle='Posição (mm)', fast=False)
@@ -244,30 +253,29 @@ restart = True
 # Loop infinito
 while True:
     rate(fps)
-
     if executar:
 
-        # Atualiza o sinal de referência para enviar para o solver
-        match M.index:
-            case 0 | None:
-                def sinal(t): return ref_seno(sl.value*t)*(sl2.value)
-            case 1:
-                def sinal(t): return ref_quad(sl.value*t)*(sl2.value)
+            # Atualiza o sinal de referência para enviar para o solver
+            match M.index:
+                case 0 | None:
+                    def sinal(t): return ref_seno(sl.value*t)*(sl2.value)
+                case 1:
+                    def sinal(t): return ref_quad(sl.value*t)*(sl2.value)
 
-        # Chama o solver para atualizar os estados do maglev
-        sol = solve_ivp(estadosmf, t_span=[
-                        t, t+dt], y0=y, args=(sinal, mag, comp))
+            # Chama o solver para atualizar os estados do maglev
+            sol = solve_ivp(estadosmf, t_span=[
+                            t, t+dt], y0=y, args=(sinal, mag, comp))
 
-        # Recupera os resultados da simulação
-        y = sol.y[:, -1]+ruido(1e-6)
+            # Recupera os resultados da simulação
+            y = sol.y[:, -1]+ruido(1e-6)
 
-        # Atualiza os gráficos
-        yplot.plot(t, y[0])
-        rplot.plot(t, sinal(t)+mag.x0)
-        # print(y[0])
+            # Atualiza os gráficos
+            yplot.plot(t, y[0])
+            rplot.plot(t, sinal(t)+mag.x0)
+            # print(y[0])
 
-        # Atualiza a posição do cilindro
-        cil.pos = converte_posicao(y[0])
+            # Atualiza a posição do cilindro
+            cil.pos = converte_posicao(y[0])
 
-        # Atualiza o tempo
-        t += dt
+            # Atualiza o tempo
+            t += dt
