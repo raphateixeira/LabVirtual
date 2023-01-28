@@ -61,6 +61,7 @@ class Compensador:
 
 # Cria objetos da planta e controlador para simular
 mag = Maglev(m=29e-3, k=9.55e-6, mu=2.19e-3, I0=1)
+
 comp = Compensador(mag, [-3*mag.lamda]*3, [-8*mag.lamda]*2)
 
 # Sinal de referência para rastreamento
@@ -343,10 +344,43 @@ legenda_1 = label(pos=vec(
 
 # Controlador Interativo
 
-scene.append_to_title('<b>Tipo de Controlador:</b>')
-scene.append_to_title(' ')
-MM = menu(pos=scene.title_anchor, choices=[
-    'Função de Transferência', 'Espaço de Estados'], bind=Menu)
+
+def check_action(x):
+    global text_1, MM, text_2, bt_1, text_3, bt_2, text_4, bt_3, esp
+    if x.checked:
+        text_1 = wtext(pos=scene.title_anchor,
+                       text='<b>Tipo de Controlador:</b> ')
+        MM = menu(pos=scene.title_anchor, choices=[
+                  'Espaço de Estados', 'Função de Transferência'], bind=Menu)
+
+        text_2 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz A:</b> ')
+        bt_1 = winput(pos=scene.title_anchor,
+                      prompt='Enter here', type='string', bind=Menu)
+
+        text_3 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz B:</b> ')
+        bt_2 = winput(pos=scene.title_anchor,
+                      prompt='Enter here', type='string', bind=Menu)
+
+        text_4 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz C:</b> ')
+        bt_3 = winput(pos=scene.title_anchor,
+                      prompt='Enter here', type='string', bind=Menu)
+        esp = wtext(pos=scene.title_anchor, text='\n\n')
+
+    else:
+        text_1.text = ""
+        MM.delete()
+        text_2.text = ""
+        bt_1.delete()
+        text_3.text = ""
+        bt_2.delete()
+        text_4.text = ""
+        bt_3.delete()
+        esp.text = ""
+
+
+scene.append_to_title('\n\n')
+bt3 = checkbox(pos=scene.title_anchor,
+               text='<b>CONTROLE PERSONALIZADO</b>', bind=check_action)
 scene.append_to_title('\n\n')
 
 
