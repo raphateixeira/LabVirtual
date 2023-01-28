@@ -267,7 +267,7 @@ while True:
         # print(y[0])
 
         # Atualiza a posição do cilindro
-        # cil.pos = converte_posicao(y[0])
+        cil.pos = converte_posicao(y[0])
 
         # Atualiza o tempo
         t += dt
