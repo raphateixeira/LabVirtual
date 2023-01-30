@@ -67,10 +67,11 @@ comp = Compensador(mag, [-3*mag.lamda]*3, [-8*mag.lamda]*2)
 
 
 def ref_seno(t):
-    return (0.1*mag.x0*np.sin(2*pi*t))
+    return (mag.x0*np.sin(2*pi*t))
+
 
 def ref_quad(t):
-    return (0.1*mag.x0)*(np.sin(2*pi*t)>=0)
+    return (mag.x0)*(np.sin(2*pi*t) >= 0)
 
 
 # Equações de estados em malha fechada
@@ -109,9 +110,30 @@ def ruido(amp):
 # Simulação e animação
 
 
+executar = False
+reset = False
+
+
+def acionar_btn(b):
+    global executar
+    if executar:
+        b.text = "Executar"
+    else:
+        b.text = "Pausar"
+    executar = not executar
+
+
+def acionar_btn2(c):
+    global reset
+    if reset:
+        c.text = "Resetar"
+    else:
+        c.text = "Resetado"
+
+
 # Dimensões da cena
-scene.width = 600
-scene.height = 600
+scene = canvas(width=600, height=445, align='left',
+               title='<b>SIMULAÇÃO MAGLEV V1.0<b>\n\n')
 
 # Criação da mesa, suporte e eletroimã
 mesa = box(pos=vec(5e-2, -9.5e-2, 0), size=vec(20e-2,
@@ -157,58 +179,95 @@ y = [mag.x0*1.05, 0, 0, 0, 0]      # Estado, estado inicial
 
 # slider e container: controles em tempo real (teste)
 
-# Função para mostrar o valor de frequência ajustado pelo slider
+# Criando o botão executar
+scene.append_to_title('<b>Controles Básicos:</b>\n\n')
+button(pos=scene.title_anchor, text="Executar", bind=acionar_btn)
+
+button(pos=scene.title_anchor, text="Resetar", bind=acionar_btn2)
+scene.append_to_title('\n\n')
+
+
+# Função para mostrar o valor de frequência e da amplitude ajustado pelo slider
+
+
 def setfreq(s):
     wt.text = '{:1.2f}'.format(s.value)
 
 
-scene.append_to_caption('\n\n')
+def setAmp(a):
+    ampl.text = '{:1.2f}'.format(a.value)
+
+
+scene.append_to_title('<b>Frequência do Sinal:<b>')
 
 # Slider para controlar a frequência do sinal de referência senoidal
-sl = slider(pos=scene.caption_anchor, min=0.1, max=4,
+sl = slider(pos=scene.title_anchor, min=0.1, max=4,
             value=1., length=220, right=15, bind=setfreq)
 # Caixa de texto para mostrar o valor real da frequência
-wt = wtext(text='{:1.2f}'.format(sl.value))
-scene.append_to_caption('\n\n')
+wt = wtext(pos=scene.title_anchor, text='{:1.2f}'.format(sl.value))
+scene.append_to_title('')
+
+scene.append_to_title('    <b>Amplitude do Sinal:<b>')
+
+# Slider para controlar a amplitude do sinal de referência senoidal
+sl2 = slider(pos=scene.title_anchor, min=0.1, max=1,
+             value=.1, length=220, right=15, bind=setAmp)
+# Caixa de texto para mostrar o valor real da frequência
+ampl = wtext(pos=scene.title_anchor, text='{:1.2f}'.format(sl2.value))
+scene.append_to_title('\n\n')
 
 
 # Cria menu e associa função evento
+
+scene.append_to_title('<b>Sinal de Referência:</b>\n\n')
+
+
 def Menu(m):
     print('ok')
 
-M = menu(choices=['Onda Senoidal', 'Onda Quadrada'], bind=Menu)
-scene.append_to_caption('\n\n')
-opcoes_ref = [ref_seno, ref_quad]
+
+M = menu(pos=scene.title_anchor, choices=[
+         'Onda Senoidal', 'Onda Quadrada'], bind=Menu)
+scene.append_to_title('\n\n')
 
 
 # Gráficos para mostrar sinais
-yplot = gcurve(color=color.red)         # Curva da posição real
-rplot = gcurve(color=color.blue)        # Curva do sinal de referência
+grafico = graph(width=700, height=400, align='left', title='Resposta do sistema a um sinal de referência', xtitle='Tempo (s)',
+                ytitle='Posição (mm)', fast=False)
+# Curva da posição real
+yplot = gdots(color=color.red, size=2, label='Sistema')
+# Curva do sinal de referência
+rplot = gcurve(color=color.blue, label='Referência')
+
+restart = True
 
 # Loop infinito
 while True:
     rate(fps)
 
-    # Atualiza o sinal de referência para enviar para o solver
-    match M.index:
-        case 0 | None:
-            sinal = lambda t: ref_seno(sl.value*t)
-        case 1:
-            sinal = lambda t: ref_quad(sl.value*t)
+    if executar:
 
-    # Chama o solver para atualizar os estados do maglev
-    sol = solve_ivp(estadosmf, t_span=[t, t+dt], y0=y, args=(sinal, mag, comp))
+        # Atualiza o sinal de referência para enviar para o solver
+        match M.index:
+            case 0 | None:
+                def sinal(t): return ref_seno(sl.value*t)*(sl2.value)
+            case 1:
+                def sinal(t): return ref_quad(sl.value*t)*(sl2.value)
 
-    # Recupera os resultados da simulação
-    y = sol.y[:, -1]+ruido(1e-6)
+        # Chama o solver para atualizar os estados do maglev
+        sol = solve_ivp(estadosmf, t_span=[
+                        t, t+dt], y0=y, args=(sinal, mag, comp))
 
-    # Atualiza os gráficos
-    yplot.plot(t, y[0])
-    rplot.plot(t, sinal(t)+mag.x0)
-    # print(y[0])
+        # Recupera os resultados da simulação
+        y = sol.y[:, -1]+ruido(1e-6)
 
-    # Atualiza a posição do cilindro
-    cil.pos = converte_posicao(y[0])
+        # Atualiza os gráficos
+        yplot.plot(t, y[0])
+        rplot.plot(t, sinal(t)+mag.x0)
+        # print(y[0])
 
-    # Atualiza o tempo
-    t += dt
+        # Atualiza a posição do cilindro
+        cil.pos = converte_posicao(y[0])
+
+        # Atualiza o tempo
+        t += dt
