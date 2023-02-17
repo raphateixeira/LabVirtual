@@ -336,6 +336,27 @@ legenda_1 = label(pos=vec(
 # Criando a função para escolher o tipo de controlador e fornecendo as matrizes
 
 
+def recebe_Ar(Ar):
+    new_Ar = np.asarray(Ar)
+    wtext(pos=scene.title_anchor, text='\n\n<b>Recebido</b>')
+    print(new_Ar)
+    type(new_Ar)
+
+
+def recebe_Br(Br):
+    new_Ar = np.asarray(Br)
+    wtext(pos=scene.title_anchor, text='\n\n<b>Recebido</b>')
+    print(new_Ar)
+    type(new_Ar)
+
+
+def recebe_K(K):
+    new_Ar = np.asarray(K)
+    wtext(pos=scene.title_anchor, text='\n\n<b>Recebido</b>')
+    print(new_Ar)
+    type(new_Ar)
+
+
 def check_action(x):
     global text_1, MM, text_2, bt_1, text_3, bt_2, text_4, bt_3, esp
     if x.checked:
@@ -343,18 +364,20 @@ def check_action(x):
                        text='<b>Tipo de Controlador:</b> ')
         MM = menu(pos=scene.title_anchor, choices=[
                   'Espaço de Estados', 'Função de Transferência'], bind=Menu)
-
-        text_2 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz A:</b> ')
+        text_2 = wtext(pos=scene.title_anchor,
+                       text='\n\n<b>Matriz Ar:</b> ')
         bt_1 = winput(pos=scene.title_anchor,
-                      prompt='Enter here', type='string', bind=Menu)
+                      prompt='Enter here', type='string', bind=recebe_Ar)
 
-        text_3 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz B:</b> ')
+        text_3 = wtext(pos=scene.title_anchor,
+                       text='\n\n<b>Matriz Br:</b> ')
         bt_2 = winput(pos=scene.title_anchor,
-                      prompt='Enter here', type='string', bind=Menu)
+                      prompt='Enter here', type='string', bind=recebe_Br)
 
-        text_4 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz C:</b> ')
+        text_4 = wtext(pos=scene.title_anchor,
+                       text='\n\n<b>Matriz K:</b> ')
         bt_3 = winput(pos=scene.title_anchor,
-                      prompt='Enter here', type='string', bind=Menu)
+                      prompt='Enter here', type='string', bind=recebe_K)
         esp = wtext(pos=scene.title_anchor, text='\n\n')
 
     else:
