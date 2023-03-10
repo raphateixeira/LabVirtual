@@ -279,7 +279,7 @@ Saída:
 
 </br>
 
-Animação do Aeropêndulo com a Biblioteca **VPython**
+# Animação do Aeropêndulo com a Biblioteca **VPython**
 
 
 
