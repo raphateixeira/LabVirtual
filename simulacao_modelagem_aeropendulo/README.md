@@ -102,19 +102,15 @@ $$
 
 #### Parâmetros para Simulação
 
-$$
-\begin{align}
-\begin{array}{|c|c|}                                        \hline
-\text { Parâmetros do Aeropêndulo } & \text{Valores}      \\ \hline
-K_m     &   0,0296                                        \\ \hline
-d       &   0,03m                                         \\ \hline
-J       &   0,0106 Kgm^2                                  \\ \hline
-m       &   0,36 m                                        \\ \hline
-g       &   9,8 m/s^2                                     \\ \hline
-c       &   0,0076 Nms/rad                                \\ \hline
-\end{array}
-\end{align}
-$$
+
+| Parâmetros do Aeropêndulo | Valores            |
+| K_m                       |    0,0296          |
+| d                         |    0,03m           |
+| J                         |    0,0106 Kgm^2    |
+| m                         |    0,36 m          |
+| g                         |    9,8 m/s^2       |
+| c                         |    0,0076 Nms/rad  |
+
 
 ---
 
