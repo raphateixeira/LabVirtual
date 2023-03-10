@@ -286,7 +286,8 @@ Saída:
 <center>
 <div class="figure" >
   <img src="utils/simulacao.png"
-       width="600"> 
+       width="800">  
+  <p>Figura 2 - Animação do aeropêndulo usando a biblioteca vpython.</p>
 </div>
 </center>
 
