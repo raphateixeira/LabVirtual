@@ -87,7 +87,6 @@ $$
 \end{align}
 $$
 
-
 $$
 \begin{bmatrix}
     \dot{x}_1 \\
@@ -116,7 +115,6 @@ Y= \begin{bmatrix}
     \frac{K_m}{J}
 \end{bmatrix} + 0
 $$
-
 
 ### Parâmetros para Simulação
 
@@ -180,7 +178,7 @@ sys = ct.ss(A, B, C, D)
 print(sys)
 ```
 
-###Obtendo a Função de Transferência a partir do Espaço de Estados
+### Obtendo a Função de Transferência a partir do Espaço de Estados
 
 Para obter a função de transferência a partir do sistema no espaço de estados, a biblioteca control implementa uma função, ct.ss2tf(sys), que recebe como parâmetro, o sistema no espaço de estados e retorna a função de transferência.
 
@@ -205,7 +203,7 @@ A função step_info recebe como parâmetro o sistema no espaço de estados ou u
 ct.step_info(sys)
 ```
 
-saída:
+**saída:**
 
 ```
 {'RiseTime': 0.396481513738416,
@@ -223,7 +221,7 @@ saída:
 ct.damp(sys);
 ```
 
-saída:
+**saída:**
 
 ```
 _____Eigenvalue______ Damping___ Frequency_
@@ -235,7 +233,7 @@ _____Eigenvalue______ Damping___ Frequency_
 ct.poles(sys)
 ```
 
-saída:
+**saída:**
 
 ```
 array([-0.35849057+3.13948884j, -0.35849057-3.13948884j])
@@ -245,7 +243,7 @@ array([-0.35849057+3.13948884j, -0.35849057-3.13948884j])
 ct.zeros(sys)
 ```
 
-saída:
+**saída:**
 
 ```
 array([], dtype=float64)
@@ -264,7 +262,7 @@ ax.plot(t, np.rad2deg(yout))
 plt.show()
 ```
 
-Saída:
+**Saída:**
 
 <center>
 <div class="figure" >
@@ -282,7 +280,6 @@ Saída:
 # Animação do Aeropêndulo com a Biblioteca **VPython**
 
 
-
 <center>
 <div class="figure" >
   <img src="utils/simulacao.png"
@@ -292,5 +289,3 @@ Saída:
 </center>
 
 ...
-
-

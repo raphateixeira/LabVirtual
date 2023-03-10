@@ -1,8 +1,8 @@
-# ----------------------------------------------------
+# -----------------------------------------------------
 # Universidade Federal do Pará
 # Campus Universitário de Tucuruí
 # Faculdade de Engenharia Elétrica
-# ----------------------------------------------------
+# -----------------------------------------------------
 #
 # Laboratório Virtual Sistemas Dinâmicos e Controle
 # Tema: Simulação Aeropêndulo
