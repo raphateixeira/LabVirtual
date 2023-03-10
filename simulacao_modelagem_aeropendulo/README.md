@@ -30,7 +30,7 @@ Onde:
 >> + *d*: a distância entre o centro de massa e o ponto de pivô;
 
 
-#### Linearizando o sistema
+## Linearização do Sistema
 
 Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $$(2)$$.
 
@@ -77,9 +77,9 @@ $$
 $$
 
 
-### Sistema no Espaço de Estados
+## Sistema no Espaço de Estados
 
-##### Forma Canônica de Controlador
+### Forma Canônica de Controlador
 
 $$
 \begin{align}
@@ -118,7 +118,7 @@ Y= \begin{bmatrix}
 $$
 
 
-#### Parâmetros para Simulação
+### Parâmetros para Simulação
 
 $$
 \begin{align}
@@ -136,8 +136,9 @@ $$
 
 ---
 
-### Simulação usando Python
+## Simulação usando Python
 
+### Importando as bibliotecas Python usadas
 
 ```
 import numpy as np
@@ -179,7 +180,7 @@ sys = ct.ss(A, B, C, D)
 print(sys)
 ```
 
-### Função de Transferência a partir do espaço de estados
+###Obtendo a Função de Transferência a partir do Espaço de Estados
 
 Para obter a função de transferência a partir do sistema no espaço de estados, a biblioteca control implementa uma função, ct.ss2tf(sys), que recebe como parâmetro, o sistema no espaço de estados e retorna a função de transferência.
 
@@ -271,6 +272,19 @@ Saída:
        width="600"> 
 </div>
 </center>
+
 ---
+---
+
+Animação do Aeropêndulo com a Biblioteca **VPython**
+
+<center>
+<div class="figure" >
+  <img src="utils/simulacao.png"
+       width="600"> 
+</div>
+</center>
+
+...
 
 
