@@ -7,7 +7,7 @@
 <center>
 <div class="figure" >
   <img src="utils/aeropendulo.png"
-       width="400"> 
+       width="600"> 
   <p>Figura 1 - Diagrama esquemático do Aeropêndulo.</p>
 </div>
 </center>
