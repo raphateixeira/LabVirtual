@@ -222,12 +222,32 @@ saída:
 ct.damp(sys);
 ```
 
+saída:
+
+```
+_____Eigenvalue______ Damping___ Frequency_
+   -0.3585    +3.139j     0.1135       3.16
+   -0.3585    -3.139j     0.1135       3.16
+```
+
 ```
 ct.poles(sys)
 ```
 
+saída:
+
+```
+array([-0.35849057+3.13948884j, -0.35849057-3.13948884j])
+```
+
 ```
 ct.zeros(sys)
+```
+
+saída:
+
+```
+array([], dtype=float64)
 ```
 
 Resposta ao Degrau Unitário
@@ -243,6 +263,14 @@ ax.plot(t, np.rad2deg(yout))
 plt.show()
 ```
 
+Saída:
+
+<center>
+<div class="figure" >
+  <img src="utils/gsinal.png"
+       width="600"> 
+</div>
+</center>
 ---
 
 
