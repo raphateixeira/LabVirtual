@@ -4,7 +4,6 @@
 <center>
 <div class="figure" >
   <img src="utils/aeropendulo.png"
-       width="400"> 
   <p>Figura 1 - Diagrama esquemático do Aeropêndulo.</p>
 </div>
 </center>
@@ -12,7 +11,7 @@
 Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $(1)$ que modela o sistema em questão.
 
 $$
-    T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{\theta} \tag{1}\\
+    T = J\ddot{\theta} + c\dot{\theta} +mgd\sin{\theta} \tag{1}
 $$
 
 
@@ -30,35 +29,35 @@ Onde:
 Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $(2)$.
 
 $$
-    T &= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{2}\\
+    T = J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{2}
 $$
 
 Aplicando a transformada de Laplace, temos:
 
 $$
-    T(s) &= s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{3}\\
-    T(s) &= (s^2J + sc +mgd)\theta(s) \tag{4}\\
-    \frac{\theta(s)}{T(s)} &= \frac{1}{s^2J + sc +mgd} \tag{5}\\
-    \frac{\theta(s)}{T(s)} &= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{6}\\
+    T(s) = s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{3}
+    T(s) = (s^2J + sc +mgd)\theta(s) \tag{4}
+    \frac{\theta(s)}{T(s)} = \frac{1}{s^2J + sc +mgd} \tag{5}
+    \frac{\theta(s)}{T(s)} = \frac{1/J}{s^2 + sc/J +mgd/J} \tag{6}
 $$
 
 Queremos controlar o ângulo do braço do aeropêndulo  a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $V$ nos terminais do motor e o empuxo $T$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $(7)$.
 
 $$
-    T &\approx K_mV \tag{7}\\
+    T \approx K_mV \tag{7}
 $$
 
 Aplicando a transformada de Laplace, temos:
 
 $$
-    T(s) &\approx K_mV(s) \tag{8}\\
+    T(s) \approx K_mV(s) \tag{8}
 $$
 
 Agora podemos substituir $(8)$ em $(6)$,
 
 $$
-    \frac{\theta(s)}{K_mV(s)} &= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{9}\\
-    \frac{\theta(s)}{V(s)} &= \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{10}
+    \frac{\theta(s)}{K_mV(s)} = \frac{1/J}{s^2 + sc/J +mgd/J} \tag{9}
+    \frac{\theta(s)}{V(s)} = \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{10}
 $$
 
 

@@ -15,8 +15,13 @@ import vpython as vp
 
 
 class AnimacaoAeropendulo:
-    """Classe que implementa a aminação do Aeropêndulo."""
-    def __init__(self, comprimento_braco=4.4):
+    """
+    Classe que implementa a aminação do Aeropêndulo.
+
+    Args:
+        comprimento_braco: tamanho do braço do Aeropêndulo.
+    """
+    def __init__(self, comprimento_braco=4.4) -> None:
         # Parâmetros do Aeropêndulo
         self.comprimento_braco = comprimento_braco
         self.scene = vp.canvas(title="<center><h1>Aeropêndulo</h1><center/>",
@@ -27,10 +32,17 @@ class AnimacaoAeropendulo:
                                color=vp.vec(1, 0.6, 0.6),
                                forward=vp.vec(-0.3, 0, -1))
         # chamando a função para criar a aminação gráfica do Aeropêndulo.
-        self.aeropendulo = self.aminacao()
+        self.aeropendulo = self.__aminacao()
 
-    def aminacao(self):
-        # Ambiente de sinulação.
+    def __aminacao(self) -> object:
+        """
+        Classe que implementa o Aeropêndulo.
+
+        Args:
+            comprimento_braco: tamanho do braço do Aeropêndulo.
+        Returns:
+            Retorna um objeto (vpython) que contêm a estrutura do Aeropêndulo.
+        """
         self.base = vp.box(pos=vp.vec(0, -0.85, 0), size=vp.vec(30, 0.2, 15),
                            texture=vp.textures.wood)
         self.parede = vp.box(pos=vp.vec(0, 7.1, -7.55),

@@ -12,13 +12,21 @@
 #  ----------------------------------------------------
 #
 import vpython as vp
+from typing import Tuple
 
 
 class Graficos:
-    def __init__(self):
-        pass
+    """
+    Gráfico para polagem dos dados dos estados do Aeroèndulo.
 
-    def graficos(self):
+    """
+    def graficos(self) -> Tuple:
+        """
+        Método que cria os Gráfico.
+
+        Returns:
+            Retorna uma tupla contendo o objeto do gráfico e da curvas.
+        """
         titulo = "Gráficos dos estados do Aeropêndulo"
         grafico = vp.graph(title=titulo, align="right", xtitle='tempo (s)',
                            fast=True, width=650, height=550,
