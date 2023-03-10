@@ -1,3 +1,4 @@
+# %% Bibliotecas
 import time
 
 import control as ct
@@ -6,7 +7,8 @@ from scipy.integrate import solve_ivp
 from vpython import *
 
 
-# @title Classe Maglev -----------------------------------------------------------------
+# %% MODELAGEM ------------------------------------------------------------------------------
+# %% Modelagem da Planta do MAGLEV
 class Maglev:
     def __init__(self, m, k, mu, I0):
         self.m = m          # Massa em kg
@@ -26,7 +28,7 @@ class Maglev:
         self.B = np.array([[0], [-self.a]])
         self.C = np.array([[1., 0]])
 
-# Classe compensador -----------------------------------------------------------------
+# %% Projeto do Compensador
 
 
 class Compensador:
@@ -59,12 +61,12 @@ class Compensador:
         self.L = L
 
 
-# Cria objetos da planta e controlador para simular
+# %% Criação dos objetos da planta e controlador para simular
 mag = Maglev(m=29e-3, k=9.55e-6, mu=2.19e-3, I0=1)
 
 comp = Compensador(mag, [-3*mag.lamda]*3, [-8*mag.lamda]*2)
 
-# Sinal de referência para rastreamento
+# %% Definindo os sinais de referência para rastreamento
 
 
 def ref_seno(t):
@@ -74,7 +76,7 @@ def ref_seno(t):
 def ref_quad(t):
     return (mag.x0)*(np.sin(2*pi*t) >= 0)
 
-# Equações de estados em malha fechada
+# %% Equações de estados em malha fechada
 
 
 def estadosmf(t, x, ref, planta, comp):
@@ -95,22 +97,22 @@ def estadosmf(t, x, ref, planta, comp):
     ddt[2:] = comp.Ar@z + comp.Br@u
     return ddt
 
-# Função para ajustar coordenadas do modelo às coordenadas do VPython
+# %% Função para ajustar coordenadas do modelo às coordenadas do VPython
 
 
 def converte_posicao(y_maglev):
     return (bobina_3.pos + vec(0, -y_maglev, 0))*4
 
-# Função para implementar ruído gaussiano
+# %% Função para implementar ruído gaussiano
 
 
 def ruido(amp):
     return amp*np.random.normal(loc=0, scale=amp)
 
 
-# Simulação e animação
+# %% SIMULAÇÃO ------------------------------------------------------------------------------
+# %% Criação da função do botão executar
 executar = False
-reset = False
 
 
 def acionar_btn(b):
@@ -121,16 +123,7 @@ def acionar_btn(b):
         b.text = "Pausar"
     executar = not executar
 
-
-def acionar_btn2(c):
-    global reset
-    if reset:
-        c.text = "Resetar"
-    else:
-        c.text = "Resetado"
-        reset = not reset
-
-# -----------------------------------------------------------------
+# %% Criando o Grid na animação
 
 
 class Grid:
@@ -171,15 +164,17 @@ class Grid:
             s.visible = vis
 
 
-# -----------------------------------------------------------------------------
+# %% Criando a cena e definindo seus parâmetros
 scene = canvas(width=700, height=445, align='left',
                title='<b>SIMULAÇÃO MAGLEV V1.0<b>\n\n')
 scene.background = color.white
 scene.foreground = color.black
 scene.userspin = False
 constrain = False
+grid = None
+drag = False
 
-# -----------------------------------------------------------------------------
+# %% Criando o desenho da animação
 mesa = box(pos=vec(5e-2, -9e-2, 0), size=vec(20e-2, 1e-2, 10e-2),
            color=vec(0.570, 0.259, 0.103))
 
@@ -207,20 +202,17 @@ bobina_2 = cylinder(pos=vec(0, 0.5e-2, 0), size=vector(4e-2,
 bobina_3 = cylinder(pos=vec(0, 0, 0), size=vector(
     0.5e-2, 6e-2, 6e-2), color=vec(0.0, 0.568, 0.864), axis=vec(0, 1, 0))
 
-# Cria o cilindro flutuante -----------------------------------------------------------------
+# Cria o cilindro flutuante
 L_cilindro = 5e-2
 r_cilindro = 1e-2
 cil = cylinder(pos=vec(12e-2, -3.5e-2, 0), axis=vec(0, -L_cilindro,
                0), color=vec(0.902, 0.827, 0), radius=r_cilindro, velocity=vector(0, 0, 0))
 
-# -----------------------------------------------------------------
-grid = None
-drag = False
+# %% Definindo as funções de interação do usuário
 
 
 def down():
     global drag
-    cil
     if constrain:
         pos = vector(round(cil.pos.x, 2), round(
             cil.pos.y, 2), round(cil.pos.z, 2))
@@ -242,6 +234,13 @@ def up():
     print(cil.pos, "\n")
 
 
+scene.bind("mousedown", down)
+scene.bind("mousemove", move)
+scene.bind("mouseup", up)
+
+# %% Criando as funções de ativação do GRID e constrição de movimento
+
+
 def setgrid(evt):
     global grid
     if evt.checked:
@@ -258,35 +257,30 @@ def setconstrain(evt):
     constrain = evt.checked
 
 
-scene.bind("mousedown", down)
-scene.bind("mousemove", move)
-scene.bind("mouseup", up)
-
-# -----------------------------------------------------------------
-# Parâmetros de simulação
+# %% Parâmetros de simulação
 fps = 50                           # Taxa de quadros
 dt = 1/fps                         # Intervalo de tempo real de atualização
 t = 0                              # Armazena tempo, tempo inicial
 y = [mag.x0*1.05, 0, 0, 0, 0]      # Estado, estado inicial
 
-
-# slider e container: controles em tempo real (teste)
-
-# Criando o botão executar
+# %% Criando o menu interativo
+# Título
 scene.append_to_title('<b>CONTROLES BÁSICOS:</b>\n\n')
+# Botão Executar
 bt1_exe = button(pos=scene.title_anchor, text="Executar", bind=acionar_btn)
 scene.append_to_title('   ')
+# Checkbox do GRID
 checkbox(pos=scene.title_anchor, bind=setgrid)
 scene.append_to_title('<b>Exibir região de equilíbrio</b>')
 scene.append_to_title('   ')
+# Checkbox da constrição de movimento
 checkbox(pos=scene.title_anchor, bind=setconstrain)
 scene.append_to_title('<b>Constrição de movimento</b>')
-
-# bt2_res = button(pos=scene.title_anchor, text="Resetar", bind=acionar_btn2)
 scene.append_to_title('\n\n')
 
+# %% Criando a função para mostrar o valor de frequência e da amplitude ajustado pelo slider
 
-# Função para mostrar o valor de frequência e da amplitude ajustado pelo slider
+
 def setfreq(s):
     wt.text = '{:1.2f}'.format(s.value)
 
@@ -295,8 +289,8 @@ def setAmp(a):
     ampl.text = '{:1.2f}'.format(a.value)
 
 
+# %% Criando os botões de ajuste da frequência e da amplitude
 scene.append_to_title('<b>Frequência do Sinal:<b>')
-
 # Slider para controlar a frequência do sinal de referência senoidal
 sl = slider(pos=scene.title_anchor, min=0.1, max=4,
             value=1., length=220, right=15, bind=setfreq)
@@ -305,7 +299,6 @@ wt = wtext(pos=scene.title_anchor, text='{:1.2f}'.format(sl.value))
 scene.append_to_title('')
 
 scene.append_to_title('\n\n<b>Amplitude do Sinal:<b>')
-
 # Slider para controlar a amplitude do sinal de referência senoidal
 sl2 = slider(pos=scene.title_anchor, min=0.1, max=1,
              value=.1, length=220, right=15, bind=setAmp)
@@ -313,9 +306,7 @@ sl2 = slider(pos=scene.title_anchor, min=0.1, max=1,
 ampl = wtext(pos=scene.title_anchor, text='{:1.2f}'.format(sl2.value))
 scene.append_to_title('\n\n')
 
-
-# Cria menu e associa função evento
-
+# %% Criando o menu de escolha do sinal de referência
 scene.append_to_title('<b>Sinal de Referência:</b>')
 scene.append_to_title(' ')
 
@@ -328,8 +319,7 @@ M = menu(pos=scene.title_anchor, choices=[
          'Onda Senoidal', 'Onda Quadrada'], bind=Menu)
 scene.append_to_title('  ')
 
-
-# Gráficos para mostrar sinais
+# %% Criando o gráfico para mostrar os sinais
 grafico = graph(width=700, height=400, align='left', title='Resposta do sistema a um sinal de referência', xtitle='Tempo (s)',
                 ytitle='Posição (mm)', fast=False)
 # Curva da posição real
@@ -337,12 +327,34 @@ yplot = gdots(color=color.red, size=2, label='Sistema')
 # Curva do sinal de referência
 rplot = gcurve(color=color.blue, label='Referência')
 
-# Legenda
+# %% Criação da legenda flutuante
 
 legenda_1 = label(pos=vec(
     0, 11.5e-2, 0), text="<b>O cilindro está na posição inicial!</b>", font="Verdana")
 
-# Controlador Interativo
+# %% Criação do controlador interativo
+# Criando a função para escolher o tipo de controlador e fornecendo as matrizes
+
+
+def recebe_Ar(Ar):
+    new_Ar = np.asarray(Ar)
+    wtext(pos=scene.title_anchor, text='\n\n<b>Recebido</b>')
+    print(new_Ar)
+    type(new_Ar)
+
+
+def recebe_Br(Br):
+    new_Ar = np.asarray(Br)
+    wtext(pos=scene.title_anchor, text='\n\n<b>Recebido</b>')
+    print(new_Ar)
+    type(new_Ar)
+
+
+def recebe_K(K):
+    new_Ar = np.asarray(K)
+    wtext(pos=scene.title_anchor, text='\n\n<b>Recebido</b>')
+    print(new_Ar)
+    type(new_Ar)
 
 
 def check_action(x):
@@ -352,18 +364,20 @@ def check_action(x):
                        text='<b>Tipo de Controlador:</b> ')
         MM = menu(pos=scene.title_anchor, choices=[
                   'Espaço de Estados', 'Função de Transferência'], bind=Menu)
-
-        text_2 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz A:</b> ')
+        text_2 = wtext(pos=scene.title_anchor,
+                       text='\n\n<b>Matriz Ar:</b> ')
         bt_1 = winput(pos=scene.title_anchor,
-                      prompt='Enter here', type='string', bind=Menu)
+                      prompt='Enter here', type='string', bind=recebe_Ar)
 
-        text_3 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz B:</b> ')
+        text_3 = wtext(pos=scene.title_anchor,
+                       text='\n\n<b>Matriz Br:</b> ')
         bt_2 = winput(pos=scene.title_anchor,
-                      prompt='Enter here', type='string', bind=Menu)
+                      prompt='Enter here', type='string', bind=recebe_Br)
 
-        text_4 = wtext(pos=scene.title_anchor, text='\n\n<b>Matriz C:</b> ')
+        text_4 = wtext(pos=scene.title_anchor,
+                       text='\n\n<b>Matriz K:</b> ')
         bt_3 = winput(pos=scene.title_anchor,
-                      prompt='Enter here', type='string', bind=Menu)
+                      prompt='Enter here', type='string', bind=recebe_K)
         esp = wtext(pos=scene.title_anchor, text='\n\n')
 
     else:
@@ -378,18 +392,23 @@ def check_action(x):
         esp.text = ""
 
 
+# %% Criando o botão que chama o controlador interativo
 scene.append_to_title('\n\n')
 bt3 = checkbox(pos=scene.title_anchor,
                text='<b>CONTROLE PERSONALIZADO</b>', bind=check_action)
 scene.append_to_title('\n\n')
 
 
-# restart = True
+# %% Parâmetros de simulação de queda
+# Velocidade inicial do cilindro
 cil.v = vector(0, 0, 0)
+# Gravidade inicial do cilindro
 g = vector(0, -5.8e-2, 0)
-# Loop infinito
+# %% LOOP ------------------------------------------------------------------------------
+# %% Criando o loop da simulação
 while True:
     rate(fps)
+# %% Verificação da posição do cilindro antes de executar o programa
     if cil.pos == vector(12e-2, -3.5e-2, 0):
         legenda_1.text = "<b>O cilindro está na posição inicial!</b>"
         legenda_1.color = color.green
@@ -402,9 +421,9 @@ while True:
     else:
         legenda_1.text = "<b>O cilindro está fora da região de equilíbrio!</b>"
         legenda_1.color = color.purple
-
+# %% Acionando o botão executar
     if executar:
-
+        # %% O primeiro caso: se o cilindro está na posição inicial o programa não vai sair da tela inicial.
         if cil.pos == vector(12e-2, -3.5e-2, 0):
             cil.pos = vector(12e-2, -3.5e-2, 0)
             yplot.delete()
@@ -413,13 +432,13 @@ while True:
             # time.sleep(2)
             executar = not executar
             bt1_exe.text = "Executar"
-
+# %% O segundo caso: o cilindro está grudado no eletroimã, tem que aguardar o programa voltar pra tela inicial.
         elif cil.pos == vector(0, 0, 0):
             time.sleep(3)
             executar = not executar
             bt1_exe.text = "Executar"
             cil.pos = vector(12e-2, -3.5e-2, 0)
-
+# %% O terceiro caso: o cilindro está na região de equilíbrio, logo o programa irá rodar normalmente.
         elif cil.pos.y <= 0 and cil.pos.y >= -0.08 and cil.pos.x == 0:
 
             # Atualiza o sinal de referência para enviar para o solver
@@ -446,7 +465,7 @@ while True:
 
             # Atualiza o tempo
             t += dt
-
+# %% O quarto caso: o cilindro está fora da região de equilíbrio, logo ele irá cair na mesa e retornar a posição inicial.
         else:
             while cil.pos.y >= -3.5e-2:
                 rate(fps)
