@@ -22,12 +22,13 @@ $$
 
 Onde:
 
->> + $$T$$: Empuxo gerado pela hélice;
->> + $$J$$: Momento de inércia;
->> + $$\theta$$: posição angular do Aeropêndulo;
->> + $$c$$: coeficiente de amortecimento viscoso;
->> + $$m$$: peso do Aeropêndulo;
->> + $$d$$: a distância entre o centro de massa e o ponto de pivô;
+>> + *T*: Empuxo gerado pela hélice;
+>> + *J*: Momento de inércia;
+>> + *θ*: posição angular do Aeropêndulo;
+>> + *c*: coeficiente de amortecimento viscoso;
+>> + *m*: peso do Aeropêndulo;
+>> + *d*: a distância entre o centro de massa e o ponto de pivô;
+
 
 #### Linearizando o sistema
 
@@ -43,10 +44,10 @@ Aplicando a transformada de Laplace, temos:
 
 $$
 \begin{align}
-    T(s) &= s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{3}\\
-    T(s) &= (s^2J + sc +mgd)\theta(s) \tag{4}\\
-    \frac{\theta(s)}{T(s)} &= \frac{1}{s^2J + sc +mgd} \tag{5}\\
-    \frac{\theta(s)}{T(s)} &= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{6}\\
+    T(S) &= S^2J\theta(S) + Sc\theta(S) +mgd\theta(S) \tag{3}\\
+    T(S) &= (S^2J + Sc +mgd)\theta(S) \tag{4}\\
+    \frac{\theta(S)}{T(S)} &= \frac{1}{S^2J + Sc +mgd} \tag{5}\\
+    \frac{\theta(S)}{T(S)} &= \frac{1/J}{S^2 + Sc/J +mgd/J} \tag{6}\\
 \end{align}
 $$
 
@@ -62,7 +63,7 @@ Aplicando a transformada de Laplace, temos:
 
 $$
 \begin{align}
-    T(s) &\approx K_mV(s) \tag{8}\\
+    T(S) &\approx K_mV(S) \tag{8}\\
 \end{align}
 $$
 
@@ -70,8 +71,8 @@ Agora podemos substituir $$(8)$$ em $$(6)$$,
 
 $$
 \begin{align}
-    \frac{\theta(s)}{K_mV(s)} = \frac{1/J}{s^2 + sc/J +mgd/J} \tag{9}\\
-    \frac{\theta(s)}{V(s)} = \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{10}
+    \frac{\theta(S)}{K_mV(S)} = \frac{1/J}{S^2 + Sc/J +mgd/J} \tag{9}\\
+    \frac{\theta(S)}{V(S)} = \frac{K_m/J}{s^2 + Sc/J +mgd/J} \tag{10}
 \end{align}
 $$
 
@@ -146,7 +147,7 @@ import control as ct
 plt.style.use("ggplot")
 ```
 
-Parâmetros
+Variáveis com os parâmetros para simulação do modelo.
 
 ```
 K_m = 0.0296
@@ -157,7 +158,7 @@ g = 9.8
 c = 0.0076
 ```
 
-Matrizes do sistema no espaço de estados
+Matrizes NumPy do sistema no espaço de estados
 
 ```
 A = np.array([[0, 1],
@@ -171,23 +172,50 @@ D = 0
 ```
 
 ### Sistema no Espaço de Estados
+Para criar o sistema no espaço de estados, foi usado a biblioteca Python, **control**, essa biblioteca permite criar um sistema no espaço de estados a partir das matrizes **A**, **B**, **C**, **D**
 
 ```
 sys = ct.ss(A, B, C, D)
 print(sys)
 ```
 
-Função de Transferência a partir do espaço de estados
+### Função de Transferência a partir do espaço de estados
+
+Para obter a função de transferência a partir do sistema no espaço de estados, a biblioteca control implementa uma função, ct.ss2tf(sys), que recebe como parâmetro, o sistema no espaço de estados e retorna a função de transferência.
 
 ```
 Gs = ct.ss2tf(sys)
 Gs
 ```
 
-Informações do sistema em malha aberta
+### Informações do sistema em malha aberta
+
+Antes de realizar a simulação em malha aberta, é interessante observar as características do sistema, para isso, a biblioteca control implementa algumas função.
+
+#### Explicando as diferentes funções da biblioteca control
+
+A função step_info recebe como parâmetro o sistema no espaço de estados ou uma função de transferência e retorna as características do sistema, para esse exemplo, ao aplicar a função ela retorna diversas características, exemplo:
+
+> + Tempo de acomodação ->    'SettlingTime': 10.308519357198815,
+> + Ultrapassagem Percentual -> 'Overshoot': 69.54106137593485,
+> + Tempo de Subida ->  'RiseTime': 0.396481513738416
 
 ```
 ct.step_info(sys)
+```
+
+saída:
+
+```
+{'RiseTime': 0.396481513738416,
+ 'SettlingTime': 10.308519357198815,
+ 'SettlingMin': 0.14343794449344063,
+ 'SettlingMax': 0.47415111647086844,
+ 'Overshoot': 69.54106137593485,
+ 'Undershoot': 0,
+ 'Peak': 0.47415111647086844,
+ 'PeakTime': 1.0308519357198815,
+ 'SteadyStateValue': 0.2796674225245654}
 ```
 
 ```
