@@ -273,10 +273,15 @@ Saída:
 </div>
 </center>
 
----
+</br>
+
 ---
 
+</br>
+
 Animação do Aeropêndulo com a Biblioteca **VPython**
+
+
 
 <center>
 <div class="figure" >
