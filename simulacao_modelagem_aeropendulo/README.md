@@ -14,8 +14,9 @@
 
 Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(1)$$ que modela o sistema em questão.
 
-$$
+$$\begin{align}
     T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{\theta} \tag{1}\\
+\end{align}
 $$
 
 
