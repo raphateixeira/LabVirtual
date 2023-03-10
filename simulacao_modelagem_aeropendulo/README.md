@@ -12,7 +12,7 @@
 </div>
 </center>
 
-Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $(1)$ que modela o sistema em questão.
+Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(1)$$ que modela o sistema em questão.
 
 $$
     T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{\theta} \tag{1}\\
@@ -21,47 +21,57 @@ $$
 
 Onde:
 
->> + $T$: Empuxo gerado pela hélice;
->> + $J$: Momento de inércia;
->> + $\theta$: posição angular do Aeropêndulo;
->> + $c$: coeficiente de amortecimento viscoso;
->> + $m$: peso do Aeropêndulo;
->> + $d$: a distância entre o centro de massa e o ponto de pivô;
+>> + $$T$$: Empuxo gerado pela hélice;
+>> + $$J$$: Momento de inércia;
+>> + $$\theta$$: posição angular do Aeropêndulo;
+>> + $$c$$: coeficiente de amortecimento viscoso;
+>> + $$m$$: peso do Aeropêndulo;
+>> + $$d$$: a distância entre o centro de massa e o ponto de pivô;
 
 #### Linearizando o sistema
 
-Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $(2)$.
+Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $$(2)$$.
 
 $$
+\begin{align}
     T &= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{2}\\
+\end{align}
 $$
 
 Aplicando a transformada de Laplace, temos:
 
 $$
+\begin{align}
     T(s) &= s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{3}\\
     T(s) &= (s^2J + sc +mgd)\theta(s) \tag{4}\\
     \frac{\theta(s)}{T(s)} &= \frac{1}{s^2J + sc +mgd} \tag{5}\\
     \frac{\theta(s)}{T(s)} &= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{6}\\
+\end{align}
 $$
 
-Queremos controlar o ângulo do braço do aeropêndulo  a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $V$ nos terminais do motor e o empuxo $T$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $(7)$.
+Queremos controlar o ângulo do braço do aeropêndulo  a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $$T$$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $$(7)$$.
 
 $$
+\begin{align}
     T &\approx K_mV \tag{7}\\
+\end{align}
 $$
 
 Aplicando a transformada de Laplace, temos:
 
 $$
+\begin{align}
     T(s) &\approx K_mV(s) \tag{8}\\
+\end{align}
 $$
 
-Agora podemos substituir $(8)$ em $(6)$,
+Agora podemos substituir $$(8)$$ em $$(6)$$,
 
 $$
-    \frac{\theta(s)}{K_mV(s)} &= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{9}\\
-    \frac{\theta(s)}{V(s)} &= \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{10}
+\begin{align}
+    \frac{\theta(s)}{K_mV(s)} = \frac{1/J}{s^2 + sc/J +mgd/J} \tag{9}\\
+    \frac{\theta(s)}{V(s)} = \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{10}
+\end{align}
 $$
 
 
@@ -70,7 +80,9 @@ $$
 ##### Forma Canônica de Controlador
 
 $$
-    x_1=\theta \quad x_2=\dot{\theta} \quad x_2 = \dot{x_1}
+\begin{align}
+    x_1&=\theta \quad x_2=\dot{\theta} \quad x_2 = \dot{x_1}
+\end{align}
 $$
 
 
