@@ -22,13 +22,14 @@ $$
 
 Onde:
 
->> + *T*: Empuxo gerado pela hélice;
->> + *J*: Momento de inércia;
->> + *θ*: posição angular do Aeropêndulo;
->> + *c*: coeficiente de amortecimento viscoso;
->> + *m*: peso do Aeropêndulo;
->> + *d*: a distância entre o centro de massa e o ponto de pivô;
-
+<ul>
+  <li><b>T</b>: Empuxo gerado pela hélice;</li>
+  <li><b>J</b>: Momento de inércia;</li>
+  <li><b>θ</b>: posição angular do Aeropêndulo;</li>
+  <li><b>c</b>: coeficiente de amortecimento viscoso;</li>
+  <li><b>m</b>: peso do Aeropêndulo;</li>
+  <li><b>d</b>: a distância entre o centro de massa e o ponto de pivô;</li>
+</ul>
 
 ## Linearização do Sistema
 
@@ -195,9 +196,12 @@ Antes de realizar a simulação em malha aberta, é interessante observar as car
 
 A função step_info recebe como parâmetro o sistema no espaço de estados ou uma função de transferência e retorna as características do sistema, para esse exemplo, ao aplicar a função ela retorna diversas características, exemplo:
 
-> + Tempo de acomodação ->    'SettlingTime': 10.308519357198815,
-> + Ultrapassagem Percentual -> 'Overshoot': 69.54106137593485,
-> + Tempo de Subida ->  'RiseTime': 0.396481513738416
+
+<ul>
+  <li><b>Tempo de acomodação</b> ->    'SettlingTime': 10.308519357198815'</li>
+  <li><b>Ultrapassagem Percentual</b> -> 'Overshoot': 69.54106137593485,</li>
+  <li><b>Tempo de Subida</b> ->  'RiseTime': 0.396481513738416</li>
+</ul>
 
 ```
 ct.step_info(sys)
@@ -288,4 +292,6 @@ plt.show()
 </div>
 </center>
 
-...
+<br>
+
+# <span style="color: red;">Em desenvolvimento ...</span>
