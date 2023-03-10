@@ -25,8 +25,8 @@ Sistemas possíveis:
 - 1 - [Maglev](/simulacao_maglev/README.md)
 - 2 - [Pêndulo invertido](/simulacao_pendulo_invertido/README.md) 
 - 3 - pêndulo de múltiplos estágios
-- 4 - [Aeropêndulo](\simulacao_modelagem_aeropendulo\README.md);
-- 5 - [Motor DC](\simulacao_motor_dc\README.md)
+- 4 - [Aeropêndulo](/simulacao_modelagem_aeropendulo/README.md);
+- 5 - [Motor DC](/simulacao_motor_dc/README.md)
 - 5 - Massa mola (múltiplas massas)
 - 6 - suspensão de veículo
 - 7 - ball beam
