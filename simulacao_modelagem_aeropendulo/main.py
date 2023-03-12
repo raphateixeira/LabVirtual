@@ -19,6 +19,34 @@ from modelo_mat_aeropendulo import ModeloMatAeropendulo
 # Instanciando um objeto AeropenduloAaeropendulo = Aeropendulo()
 animacao_aeropendulo = AnimacaoAeropendulo()
 
+# ############# INICIO SESSÃO - TESTE MUNU INTERATIVO ##############
+animacao_aeropendulo.scene.append_to_caption("\tMenu Interativo Aeropêndulo\n")
+animacao_aeropendulo.scene.append_to_caption("\tRefazer Simulação\n\n")
+
+
+def Reset():
+    global x, t, t_ant
+    g.reset()
+    y = animacao_aeropendulo.aeropendulo.axis.y
+    # y1 = animacao_aeropendulo.aeropendulo.pos.y
+    animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
+                                            angle=-0.5 - y,
+                                            origin=vp.vec(0, 5.2, 0))
+    animacao_aeropendulo.aeropendulo.axis = axis_init
+    animacao_aeropendulo.aeropendulo.pos = pos_init
+    # Reiniciar simulação
+    x = [0.0, -0.5]
+    t = 0.0
+    t_ant = 0.0
+
+animacao_aeropendulo.scene.append_to_caption("\t ")
+vp.button(bind=Reset, text="Reset",
+          color=vp.color.white,
+          background=vp.color.red)
+animacao_aeropendulo.scene.append_to_caption("\n\n\n")
+
+# ############# FIM SESSÃO - TESTE MUNU INTERATIVO ##############
+
 # Instanciando um objeto para plotagem dos gráficos dinâmicos dos
 # estados do Aeropêndulo
 g = Graficos()
@@ -32,6 +60,11 @@ ts = 1e-2
 x = [0.0, -0.5]
 t = 0.0
 t_ant = 0.0
+
+axis_init = animacao_aeropendulo.aeropendulo.axis
+pos_init = animacao_aeropendulo.aeropendulo.pos
+print(axis_init.z)
+print(pos_init)
 
 while True:
     vp.rate(70)
