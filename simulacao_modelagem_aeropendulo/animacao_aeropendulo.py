@@ -34,7 +34,7 @@ class AnimacaoAeropendulo:
         # chamando a função para criar a aminação gráfica do Aeropêndulo.
         self.aeropendulo = self.__aminacao()
 
-    def __aminacao(self) -> object:
+    def __aminacao(self) -> vp.compound:
         """
         Classe que implementa o Aeropêndulo.
 

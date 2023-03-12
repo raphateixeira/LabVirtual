@@ -39,6 +39,7 @@ def Reset():
     t = 0.0
     t_ant = 0.0
 
+
 animacao_aeropendulo.scene.append_to_caption("\t ")
 vp.button(bind=Reset, text="Reset",
           color=vp.color.white,
@@ -61,10 +62,10 @@ x = [0.0, -0.5]
 t = 0.0
 t_ant = 0.0
 
+# salvando as condições iniciais dos axis pos do aeropêndulo
 axis_init = animacao_aeropendulo.aeropendulo.axis
 pos_init = animacao_aeropendulo.aeropendulo.pos
-print(axis_init.z)
-print(pos_init)
+
 
 while True:
     vp.rate(70)
