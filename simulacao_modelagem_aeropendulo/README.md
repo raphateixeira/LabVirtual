@@ -7,7 +7,7 @@ Sistemas de controle têm como objetivos modelar, controlar e regular o comporta
 <center>
 <div class="figure" >
   <img src="utils/sc.png"
-       width="800">  
+       width="900">  
   <p>Figura 1 - Animação do aeropêndulo usando a biblioteca vpython.</p>
 </div>
 </center>
@@ -19,7 +19,7 @@ Para a implementação da simulação gráfica do Aeropêndulo, foi usada a ling
 <center>
 <div class="figure" >
   <img src="utils/simulacao.png"
-       width="800">  
+       width="900">  
   <p>Figura 2 - Animação do aeropêndulo usando a biblioteca vpython.</p>
 </div>
 </center>
