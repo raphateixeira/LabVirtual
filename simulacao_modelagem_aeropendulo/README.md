@@ -8,7 +8,7 @@ Sistemas de controle têm como objetivos modelar, controlar e regular o comporta
 <div class="figure" >
   <img src="utils/sc.png"
        width="800">  
-  <p>Figura 2 - Animação do aeropêndulo usando a biblioteca vpython.</p>
+  <p>Figura 1 - Animação do aeropêndulo usando a biblioteca vpython.</p>
 </div>
 </center>
 
@@ -42,7 +42,7 @@ Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que 
 <div class="figure" >
   <img src="utils/aeropendulo.png"
        width="600"> 
-  <p>Figura 1 - Diagrama esquemático do Aeropêndulo.</p>
+  <p>Figura 3 - Diagrama esquemático do Aeropêndulo.</p>
 </div>
 </center>
 
