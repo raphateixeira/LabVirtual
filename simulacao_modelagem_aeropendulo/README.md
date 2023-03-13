@@ -171,7 +171,7 @@ $$
 
 ---
 
-## Simulação usando Python
+## Resposta ao degrau usando Python
 
 Para realizar a simulação da resposta ao degrau foi usado Python com o auxílio das bibliotecas numpy, matplotlib e control, sendo que as bibliotecas numpy e matplotlib são usada para criar as matrizes A, B, C e D e plotar a resposta do do sistema, respectivamente, já a biblioteca control é usada para criar o sistema no espaço de estados e obter a função de transferência, além disso, é possível obter a resposta ao degrau usando a função **step** da biblioteca control, que recebe como parâmetro o sistema criado anteriormente, no espaço de estados ou função de transferência.
 
@@ -302,7 +302,7 @@ ct.zeros(sys)
 array([], dtype=float64)
 ```
 
-#### Resposta ao Degrau Unitário
+#### Resposta ao degrau
 
 ```
 t, yout = ct.step_response(Gs)
@@ -335,7 +335,7 @@ plt.show()
 <dl>
 <dt></dt>
 <dd>[1.] JOB, Mila Mary; JOSE, P. Subha Hency. Modeling and control of mechatronic aeropendulum. In: <b> 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS)</b>. IEEE, 2015. p. 1-5.</dd>
-<dd> Html Avançado</dd>
+<dd>...</dd>
 </dl>
 
 <br> <br>
