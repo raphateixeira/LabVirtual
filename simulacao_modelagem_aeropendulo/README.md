@@ -153,6 +153,8 @@ $$
 
 ### Parâmetros para Simulação
 
+Para simulação foi usado os parâmetros do artigo$[1]$.
+
 $$
 \begin{align}
 \begin{array}{|c|c|}                                        \hline
@@ -170,6 +172,8 @@ $$
 ---
 
 ## Simulação usando Python
+
+Para realizar a simulação da resposta ao degrau foi usado Python com o auxílio das bibliotecas numpy, matplotlib e control, sendo que as bibliotecas numpy e matplotlib são usada para criar as matrizes A, B, C e D e plotar a resposta do do sistema, respectivamente, já a biblioteca control é usada para criar o sistema no espaço de estados e obter a função de transferência, além disso, é possível obter a resposta ao degrau usando a função **step** da biblioteca control, que recebe como parâmetro o sistema criado anteriormente, no espaço de estados ou função de transferência.
 
 ### Importando as bibliotecas Python usadas
 
@@ -205,7 +209,12 @@ C = np.array([1, 0])
 D = 0
 ```
 
+<br>
+
 ### Sistema no Espaço de Estados
+
+<br>
+
 Para criar o sistema no espaço de estados, foi usado a biblioteca Python, **control**, essa biblioteca permite criar um sistema no espaço de estados a partir das matrizes **A**, **B**, **C**, **D**
 
 ```
@@ -228,7 +237,7 @@ Antes de realizar a simulação em malha aberta, é interessante observar as car
 
 #### Explicando as diferentes funções da biblioteca control
 
-A função step_info recebe como parâmetro o sistema no espaço de estados ou uma função de transferência e retorna as características do sistema, para esse exemplo, ao aplicar a função ela retorna diversas características, exemplo:
+A função **ct.step_info()** recebe como parâmetro o sistema no espaço de estados ou uma função de transferência e retorna as características do sistema, para esse exemplo, ao aplicar a função ela retorna diversas características, exemplo:
 
 
 <ul>
@@ -255,6 +264,8 @@ ct.step_info(sys)
  'SteadyStateValue': 0.2796674225245654}
 ```
 
+A função **ct.damp()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os Autovalores, amortecimento e frequência natural para cada polo do sistema.
+
 ```
 ct.damp(sys);
 ```
@@ -267,6 +278,8 @@ _____Eigenvalue______ Damping___ Frequency_
    -0.3585    -3.139j     0.1135       3.16
 ```
 
+A função **ct.poles()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os polos do sistema, para esse caso o sistema é de segunda ordem, pois possui dois pólos.
+
 ```
 ct.poles(sys)
 ```
@@ -276,6 +289,8 @@ ct.poles(sys)
 ```
 array([-0.35849057+3.13948884j, -0.35849057-3.13948884j])
 ```
+
+A função **ct.zeros()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os zeros do sistema. para esse caso o sistema não possui zeros.
 
 ```
 ct.zeros(sys)
@@ -287,7 +302,7 @@ ct.zeros(sys)
 array([], dtype=float64)
 ```
 
-Resposta ao Degrau Unitário
+#### Resposta ao Degrau Unitário
 
 ```
 t, yout = ct.step_response(Gs)
@@ -305,7 +320,7 @@ plt.show()
 <center>
 <div class="figure" >
   <img src="utils/gsinal.png"
-       width="600"> 
+       width="800"> 
 </div>
 </center>
 
@@ -315,5 +330,14 @@ plt.show()
 
 <br>
 
+# Referências
+
+<dl>
+<dt></dt>
+<dd>[1.] JOB, Mila Mary; JOSE, P. Subha Hency. Modeling and control of mechatronic aeropendulum. In: <b> 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS)</b>. IEEE, 2015. p. 1-5.</dd>
+<dd> Html Avançado</dd>
+</dl>
+
+<br> <br>
 
 # <span style="color: red;">Em desenvolvimento ...</span>
