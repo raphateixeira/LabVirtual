@@ -337,7 +337,3 @@ plt.show()
 <dd>[1.] JOB, Mila Mary; JOSE, P. Subha Hency. Modeling and control of mechatronic aeropendulum. In: <b> 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS)</b>. IEEE, 2015. p. 1-5.</dd>
 <dd>...</dd>
 </dl>
-
-<br> <br>
-
-# <span style="color: red;">Em desenvolvimento ...</span>
