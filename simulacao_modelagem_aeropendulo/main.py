@@ -12,10 +12,8 @@
 #  ----------------------------------------------------
 #
 import vpython as vp
-from graficos_aeropendulo import Graficos
-from animacao_aeropendulo import AnimacaoAeropendulo
-from interface_interativa import Interface
-from modelo_mat_aeropendulo import ModeloMatAeropendulo
+from aeropendulo import (Graficos, AnimacaoAeropendulo,
+                         Interface, ModeloMatAeropendulo)
 
 # Instanciando um objeto AeropenduloAaeropendulo = Aeropendulo()
 animacao_aeropendulo = AnimacaoAeropendulo()

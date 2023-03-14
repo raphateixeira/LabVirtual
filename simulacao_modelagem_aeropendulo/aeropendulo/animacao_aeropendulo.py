@@ -18,7 +18,7 @@ class AnimacaoAeropendulo:
     """
     Classe que implementa a aminação do Aeropêndulo.
 
-    Args:
+    Atributo:
         comprimento_braco: tamanho do braço do Aeropêndulo.
     """
     def __init__(self, comprimento_braco=4.4) -> None:
