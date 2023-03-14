@@ -52,6 +52,31 @@ class AnimacaoAeropendulo:
                              text="AEROPÊNDULO", color=vp.vec(1, 0.6, 0.6),
                              align='center', depth=0)
 
+        self.desenhar_pendulo()
+
+        # Eixo de sustentação.
+        self.eixo = vp.cylinder(pos=vp.vec(0, 5.2, 0.3), radius=0.09,
+                                axis=vp.vec(0, 0, -2),
+                                color=vp.vec(0.7, 0.4, 0.1))
+
+        # Estrutura de sustentação do aeropêndulo.
+        self.b1 = vp.box(pos=vp.vec(0, 1.7, -2), size=vp.vec(3, 8, 0.6),
+                         color=vp.vec(0.8, 0.8, 0.8))
+
+        self.b2 = vp.box(pos=vp.vec(0, -0.6, -1.5), size=vp.vec(4.5, 0.4, 2.5),
+                         color=vp.vec(0.8, 0.8, 0.8))
+
+        self.logo = vp.box(pos=vp.vec(0, 2.5, -1.7),
+                           texture="https://i.imgur.com/odcLHxB.png",
+                           size=vp.vec(2, 2, 0.2))
+
+        self.ufpa = vp.text(pos=vp.vec(0, 3.7, -1.7), text="UFPA",
+                            color=vp.vec(1, 0.6, 0.6), height=0.5,
+                            align='center', depth=0)
+
+        return self.pendulo
+
+    def desenhar_pendulo(self):
         # Braço do Aeropêndulo.
         self.barra = vp.box(pos=vp.vec(0, -1.4, 0),
                             size=vp.vec(0.2, self.comprimento_braco, 0.2),
@@ -87,25 +112,3 @@ class AnimacaoAeropendulo:
         # Aeropêndulo
         self.pendulo = vp.compound([self.barra, self.motor_helice])
         self.pendulo.pos = vp.vec(0.31, 2.7, 0)
-
-        # Eixo de sustentação.
-        self.eixo = vp.cylinder(pos=vp.vec(0, 5.2, 0.3), radius=0.09,
-                                axis=vp.vec(0, 0, -2),
-                                color=vp.vec(0.7, 0.4, 0.1))
-
-        # Estrutura de sustentação do aeropêndulo.
-        self.b1 = vp.box(pos=vp.vec(0, 1.7, -2), size=vp.vec(3, 8, 0.6),
-                         color=vp.vec(0.8, 0.8, 0.8))
-
-        self.b2 = vp.box(pos=vp.vec(0, -0.6, -1.5), size=vp.vec(4.5, 0.4, 2.5),
-                         color=vp.vec(0.8, 0.8, 0.8))
-
-        self.logo = vp.box(pos=vp.vec(0, 2.5, -1.7),
-                           texture="https://i.imgur.com/odcLHxB.png",
-                           size=vp.vec(2, 2, 0.2))
-
-        self.ufpa = vp.text(pos=vp.vec(0, 3.7, -1.7), text="UFPA",
-                            color=vp.vec(1, 0.6, 0.6), height=0.5,
-                            align='center', depth=0)
-
-        return self.pendulo
