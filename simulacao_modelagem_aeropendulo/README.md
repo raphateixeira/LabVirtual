@@ -319,7 +319,7 @@ plt.show()
 
 <center>
 <div class="figure" >
-  <img src="utils/gsinal.png"
+  <img src="utils/gsinal.svg"
        width="800"> 
 </div>
 </center>
@@ -334,6 +334,16 @@ plt.show()
 
 <dl>
 <dt></dt>
-<dd>[1.] JOB, Mila Mary; JOSE, P. Subha Hency. Modeling and control of mechatronic aeropendulum. In: <b> 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS)</b>. IEEE, 2015. p. 1-5.</dd>
-<dd>...</dd>
+<dd>[1.] JOB, Mila Mary; JOSE, P. Subha Hency. <b> Modeling and control of mechatronic aeropendulum.</b> In: 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS). IEEE, 2015. p. 1-5.</dd>
+
+<br>
+
+<dd>[2.] Silva. Yago. <b> Projeto, construção e controle de um aeropêndulo
+</b>. Centro de Engenharia Elétrica e Informática, Departamento de Engenharia Elétrica e Informática, Universidade Federal de Campina Grande - UFCG, 2018.</dd>
+
+<br>
+
+<dd>[3.] MOHAMMADBAGHERI, Amin; YAGHOOBI, Mahdi. <b>A new approach to control a driven pendulum with PID method.</b> In: 2011 UkSim 13th International Conference on Computer Modelling and Simulation. IEEE, 2011. p. 207-211.</dd>
+
+
 </dl>
