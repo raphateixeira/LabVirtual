@@ -9,6 +9,8 @@
 # Autor: Oséias Farias
 # Orientadores: Prof. Dr: Raphael Teixeira,
 #               Prof. Dr: Rafael Bayma
+#
+# Data: 2023
 #  ----------------------------------------------------
 #
 import vpython as vp
@@ -46,8 +48,9 @@ while True:
     if interface.EXE:
         dx = mma.modelo_aeropendulo(x, t)
         dt = t - t_ant
+        # Atualização dos estados
         x = x + dt * dx
-
+        print(x[1])
         t_ant = t
         t += ts
         animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),

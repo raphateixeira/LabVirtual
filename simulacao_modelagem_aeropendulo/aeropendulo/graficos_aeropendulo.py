@@ -9,6 +9,8 @@
 # Autor: Oséias Farias
 # Orientadores: Prof. Dr: Raphael Teixeira,
 #               Prof. Dr: Rafael Bayma
+#
+# Data: 2023
 #  ----------------------------------------------------
 #
 import vpython as vp

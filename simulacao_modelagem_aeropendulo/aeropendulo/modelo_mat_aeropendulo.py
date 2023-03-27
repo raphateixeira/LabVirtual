@@ -8,6 +8,8 @@
 # Autor: Oséias Farias
 # Orientadores: Prof. Dr: Raphael Teixeira,
 #               Prof. Dr: Rafael Bayma
+#
+# Data: 2023
 #  ----------------------------------------------------
 
 import numpy as np
@@ -65,10 +67,13 @@ class ModeloMatAeropendulo(object):
         Returns:
             Retorna um array numpy contendo a derivada dos estados.
         """
-        x1, x2 = x        # Variáveis de estado a partir do vetor de estados;
-        dx1 = x2          # Função de estado dx1 = f(x,u)
+        # Variáveis de estado a partir do vetor de estados;
+        x1, x2 = x
 
-        # Função de estado dx2 = f(x,u)
+        # Função de estado dx1 = f(x, u)
+        dx1 = x2
+
+        # Função de estado dx2 = f(x, u)
         dx2 = -(self.m*self.g*self.d/self.J)*x1-(self.c/self.J)*x2 +\
                (self.K_m/self.J)*4.
         dx = np.array([dx1, dx2])      # Derivada do vetor de estados
