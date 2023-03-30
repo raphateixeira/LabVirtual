@@ -55,6 +55,7 @@ class Graficos:
         self.curva4 = vp.gcurve(color=vp.color.black, width=3, markers=False,
                                 label="Referência",
                                 dot=True, dot_color=vp.color.black)
+
         return self.grafico, self.curva1, self.curva2, self.curva3, self.curva4
 
     def reset(self):

@@ -34,7 +34,7 @@ graf, plot1, plot2, plot3, plot4 = g.graficos()
 mma = ModeloMatAeropendulo()
 
 # Instânciando um objeto ControladorDiscreto
-controlador = ControladorDiscreto(referencia=np.pi/4.)  # np.pi/2.
+controlador = ControladorDiscreto(referencia=np.pi/2.3)  # np.pi/2.
 u = 0  # Sinal de controle inicial
 
 ts = 1e-2
@@ -50,7 +50,7 @@ pos_init = animacao_aeropendulo.aeropendulo.pos
 
 
 while True:
-    vp.rate(70)
+    vp.rate(100)
     if interface.EXE:
         dx = mma.modelo_aeropendulo(x, t)
         dt = t - t_ant
@@ -65,7 +65,7 @@ while True:
         mma.set_u(u)
         # mma.set_u(1)
 
-        print(x[1])
+        print(x[1]*(180/np.pi))
         t_ant = t
         t += ts
         animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
