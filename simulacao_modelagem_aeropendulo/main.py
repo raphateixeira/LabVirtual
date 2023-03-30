@@ -22,9 +22,6 @@ from aeropendulo import (Graficos, AnimacaoAeropendulo,
 # Instanciando um objeto AeropenduloAaeropendulo = Aeropendulo()
 animacao_aeropendulo = AnimacaoAeropendulo()
 
-# Instanciando um objeto Interface
-interface = Interface(animacao_aeropendulo)
-
 # Instanciando um objeto para plotagem dos gráficos dinâmicos dos
 # estados do Aeropêndulo
 g = Graficos()
@@ -34,8 +31,11 @@ graf, plot1, plot2, plot3, plot4 = g.graficos()
 mma = ModeloMatAeropendulo()
 
 # Instânciando um objeto ControladorDiscreto
-controlador = ControladorDiscreto(referencia=np.pi/3.)  # np.pi/2.
+controlador = ControladorDiscreto(referencia=0.1)  # np.pi/2.
 u = 0  # Sinal de controle inicial
+
+# Instanciando um objeto Interface
+interface = Interface(animacao_aeropendulo, controlador)
 
 ts = 1e-2
 # Condições Iniciais dos estados
@@ -65,13 +65,13 @@ while True:
         mma.set_u(u)
         # mma.set_u(1)
 
-        print(x[1]*(180/np.pi))
+        # print(x[1]*(180/np.pi))
         t_ant = t
         t += ts
         animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
                                                 angle=x[0]*ts,
                                                 origin=vp.vec(0, 5.2, 0))
-        plot1.plot(t, x[1])
+        plot1.plot(t, x[1]+np.pi/3.)
         plot2.plot(t, x[0])
         plot3.plot(t, u)
-        plot4.plot(t, controlador.r)
+        plot4.plot(t, controlador.r+np.pi/3.)
