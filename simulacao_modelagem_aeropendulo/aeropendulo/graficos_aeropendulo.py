@@ -36,7 +36,7 @@ class Graficos:
         self.grafico = vp.graph(title=titulo, align="right",
                                 xtitle='tempo (s)', fast=True, width=650,
                                 height=450, center=vp.vector(0, 12, 0),
-                                scroll=True, xmin=0, xmax=5, ymin=-5, ymax=5,
+                                scroll=True, xmin=0, xmax=14, ymin=-1, ymax=4,
                                 dot=True, background=vp.vector(0.95,
                                                                0.95, 0.95))
 
@@ -48,13 +48,19 @@ class Graficos:
                                 label="Velocidade Angular",
                                 dot=True, dot_color=vp.color.red)
 
-        # curva3 = vp.gcurve(color=vp.color.orange, width=3, markers=False,
-        #                    label="Aceleração Angular do Pêndulo",
-        #                    dot=True, dot_color=vp.color.orange)
-        return self.grafico, self.curva1, self.curva2
+        self.curva3 = vp.gcurve(color=vp.color.orange, width=3, markers=False,
+                                label="Sinal de Controle",
+                                dot=True, dot_color=vp.color.orange)
+
+        self.curva4 = vp.gcurve(color=vp.color.black, width=3, markers=False,
+                                label="Referência",
+                                dot=True, dot_color=vp.color.black)
+        return self.grafico, self.curva1, self.curva2, self.curva3, self.curva4
 
     def reset(self):
         self.curva1.delete()
         self.curva2.delete()
+        self.curva3.delete()
+        self.curva4.delete()
         self.grafico.xmin = 0
-        self.grafico.xmax = 5
+        self.grafico.xmax = 10

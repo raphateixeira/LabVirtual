@@ -14,8 +14,10 @@
 #  ----------------------------------------------------
 #
 import vpython as vp
+import numpy as np
 from aeropendulo import (Graficos, AnimacaoAeropendulo,
-                         Interface, ModeloMatAeropendulo)
+                         Interface, ModeloMatAeropendulo,
+                         ControladorDiscreto)
 
 # Instanciando um objeto AeropenduloAaeropendulo = Aeropendulo()
 animacao_aeropendulo = AnimacaoAeropendulo()
@@ -26,10 +28,14 @@ interface = Interface(animacao_aeropendulo)
 # Instanciando um objeto para plotagem dos gráficos dinâmicos dos
 # estados do Aeropêndulo
 g = Graficos()
-graf, plot1, plot2 = g.graficos()
+graf, plot1, plot2, plot3, plot4 = g.graficos()
 
 # Instânciando um objeto para solução matemática do sistema Aeropêndulo.
 mma = ModeloMatAeropendulo()
+
+# Instânciando um objeto ControladorDiscreto
+controlador = ControladorDiscreto(referencia=np.pi/4.)  # np.pi/2.
+u = 0  # Sinal de controle inicial
 
 ts = 1e-2
 # Condições Iniciais dos estados
@@ -50,11 +56,22 @@ while True:
         dt = t - t_ant
         # Atualização dos estados
         x = x + dt * dx
+
+        controlador.set_sensor(x[1])
+        controlador.calc_uk()
+        u = controlador.get_uk()
+
+        # Sinal de controle aplicado
+        mma.set_u(u)
+        # mma.set_u(1)
+
         print(x[1])
         t_ant = t
         t += ts
         animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
-                                                angle=x[1]*ts,
+                                                angle=x[0]*ts,
                                                 origin=vp.vec(0, 5.2, 0))
-        plot1.plot(t, x[0])
-        plot2.plot(t, x[1])
+        plot1.plot(t, x[1])
+        plot2.plot(t, x[0])
+        plot3.plot(t, u)
+        plot4.plot(t, controlador.r)

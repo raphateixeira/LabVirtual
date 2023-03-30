@@ -54,9 +54,15 @@ class ModeloMatAeropendulo(object):
         self.x = x_0
         self.x1: List[List[float]] = [[], []]
 
+        # Sinal de Entrada
+        self.u = 0.0
+
         # Sinulação
         self.simu = False
         self.simu_dinamic = False
+
+    def set_u(self, u):
+        self.u = u
 
     def modelo_aeropendulo(self, x: List[float], t: Array1XN) -> Array1XN:
         """
@@ -71,11 +77,13 @@ class ModeloMatAeropendulo(object):
         x1, x2 = x
 
         # Função de estado dx1 = f(x, u)
-        dx1 = x2
+        # dx1 = x2
+        dx2 = x1
 
         # Função de estado dx2 = f(x, u)
-        dx2 = -(self.m*self.g*self.d/self.J)*x1-(self.c/self.J)*x2 +\
-               (self.K_m/self.J) * 0.0
+        # dx2 = -(self.m*self.g*self.d/self.J)*x1-(self.c/self.J)*x2 +\
+        #        (self.K_m/self.J) * self.u
+        dx1 = (- x1*self.c - self.m*self.g*self.d*np.sin(x2) + self.u*self.K_m) / (self.J)
         dx = np.array([dx1, dx2])      # Derivada do vetor de estados
         return dx                      # Retorna a derivada do vetor de estados
 

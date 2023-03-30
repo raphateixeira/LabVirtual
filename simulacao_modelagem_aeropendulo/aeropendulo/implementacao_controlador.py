@@ -26,7 +26,7 @@ class ControladorDiscreto:
         self.T = T
 
     # Pega o sinal do sensor
-    def sensor(self, yout):
+    def set_sensor(self, yout):
         self.yout = yout
 
     # disponibiliza o sinal de controle
