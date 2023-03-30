@@ -34,7 +34,7 @@ graf, plot1, plot2, plot3, plot4 = g.graficos()
 mma = ModeloMatAeropendulo()
 
 # Instânciando um objeto ControladorDiscreto
-controlador = ControladorDiscreto(referencia=np.pi/2.3)  # np.pi/2.
+controlador = ControladorDiscreto(referencia=np.pi/3.)  # np.pi/2.
 u = 0  # Sinal de controle inicial
 
 ts = 1e-2
