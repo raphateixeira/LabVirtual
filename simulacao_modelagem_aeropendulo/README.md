@@ -2,8 +2,6 @@
 
 # Simulação Gráfica do Aeropêndulo com a Biblioteca **VPython**
 
----
-
 ## Objetivo de Sistemas de Controle
 
 Sistemas de controle têm como objetivos modelar, controlar e regular o comportamento de um processo ou sistema físico. Ele é amplamente utilizado em diversas áreas, como engenharia, física, química e biologia, para garantir que o sistema ou processo seja mantido dentro de um determinado conjunto de parâmetros ou condições.
@@ -28,7 +26,6 @@ Para a implementação da simulação gráfica do Aeropêndulo, foi usada a ling
 </div>
 </center>
 
----
 
 ## O que é o Aeropêndulo?
 
@@ -38,7 +35,7 @@ O aeropêndulo é um dispositivo utilizado em experimentos de física que combin
 <center>
 <div class="figure" >
   <img src="https://www.researchgate.net/profile/Giuseppe-Habib/publication/281578300/figure/fig1/AS:779421346709519@1562839938541/a-Aeropendulum-photo-b-schematic-physical-model.gif"
-       width="70%">  
+       width="50%">  
   <p>Figura 2 - Aeropêndulo.</p>
 </div>
 </center>
@@ -73,7 +70,7 @@ $$
 $$
 
 
-Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $V$ nos terminais do motor e o empuxo $T$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $(7)$.
+Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $$T$$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $$(07)$$.
 
 $$
 \begin{align}
@@ -82,7 +79,6 @@ $$
 \end{align}
 $$
 
-<div>
 <center>
 <div class="figure" >
   <img src="utils/diagrama_bloco_aeropendulo_nao_linear.svg"
@@ -90,7 +86,6 @@ $$
   <p>Figura 2 - Diagrama de blocos do modelo do Aeropêndulo.</p>
 </div>
 <center/>
-</div>
 
 $$
 \begin{align}
@@ -99,7 +94,6 @@ $$
     \dot{x_1} &= \dfrac{- x_1c - mgdsen(x_2) + VK_m}{J} \tag{06}
 \end{align}
 $$
-
 
 
 Onde:
@@ -116,7 +110,6 @@ Onde:
 <li><b>x1 e x2</b>: Estados do Sistema;</li>
 </ul>
 
-## 
 
 ## Linearização do Sistema
 
@@ -140,7 +133,6 @@ $$
 \end{align}
 $$
 
-## 
 
 ## Sistema no Espaço de Estados
 
@@ -183,23 +175,22 @@ $$
 
 ### Parâmetros para Simulação
 
-Para simulação foi usado os parâmetros do artigo$[1]$.
+Para simulação foi usado os parâmetros do artigo $$[1]$$.
 
 $$
 \begin{align}
-\begin{array}{|c|c|}                                        \hline
-\text { Parâmetros do Aeropêndulo } & \text{Valores}      \\ \hline
-K_m     &   0,0296                                        \\ \hline
-d       &   0,03m                                         \\ \hline
-J       &   0,0106 Kgm^2                                  \\ \hline
-m       &   0,36 m                                        \\ \hline
-g       &   9,8 m/s^2                                     \\ \hline
-c       &   0,0076 Nms/rad                                \\ \hline
-\end{array}
+  \begin{array}{|c|c|}                                        \hline
+  \text { Parâmetros do Aeropêndulo } & \text{Valores}      \\ \hline
+  K_m     &   0,0296                                        \\ \hline
+  d       &   0,03m                                         \\ \hline
+  J       &   0,0106 Kgm^2                                  \\ \hline
+  m       &   0,36 m                                        \\ \hline
+  g       &   9,8 m/s^2                                     \\ \hline
+  c       &   0,0076 Nms/rad                                \\ \hline
+  \end{array}
 \end{align}
 $$
 
----
 
 ## Resposta ao degrau usando Python
 
@@ -359,7 +350,7 @@ plt.show()
 
 Para fins de teste foi projetado um controlador simples usando o matlab e encontrada a função de transferência com o auxílio da biblioteca Control, por fim foi obteda a equação de diferenças para implementar o controlador no simulador.
 
-<div>
+
 <center>
 <div class="figure" >
   <img src="utils/sistema_aeropendulo_malha_fechada.svg"
@@ -367,7 +358,6 @@ Para fins de teste foi projetado um controlador simples usando o matlab e encont
   <p>Figura 3 - Diagrama de blocos do Sistema em Malha Fechada.</p>
 </div>
 <center/>
-</div>
 
 ### Função de Transferência do Controlador
 
@@ -409,7 +399,6 @@ $$
 \dfrac{0.5937s+2.204}{s^3 +0.717s^2+10.58s+2.204}
 $$
 
-### 
 
 ### Resposta ao degrau unitário
 
@@ -473,48 +462,31 @@ onde:
 
 $$
 \begin{align}
-
-U(z) &= Z\{u[k]\} \tag{21}\\
-
-E(z) &= Z\{e[k]\} \tag{22}
-
+  U(z) &= Z\{u[k]\} \tag{21}\\
+  E(z) &= Z\{e[k]\} \tag{22}
 \end{align}
-
 $$
 
 $$
 \begin{align}
-
-\dfrac{U(z)}{E(z)} &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{23}\\
-
-(1-z^{-1})U(z) &= (0,2165 − 0,2087z^{-1})E(z) \tag{24}\\
-
-U(z)-z^{-1}U(z) &= 0,2165E(z) − 0,2087z^{-1}E(z) \tag{25}\\
-
-Z^{-1}\{U(z)-z^{-1}U(z)\} &= Z^{-1}\{0,2165E(z) − 0,2087z^{-1}E(z)\} \tag{26}\\
-
-u[k] − u[k − 1] &= 0,2165e[k] − 0,2087e[k − 1] \tag{27}\\
-
-u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{28}
-
+  \dfrac{U(z)}{E(z)} &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{23}\\
+  (1-z^{-1})U(z) &= (0,2165 − 0,2087z^{-1})E(z) \tag{24}\\
+  U(z)-z^{-1}U(z) &= 0,2165E(z) − 0,2087z^{-1}E(z) \tag{25}\\
+  Z^{-1}\{U(z)-z^{-1}U(z)\} &= Z^{-1}\{0,2165E(z) − 0,2087z^{-1}E(z)\} \tag{26}\\
+  u[k] − u[k − 1] &= 0,2165e[k] − 0,2087e[k − 1] \tag{27}\\
+  u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{28}
 \end{align}
-
 $$
 
 Agora é possível implementar uma classe python para o controlador a partir da equação de diferenças.
 
 $$
 \begin{align}
-
-u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{29}
-
+  u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{29}
 \end{align}
-
 $$
 
 com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
-
-
 
 ---
 
