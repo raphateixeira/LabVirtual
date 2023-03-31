@@ -59,16 +59,16 @@ Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que 
 </div>
 </center>
 
-Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(1)$$ que modela o sistema em questão.
+Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(01)$$ que modela o sistema em questão.
 
 $$
 \begin{align}
- T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{1}\\
+ T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{01}\\
 \end{align}
 $$
 
 
-Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $$T$$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $$(07)$$.
+Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $$T$$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $$(02)$$.
 
 $$
 \begin{align}
@@ -115,11 +115,11 @@ Onde:
 
 ## Linearização do Sistema
 
-Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $$(2)$$.
+Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $$(07)$$.
 
 $$
 \begin{align}
-    K_mV &= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{2}\\
+    K_mV &= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{07}\\
 \end{align}
 $$
 
@@ -375,7 +375,7 @@ Para fins de teste foi projetado um controlador simples usando o matlab e encont
 $$
 \begin{align}
 
-C(s) &= \frac{0,2126s + 0,7893}{s} \tag{15}
+C(s) &= \frac{0,2126s + 0,7893}{s} \tag{13}
 
 \end{align}
 $$
@@ -430,11 +430,21 @@ ax.legend(fontsize=7)
 plt.show()
 ```
 
+**saída:**
+
+<center>
+<div class="figure" >
+  <img src="utils/simu_malha_fechada.svg"
+       width="800"> 
+</div>
+</center>
+
+
 Ao analisar o sistema com o controlador, temos que o sistema não possui erro em regime permanente e seu overshoot é zero, no entanto, para que esses requisitos fossem obtidos ouve um aumento no tempo de acomodação.
 
 
 
-### Função de Transferência Discreta C(z)
+## Função de Transferência Discreta C(z)
 
 Para discretizar o sistema foi usado um período de amostragem de 0,01s.
 
@@ -451,9 +461,9 @@ $$
 
 $$
 \begin{align}
-    C(z) &= \dfrac{0,2165z −0,2087}{z-1} \tag{17}\\
-         &= \dfrac{0,2165z −0,2087}{z-1} \cdot \dfrac{z^{-1}}{z^{-1}} \tag{18}\\
-         &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{19}\\
+    C(z) &= \dfrac{0,2165z −0,2087}{z-1} \tag{14}\\
+         &= \dfrac{0,2165z −0,2087}{z-1} \cdot \dfrac{z^{-1}}{z^{-1}} \tag{15}\\
+         &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{16}\\
 \end{align}
 
 $$
