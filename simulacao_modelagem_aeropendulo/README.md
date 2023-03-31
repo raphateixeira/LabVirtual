@@ -81,7 +81,7 @@ $$
 <center>
 <div class="figure" >
   <img src="utils/diagrama_bloco_aeropendulo_nao_linear.svg"
-       width="60%"> 
+       width="90%"> 
   <p>Figura 2 - Diagrama de blocos do modelo do Aeropêndulo.</p>
 </div>
 </center>
@@ -357,7 +357,7 @@ plt.show()
 ## Controlador projetado usando LGR com auxílio do Matlab
 
 
-Para fins de teste foi projetado um controlador simples usando o matlab e encontrada a função de transferência com o auxílio da biblioteca Control, por fim foi obteda a equação de diferenças para implementar o controlador no simulador.
+Para fins de teste foi projetado um controlador simples usando o matlab e encontrada a função de transferência com o auxílio da biblioteca Control, por fim foi obtida a equação de diferenças para implementar o controlador no simulador.
 
 
 <center>
@@ -366,7 +366,7 @@ Para fins de teste foi projetado um controlador simples usando o matlab e encont
        width="90%"> 
   <p>Figura 3 - Diagrama de blocos do Sistema em Malha Fechada.</p>
 </div>
-<center/>
+</center>
 
 
 ### Função de Transferência do Controlador
