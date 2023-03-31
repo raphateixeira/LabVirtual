@@ -483,19 +483,19 @@ onde:
 
 $$
 \begin{align}
-  U(z) &= Z\{u[k]\} \tag{21}\\
-  E(z) &= Z\{e[k]\} \tag{22}
+  U(z) &= Z\{u[k]\} \tag{17}\\
+  E(z) &= Z\{e[k]\} \tag{18}
 \end{align}
 $$
 
 $$
 \begin{align}
-  \dfrac{U(z)}{E(z)} &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{23}\\
-  (1-z^{-1})U(z) &= (0,2165 − 0,2087z^{-1})E(z) \tag{24}\\
-  U(z)-z^{-1}U(z) &= 0,2165E(z) − 0,2087z^{-1}E(z) \tag{25}\\
-  Z^{-1}\{U(z)-z^{-1}U(z)\} &= Z^{-1}\{0,2165E(z) − 0,2087z^{-1}E(z)\} \tag{26}\\
-  u[k] − u[k − 1] &= 0,2165e[k] − 0,2087e[k − 1] \tag{27}\\
-  u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{28}
+  \dfrac{U(z)}{E(z)} &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{19}\\
+  (1-z^{-1})U(z) &= (0,2165 − 0,2087z^{-1})E(z) \tag{20}\\
+  U(z)-z^{-1}U(z) &= 0,2165E(z) − 0,2087z^{-1}E(z) \tag{21}\\
+  Z^{-1}\{U(z)-z^{-1}U(z)\} &= Z^{-1}\{0,2165E(z) − 0,2087z^{-1}E(z)\} \tag{22}\\
+  u[k] − u[k − 1] &= 0,2165e[k] − 0,2087e[k − 1] \tag{23}\\
+  u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{24}
 \end{align}
 $$
 
@@ -503,13 +503,13 @@ Agora é possível implementar uma classe python para o controlador a partir da 
 
 $$
 \begin{align}
-  u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{29}
+  u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{25}
 \end{align}
 $$
 
 com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
 
----
+___
 
 <br>
 
