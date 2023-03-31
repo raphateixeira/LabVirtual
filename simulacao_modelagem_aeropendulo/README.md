@@ -174,7 +174,9 @@ Y= \begin{bmatrix}
 \end{bmatrix} + 0
 $$
 
+
 ### Parâmetros para Simulação
+
 
 Para simulação foi usado os parâmetros do artigo $$[1]$$.
 
