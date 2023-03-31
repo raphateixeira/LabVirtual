@@ -31,7 +31,7 @@ Para a implementação da simulação gráfica do Aeropêndulo, foi usada a ling
 
 O aeropêndulo é um dispositivo utilizado em experimentos de física que combina os princípios de um pêndulo e da aerodinâmica. Ele consiste em uma haste suspensa por um ponto fixo em um suporte, com uma asa em uma das extremidades da haste.
 
-<div>
+
 <center>
 <div class="figure" >
   <img src="https://www.researchgate.net/profile/Giuseppe-Habib/publication/281578300/figure/fig1/AS:779421346709519@1562839938541/a-Aeropendulum-photo-b-schematic-physical-model.gif"
@@ -39,7 +39,7 @@ O aeropêndulo é um dispositivo utilizado em experimentos de física que combin
   <p>Figura 2 - Aeropêndulo.</p>
 </div>
 </center>
-</div>
+
 
 Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que a haste comece a oscilar em torno do ponto de suspensão. A asa no final da haste também gera uma força aerodinâmica que pode afetar o movimento do pêndulo. A interação entre as forças gravitacionais e aerodinâmicas faz com que o aeropêndulo execute movimentos complexos e interessantes.
 
@@ -50,8 +50,6 @@ Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que 
 <br>
 
 # Modelagem e Simulação Aeropêndulo
-
-
 
 <center>
 <div class="figure" >
@@ -201,6 +199,7 @@ Para realizar a simulação da resposta ao degrau foi usado Python com o auxíli
 
 ### Importando as bibliotecas Python usadas
 
+
 ```
 import numpy as np
 import matplotlib.pyplot as plt
@@ -342,14 +341,17 @@ plt.show()
 
 <center>
 <div class="figure" >
-  <img src="utils/gsinal.svg"
+  <img src="utils/simu_malha_aberta.svg"
        width="800"> 
 </div>
 </center>
 
+
 <br>
 
+
 ## Controlador projetado usando LGR com auxílio do Matlab
+
 
 Para fins de teste foi projetado um controlador simples usando o matlab e encontrada a função de transferência com o auxílio da biblioteca Control, por fim foi obteda a equação de diferenças para implementar o controlador no simulador.
 
@@ -362,7 +364,9 @@ Para fins de teste foi projetado um controlador simples usando o matlab e encont
 </div>
 <center/>
 
+
 ### Função de Transferência do Controlador
+
 
 $$
 \begin{align}
