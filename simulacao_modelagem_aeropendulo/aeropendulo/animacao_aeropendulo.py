@@ -44,9 +44,8 @@ class AnimacaoAeropendulo:
             x = self.scene.mouse.pos.x + 7
             y = self.scene.mouse.pos.y + 7
             pos = vp.vec(x, y, 0)
-            
+
             self.pendulo.axis = pos
-            print(pos)
 
     def __aminacao(self) -> vp.compound:
         """
