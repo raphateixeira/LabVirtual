@@ -39,14 +39,9 @@ interface = Interface(animacao_aeropendulo, controlador)
 
 ts = 1e-2
 # Condições Iniciais dos estados
-# x = [0.0, -0.5]
-x = [0.0, 0.0]
+x = np.array([0.0, 0.0])
 t = 0.0
 t_ant = 0.0
-
-# salvando as condições iniciais dos axis pos do aeropêndulo
-axis_init = animacao_aeropendulo.aeropendulo.axis
-pos_init = animacao_aeropendulo.aeropendulo.pos
 
 
 while True:

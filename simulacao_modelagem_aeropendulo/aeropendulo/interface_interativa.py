@@ -50,7 +50,7 @@ class Interface:
     def slide_angle_referencia(self, valor):
         self.controlador.r = valor.value
         print(valor.value)
-        
+
     def criar_interface(self) -> None:
         self.scene.append_to_caption(
             "\tMenu Interativo Aeropêndulo\n")
@@ -62,13 +62,14 @@ class Interface:
                                     background=vp.color.red)
         self.scene.append_to_caption("\n\n\t")
         self.scene.append_to_caption("Ângulo +  :  ")
-        vp.slider(bind=self.slide_angle_up, min=0, max=5, step=0.001, value=0)
+        vp.slider(bind=self.slide_angle_up, min=0, max=5,
+                  step=0.001, value=0)
         self.scene.append_to_caption("\n\n\t")
         self.scene.append_to_caption("Ângulo -   :  ")
-        vp.slider(bind=self.slide_angle_down, min=-5, max=0, step=0.001, value=-5)
+        vp.slider(bind=self.slide_angle_down, min=-5, max=0,
+                  step=0.001, value=-5)
         self.scene.append_to_caption("\n\n\t")
         self.scene.append_to_caption("Referência : ")
         vp.slider(bind=self.slide_angle_referencia, min=0, max=3,
                   step=0.001, value=0)
         self.scene.append_to_caption("\n\n")
-

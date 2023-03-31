@@ -64,7 +64,8 @@ class ModeloMatAeropendulo(object):
     def set_u(self, u):
         self.u = u
 
-    def modelo_aeropendulo(self, x: List[float], t: Array1XN) -> Array1XN:
+    def modelo_aeropendulo(self, x: List[float] | Array1XN,
+                           t: float | Array1XN) -> Array1XN:
         """
         Método que implementa o modelo matemático do aeropêndulo.
         Args:
@@ -73,17 +74,15 @@ class ModeloMatAeropendulo(object):
         Returns:
             Retorna um array numpy contendo a derivada dos estados.
         """
-        # Variáveis de estado a partir do vetor de estados;
+        # Variáveis de estado a partir do vetor de estados
         x1, x2 = x
 
-        # Função de estado dx1 = f(x, u)
-        # dx1 = x2
+        # Equação de estado dx2 = f(x, u)
         dx2 = x1
 
-        # Função de estado dx2 = f(x, u)
-        # dx2 = -(self.m*self.g*self.d/self.J)*x1-(self.c/self.J)*x2 +\
-        #        (self.K_m/self.J) * self.u
-        dx1 = (- x1*self.c - self.m*self.g*self.d*np.sin(x2) + self.u*self.K_m) / (self.J)
+        # Equação de estado dx1 = f(x, u)
+        dx1 = (- x1*self.c - self.m*self.g*self.d*np.sin(x2) +
+               self.u*self.K_m) / (self.J)
         dx = np.array([dx1, dx2])      # Derivada do vetor de estados
         return dx                      # Retorna a derivada do vetor de estados
 

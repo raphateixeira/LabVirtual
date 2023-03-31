@@ -33,6 +33,7 @@ class AnimacaoAeropendulo:
                                background=vp.vector(1.7, 0.7, 0.9),
                                color=vp.vec(1, 0.6, 0.6),
                                forward=vp.vec(-0.3, 0, -1))
+        self.scene.range = 6
         # self.drag = True
         # self.scene.bind("mousemove", self.move)
         # chamando a função para criar a aminação gráfica do Aeropêndulo.

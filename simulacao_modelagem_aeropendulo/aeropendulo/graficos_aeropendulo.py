@@ -36,9 +36,9 @@ class Graficos:
         self.grafico = vp.graph(title=titulo, align="right",
                                 xtitle='tempo (s)', fast=True, width=650,
                                 height=350, center=vp.vector(0, 12, 0),
-                                scroll=True, xmin=0, xmax=14, ymin=-0.5, ymax=3,
-                                dot=True, background=vp.vector(0.95,
-                                                               0.95, 0.95))
+                                scroll=True, xmin=0, xmax=14, ymin=-0.5,
+                                ymax=3, dot=True,
+                                background=vp.vector(0.95, 0.95, 0.95))
 
         self.curva1 = vp.gcurve(color=vp.color.blue, width=3,
                                 markers=False, label="Posição Angular",
@@ -58,10 +58,3 @@ class Graficos:
 
         return self.grafico, self.curva1, self.curva2, self.curva3, self.curva4
 
-    def reset(self):
-        self.curva1.delete()
-        self.curva2.delete()
-        self.curva3.delete()
-        self.curva4.delete()
-        self.grafico.xmin = 0
-        self.grafico.xmax = 10
