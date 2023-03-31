@@ -77,13 +77,14 @@ $$
 \end{align}
 $$
 
+
 <center>
 <div class="figure" >
   <img src="utils/diagrama_bloco_aeropendulo_nao_linear.svg"
-       width="95%"> 
+       width="60%"> 
   <p>Figura 2 - Diagrama de blocos do modelo do Aeropêndulo.</p>
 </div>
-<center/>
+</center>
 
 $$
 \begin{align}
@@ -96,6 +97,7 @@ $$
 
 Onde:
 
+<div>
 <ul>
   <li><b>T</b>: Empuxo gerado pela hélice;</li>
   <li><b>J</b>: Momento de inércia;</li>
@@ -107,7 +109,9 @@ Onde:
   <li><b>Km</b>: Relação entre o torque e a tensão;</li>
   <li><b>x1 e x2</b>: Estados do Sistema;</li>
 </ul>
+</div>
 
+<br><br>
 
 ## Linearização do Sistema
 
