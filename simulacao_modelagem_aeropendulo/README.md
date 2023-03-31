@@ -382,7 +382,7 @@ $$
 
 **Função de Transferência do Controlador usando a biblioteca Control do Python**
 
-```python
+```
 numc = np.array([0.2126, 0.7893])
 denc = np.array([1, 0])
 
@@ -398,7 +398,7 @@ $$
 
 ### Simulação do Sistema em Malha Fechada
 
-```python
+```
 Fs = ct.series(Gs, Cs)
 Hs = ct.feedback(Fs, 1, sign=-1)
 Hs
@@ -413,7 +413,7 @@ $$
 
 ### Resposta ao degrau unitário
 
-```python
+```
 t, yout = ct.step_response(Hs)
 
 plt.rc('xtick', labelsize=7)
@@ -438,7 +438,7 @@ Ao analisar o sistema com o controlador, temos que o sistema não possui erro em
 
 Para discretizar o sistema foi usado um período de amostragem de 0,01s.
 
-```python
+```
 from control.matlab import c2d
 
 Cz = c2d(Cs, Ts=0.01, method="tustin")
