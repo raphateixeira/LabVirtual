@@ -413,7 +413,7 @@ $$
 
 ### Resposta ao degrau unitário
 
-```
+```python
 t, yout = ct.step_response(Hs)
 
 plt.rc('xtick', labelsize=7)
