@@ -42,7 +42,7 @@ O aeropêndulo é um dispositivo utilizado em experimentos de física que combin
 <div class="figure" >
   <img src="https://www.researchgate.net/profile/Giuseppe-Habib/publication/281578300/figure/fig1/AS:779421346709519@1562839938541/a-Aeropendulum-photo-b-schematic-physical-model.gif"
        width="50%">  
-  <p>Figura 2 - Aeropêndulo.</p>
+  <p>Figura 3 - Aeropêndulo.</p>
 </div>
 </center>
 
@@ -61,7 +61,7 @@ Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que 
 <div class="figure" >
   <img src="utils/aeropendulo.png"
        width="60%"> 
-  <p>Figura 3 - Diagrama esquemático do Aeropêndulo.</p>
+  <p>Figura 4 - Diagrama esquemático do Aeropêndulo.</p>
 </div>
 </center>
 
@@ -88,7 +88,7 @@ $$
 <div class="figure" >
   <img src="utils/diagrama_bloco_aeropendulo_nao_linear.svg"
        width="90%"> 
-  <p>Figura 2 - Diagrama de blocos do modelo do Aeropêndulo.</p>
+  <p>Figura 5 - Diagrama de blocos do modelo do Aeropêndulo.</p>
 </div>
 </center>
 
@@ -372,7 +372,7 @@ Para fins de teste foi projetado um controlador simples usando o matlab e encont
 <div class="figure" >
   <img src="utils/sistema_aeropendulo_malha_fechada.svg"
        width="90%"> 
-  <p>Figura 3 - Diagrama de blocos do Sistema em Malha Fechada.</p>
+  <p>Figura 6 - Diagrama de blocos do Sistema em Malha Fechada.</p>
 </div>
 </center>
 
