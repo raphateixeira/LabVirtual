@@ -57,4 +57,3 @@ class Graficos:
                                 dot_color=vp.color.black)
 
         return self.grafico, self.curva1, self.curva2, self.curva3, self.curva4
-
