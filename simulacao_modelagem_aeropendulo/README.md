@@ -105,9 +105,9 @@ Onde:
   <li><b>c</b>: coeficiente de amortecimento viscoso;</li>
   <li><b>m</b>: peso do Aeropêndulo;</li>
   <li><b>d</b>: a distância entre o centro de massa e o ponto de pivô;</li>
-<li><b>V</b>: Tensão de Entrada do Motor CC Série;</li>
-<li><b>Km</b>: Relação entre o torque e a tensão;</li>
-<li><b>x1 e x2</b>: Estados do Sistema;</li>
+  <li><b>V</b>: Tensão de Entrada do Motor CC Série;</li>
+  <li><b>Km</b>: Relação entre o torque e a tensão;</li>
+  <li><b>x1 e x2</b>: Estados do Sistema;</li>
 </ul>
 
 
@@ -135,6 +135,7 @@ $$
 
 
 ## Sistema no Espaço de Estados
+
 
 ### Forma Canônica de Controlador
 
