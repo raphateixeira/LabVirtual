@@ -135,6 +135,7 @@ $$
 \end{align}
 $$
 
+<br>
 
 ## Sistema no Espaço de Estados
 
@@ -196,6 +197,7 @@ $$
 \end{align}
 $$
 
+<br>
 
 ## Resposta ao degrau usando Python
 
@@ -351,7 +353,7 @@ plt.show()
 </center>
 
 
-<br>
+<br><br>
 
 
 ## Controlador projetado usando LGR com auxílio do Matlab
@@ -442,7 +444,7 @@ plt.show()
 
 Ao analisar o sistema com o controlador, temos que o sistema não possui erro em regime permanente e seu overshoot é zero, no entanto, para que esses requisitos fossem obtidos ouve um aumento no tempo de acomodação.
 
-
+<br>
 
 ## Função de Transferência Discreta C(z)
 
@@ -509,6 +511,8 @@ $$
 
 com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
 
+<br>
+
 ___
 
 <br>
@@ -517,15 +521,17 @@ ___
 
 <dl>
 <dt></dt>
-<dd>[1.] JOB, Mila Mary; JOSE, P. Subha Hency. <b> Modeling and control of mechatronic aeropendulum.</b> In: 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS). IEEE, 2015. p. 1-5.</dd>
+<dd><b>[1.]</b> JOB, Mila Mary; JOSE, P. Subha Hency. <b> Modeling and control of mechatronic aeropendulum.</b> In: 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS). IEEE, 2015. p. 1-5.</dd>
 
 <br>
 
-<dd>[2.] Silva. Yago. <b> Projeto, construção e controle de um aeropêndulo
+<dd><b>[2.]</b> Silva. Yago. <b> Projeto, construção e controle de um aeropêndulo
 </b>. Centro de Engenharia Elétrica e Informática, Departamento de Engenharia Elétrica e Informática, Universidade Federal de Campina Grande - UFCG, 2018.</dd>
 
 <br>
 
-<dd>[3.] MOHAMMADBAGHERI, Amin; YAGHOOBI, Mahdi. <b>A new approach to control a driven pendulum with PID method.</b> In: 2011 UkSim 13th International Conference on Computer Modelling and Simulation. IEEE, 2011. p. 207-211.</dd>
+<dd><b>[3.]</b> MOHAMMADBAGHERI, Amin; YAGHOOBI, Mahdi. <b>A new approach to control a driven pendulum with PID method.</b> In: 2011 UkSim 13th International Conference on Computer Modelling and Simulation. IEEE, 2011. p. 207-211.</dd>
+
+<dd><b>[4.]</b> SILVA, Yago Luiz Monteiro et al. <b>Projeto, construção e controle de um aeropêndulo<b>. 2018.</dd>
 
 </dl>
