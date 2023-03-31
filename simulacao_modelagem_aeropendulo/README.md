@@ -2,13 +2,17 @@
 
 # Simulação Gráfica do Aeropêndulo com a Biblioteca **VPython**
 
+---
+
+## Objetivo de Sistemas de Controle
+
 Sistemas de controle têm como objetivos modelar, controlar e regular o comportamento de um processo ou sistema físico. Ele é amplamente utilizado em diversas áreas, como engenharia, física, química e biologia, para garantir que o sistema ou processo seja mantido dentro de um determinado conjunto de parâmetros ou condições.
 
 <center>
 <div class="figure" >
-  <img src="utils/sc.png"
+  <img src="utils/sistema_aeropendulo_malha_fechada.svg"
        width="900">  
-  <p>Figura 1 - Animação do aeropêndulo usando a biblioteca vpython.</p>
+  <p>Figura 1 - Diagrama de blocos do Sistema em Malha Fechada.</p>
 </div>
 </center>
 
@@ -24,9 +28,21 @@ Para a implementação da simulação gráfica do Aeropêndulo, foi usada a ling
 </div>
 </center>
 
+---
+
 ## O que é o Aeropêndulo?
 
 O aeropêndulo é um dispositivo utilizado em experimentos de física que combina os princípios de um pêndulo e da aerodinâmica. Ele consiste em uma haste suspensa por um ponto fixo em um suporte, com uma asa em uma das extremidades da haste.
+
+<div>
+<center>
+<div class="figure" >
+  <img src="https://www.researchgate.net/profile/Giuseppe-Habib/publication/281578300/figure/fig1/AS:779421346709519@1562839938541/a-Aeropendulum-photo-b-schematic-physical-model.gif"
+       width="70%">  
+  <p>Figura 2 - Aeropêndulo.</p>
+</div>
+</center>
+</div>
 
 Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que a haste comece a oscilar em torno do ponto de suspensão. A asa no final da haste também gera uma força aerodinâmica que pode afetar o movimento do pêndulo. A interação entre as forças gravitacionais e aerodinâmicas faz com que o aeropêndulo execute movimentos complexos e interessantes.
 
@@ -38,20 +54,52 @@ Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que 
 
 # Modelagem e Simulação Aeropêndulo
 
+
+
 <center>
 <div class="figure" >
   <img src="utils/aeropendulo.png"
-       width="600"> 
+       width="60%"> 
   <p>Figura 3 - Diagrama esquemático do Aeropêndulo.</p>
 </div>
 </center>
 
 Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(1)$$ que modela o sistema em questão.
 
-$$\begin{align}
-    T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{\theta} \tag{1}\\
+$$
+\begin{align}
+ T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{1}\\
 \end{align}
 $$
+
+
+Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $V$ nos terminais do motor e o empuxo $T$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $(7)$.
+
+$$
+\begin{align}
+    T &\approx K_mV \tag{02} \\
+    K_mV &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{03}
+\end{align}
+$$
+
+<div>
+<center>
+<div class="figure" >
+  <img src="utils/diagrama_bloco_aeropendulo_nao_linear.svg"
+       width="95%"> 
+  <p>Figura 2 - Diagrama de blocos do modelo do Aeropêndulo.</p>
+</div>
+<center/>
+</div>
+
+$$
+\begin{align}
+    \dot{x_2} &= x_1 \tag{04} \\
+    \dot{x_1}J &= - x_1c - mgdsen(x_2) + VK_m \tag{05} \\
+    \dot{x_1} &= \dfrac{- x_1c - mgdsen(x_2) + VK_m}{J} \tag{06}
+\end{align}
+$$
+
 
 
 Onde:
@@ -63,7 +111,12 @@ Onde:
   <li><b>c</b>: coeficiente de amortecimento viscoso;</li>
   <li><b>m</b>: peso do Aeropêndulo;</li>
   <li><b>d</b>: a distância entre o centro de massa e o ponto de pivô;</li>
+<li><b>V</b>: Tensão de Entrada do Motor CC Série;</li>
+<li><b>Km</b>: Relação entre o torque e a tensão;</li>
+<li><b>x1 e x2</b>: Estados do Sistema;</li>
 </ul>
+
+## 
 
 ## Linearização do Sistema
 
@@ -71,7 +124,7 @@ Uma das técnicas de linearização quando se tem sistemas não lineares que a c
 
 $$
 \begin{align}
-    T &= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{2}\\
+    K_mV &= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{2}\\
 \end{align}
 $$
 
@@ -79,38 +132,15 @@ Aplicando a transformada de Laplace, temos:
 
 $$
 \begin{align}
-    T(S) &= S^2J\theta(S) + Sc\theta(S) +mgd\theta(S) \tag{3}\\
-    T(S) &= (S^2J + Sc +mgd)\theta(S) \tag{4}\\
-    \frac{\theta(S)}{T(S)} &= \frac{1}{S^2J + Sc +mgd} \tag{5}\\
-    \frac{\theta(S)}{T(S)} &= \frac{1/J}{S^2 + Sc/J +mgd/J} \tag{6}\\
+    K_mV(s) &= s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{08}\\
+    K_mV(s) &= (s^2J + sc +mgd)\theta(s) \tag{09}\\
+    \frac{\theta(s)}{K_mV(s)} &= \frac{1}{s^2J + sc +mgd} \tag{10}\\
+    \frac{\theta(s)}{K_mV(s)} &= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{11}\\
+    \frac{\theta(s)}{V(s)} &= \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{12}
 \end{align}
 $$
 
-Queremos controlar o ângulo do braço do aeropêndulo  a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $$T$$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $$(7)$$.
-
-$$
-\begin{align}
-    T &\approx K_mV \tag{7}\\
-\end{align}
-$$
-
-Aplicando a transformada de Laplace, temos:
-
-$$
-\begin{align}
-    T(S) &\approx K_mV(S) \tag{8}\\
-\end{align}
-$$
-
-Agora podemos substituir $$(8)$$ em $$(6)$$,
-
-$$
-\begin{align}
-    \frac{\theta(S)}{K_mV(S)} = \frac{1/J}{S^2 + Sc/J +mgd/J} \tag{9}\\
-    \frac{\theta(S)}{V(S)} = \frac{K_m/J}{s^2 + Sc/J +mgd/J} \tag{10}
-\end{align}
-$$
-
+## 
 
 ## Sistema no Espaço de Estados
 
@@ -239,7 +269,6 @@ Antes de realizar a simulação em malha aberta, é interessante observar as car
 
 A função **ct.step_info()** recebe como parâmetro o sistema no espaço de estados ou uma função de transferência e retorna as características do sistema, para esse exemplo, ao aplicar a função ela retorna diversas características, exemplo:
 
-
 <ul>
   <li><b>Tempo de acomodação</b> ->    'SettlingTime': 10.308519357198815'</li>
   <li><b>Ultrapassagem Percentual</b> -> 'Overshoot': 69.54106137593485,</li>
@@ -326,6 +355,167 @@ plt.show()
 
 <br>
 
+## Controlador projetado usando LGR com auxílio do Matlab
+
+Para fins de teste foi projetado um controlador simples usando o matlab e encontrada a função de transferência com o auxílio da biblioteca Control, por fim foi obteda a equação de diferenças para implementar o controlador no simulador.
+
+<div>
+<center>
+<div class="figure" >
+  <img src="utils/sistema_aeropendulo_malha_fechada.svg"
+       width="90%"> 
+  <p>Figura 3 - Diagrama de blocos do Sistema em Malha Fechada.</p>
+</div>
+<center/>
+</div>
+
+### Função de Transferência do Controlador
+
+$$
+\begin{align}
+
+C(s) &= \frac{0,2126s + 0,7893}{s} \tag{15}
+
+\end{align}
+$$
+
+**Função de Transferência do Controlador usando a biblioteca Control do Python**
+
+```python
+numc = np.array([0.2126, 0.7893])
+denc = np.array([1, 0])
+
+Cs = ct.tf(numc, denc)
+print(Cs)
+```
+
+**saída:**
+
+$$
+\dfrac{0.2126 s + 0.7893}{s}
+$$
+
+### Simulação do Sistema em Malha Fechada
+
+```python
+Fs = ct.series(Gs, Cs)
+Hs = ct.feedback(Fs, 1, sign=-1)
+Hs
+```
+
+**saída:**
+
+$$
+\dfrac{0.5937s+2.204}{s^3 +0.717s^2+10.58s+2.204}
+$$
+
+### 
+
+### Resposta ao degrau unitário
+
+```python
+t, yout = ct.step_response(Hs)
+
+plt.rc('xtick', labelsize=7)
+plt.rc('ytick', labelsize=7)
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.set_title("Aeropêndulo em Malha Fechada", fontsize=10)
+ax.set_ylabel("Ângulo (Graus°)", fontsize=8)
+ax.set_xlabel("Tempo (s)", fontsize=8)
+ax.plot([0, 0, t[-1]], [0, 1, 1], "--", lw=1,
+        label="Sinal Degrau Unitário U(S)")
+ax.plot(t, yout, lw=1., label="Sinal de Saída Y(S)")
+ax.legend(fontsize=7)
+plt.show()
+```
+
+Ao analisar o sistema com o controlador, temos que o sistema não possui erro em regime permanente e seu overshoot é zero, no entanto, para que esses requisitos fossem obtidos ouve um aumento no tempo de acomodação.
+
+
+
+### Função de Transferência Discreta C(z)
+
+Para discretizar o sistema foi usado um período de amostragem de 0,01s.
+
+```python
+from control.matlab import c2d
+
+Cz = c2d(Cs, Ts=0.01, method="tustin")
+Cz
+```
+
+$$
+\dfrac{0.2165 z + 0.2087}{z-1} \quad dt = 0.01
+$$
+
+$$
+\begin{align}
+    C(z) &= \dfrac{0,2165z −0,2087}{z-1} \tag{17}\\
+         &= \dfrac{0,2165z −0,2087}{z-1} \cdot \dfrac{z^{-1}}{z^{-1}} \tag{18}\\
+         &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{19}\\
+\end{align}
+
+$$
+
+#### Encontrando a equação de diferenças do controlador
+
+$$
+\begin{align}
+
+C(z) &= \dfrac{U(z)}{E(z)} \tag{20}
+
+\end{align}
+
+$$
+
+onde:
+
+$$
+\begin{align}
+
+U(z) &= Z\{u[k]\} \tag{21}\\
+
+E(z) &= Z\{e[k]\} \tag{22}
+
+\end{align}
+
+$$
+
+$$
+\begin{align}
+
+\dfrac{U(z)}{E(z)} &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{23}\\
+
+(1-z^{-1})U(z) &= (0,2165 − 0,2087z^{-1})E(z) \tag{24}\\
+
+U(z)-z^{-1}U(z) &= 0,2165E(z) − 0,2087z^{-1}E(z) \tag{25}\\
+
+Z^{-1}\{U(z)-z^{-1}U(z)\} &= Z^{-1}\{0,2165E(z) − 0,2087z^{-1}E(z)\} \tag{26}\\
+
+u[k] − u[k − 1] &= 0,2165e[k] − 0,2087e[k − 1] \tag{27}\\
+
+u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{28}
+
+\end{align}
+
+$$
+
+Agora é possível implementar uma classe python para o controlador a partir da equação de diferenças.
+
+$$
+\begin{align}
+
+u[k] &= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{29}
+
+\end{align}
+
+$$
+
+com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
+
+
+
 ---
 
 <br>
@@ -344,6 +534,5 @@ plt.show()
 <br>
 
 <dd>[3.] MOHAMMADBAGHERI, Amin; YAGHOOBI, Mahdi. <b>A new approach to control a driven pendulum with PID method.</b> In: 2011 UkSim 13th International Conference on Computer Modelling and Simulation. IEEE, 2011. p. 207-211.</dd>
-
 
 </dl>
