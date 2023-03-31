@@ -204,7 +204,7 @@ Para realizar a simulação da resposta ao degrau foi usado Python com o auxíli
 ### Importando as bibliotecas Python usadas
 
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 import control as ct
@@ -214,7 +214,7 @@ plt.style.use("ggplot")
 
 Variáveis com os parâmetros para simulação do modelo.
 
-```
+```python
 K_m = 0.0296
 m = 0.36
 d = 0.03
@@ -225,7 +225,7 @@ c = 0.0076
 
 Matrizes NumPy do sistema no espaço de estados
 
-```
+```python
 A = np.array([[0, 1],
               [-(m*g*d)/J, -(c/J)]])
 
@@ -244,7 +244,7 @@ D = 0
 
 Para criar o sistema no espaço de estados, foi usado a biblioteca Python, **control**, essa biblioteca permite criar um sistema no espaço de estados a partir das matrizes **A**, **B**, **C**, **D**
 
-```
+```python
 sys = ct.ss(A, B, C, D)
 print(sys)
 ```
@@ -253,7 +253,7 @@ print(sys)
 
 Para obter a função de transferência a partir do sistema no espaço de estados, a biblioteca control implementa uma função, ct.ss2tf(sys), que recebe como parâmetro, o sistema no espaço de estados e retorna a função de transferência.
 
-```
+```python
 Gs = ct.ss2tf(sys)
 Gs
 ```
@@ -272,7 +272,7 @@ A função **ct.step_info()** recebe como parâmetro o sistema no espaço de est
   <li><b>Tempo de Subida</b> ->  'RiseTime': 0.396481513738416</li>
 </ul>
 
-```
+```python
 ct.step_info(sys)
 ```
 
@@ -292,7 +292,7 @@ ct.step_info(sys)
 
 A função **ct.damp()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os Autovalores, amortecimento e frequência natural para cada polo do sistema.
 
-```
+```python
 ct.damp(sys);
 ```
 
@@ -306,7 +306,7 @@ _____Eigenvalue______ Damping___ Frequency_
 
 A função **ct.poles()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os polos do sistema, para esse caso o sistema é de segunda ordem, pois possui dois pólos.
 
-```
+```python
 ct.poles(sys)
 ```
 
@@ -318,7 +318,7 @@ array([-0.35849057+3.13948884j, -0.35849057-3.13948884j])
 
 A função **ct.zeros()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os zeros do sistema. para esse caso o sistema não possui zeros.
 
-```
+```python
 ct.zeros(sys)
 ```
 
@@ -330,7 +330,7 @@ array([], dtype=float64)
 
 #### Resposta ao degrau
 
-```
+```python
 t, yout = ct.step_response(Gs)
 
 fig, ax = plt.subplots(figsize=(6, 3.5))
@@ -382,7 +382,7 @@ $$
 
 **Função de Transferência do Controlador usando a biblioteca Control do Python**
 
-```
+```python
 numc = np.array([0.2126, 0.7893])
 denc = np.array([1, 0])
 
@@ -398,7 +398,7 @@ $$
 
 ### Simulação do Sistema em Malha Fechada
 
-```
+```python
 Fs = ct.series(Gs, Cs)
 Hs = ct.feedback(Fs, 1, sign=-1)
 Hs
@@ -448,7 +448,7 @@ Ao analisar o sistema com o controlador, temos que o sistema não possui erro em
 
 Para discretizar o sistema foi usado um período de amostragem de 0,01s.
 
-```
+```python
 from control.matlab import c2d
 
 Cz = c2d(Cs, Ts=0.01, method="tustin")
