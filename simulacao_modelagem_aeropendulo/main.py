@@ -43,30 +43,42 @@ x = np.array([0.0, 0.0])
 t = 0.0
 t_ant = 0.0
 
-
+# Simulação do Sistema
 while True:
     vp.rate(100)
     if interface.EXE:
+        # Calcula as derivadas do sitema
         dx = mma.modelo_aeropendulo(x, t)
         dt = t - t_ant
+
         # Atualização dos estados
         x = x + dt * dx
 
+        # Pega o Ângulo e envia para o controlador (Realimentação do sistema)
         controlador.set_sensor(x[1])
+
+        # O controlador calcula o sinal de controle
         controlador.calc_uk()
+
+        # pega o sinal de controle calculado e salva na variável u
         u = controlador.get_uk()
 
-        # Sinal de controle aplicado
+        # Sinal de controle aplicado a entrada do sistema
         mma.set_u(u)
-        # mma.set_u(1)
 
         # print(x[1]*(180/np.pi))
         t_ant = t
         t += ts
+        # Atualiza o ângulo do Aeropêndulo
         animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
                                                 angle=x[0]*ts,
                                                 origin=vp.vec(0, 5.2, 0))
+
+        # Gráfico do ângulo.
         plot1.plot(t, x[1]+np.pi/3.)
+        # Gráfico da velocidade ângular.
         plot2.plot(t, x[0])
+        # Gráfico do sinal de controle
         plot3.plot(t, u)
+        # Gráfico do sinal de referência
         plot4.plot(t, controlador.r+np.pi/3.)

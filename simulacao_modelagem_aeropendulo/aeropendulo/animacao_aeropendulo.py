@@ -34,18 +34,8 @@ class AnimacaoAeropendulo:
                                color=vp.vec(1, 0.6, 0.6),
                                forward=vp.vec(-0.3, 0, -1))
         self.scene.range = 6
-        # self.drag = True
-        # self.scene.bind("mousemove", self.move)
         # chamando a função para criar a aminação gráfica do Aeropêndulo.
         self.aeropendulo = self.__aminacao()
-
-    def move(self):
-        if self.drag:
-            x = self.scene.mouse.pos.x + 7
-            y = self.scene.mouse.pos.y + 7
-            pos = vp.vec(x, y, 0)
-
-            self.pendulo.axis = pos
 
     def __aminacao(self) -> vp.compound:
         """

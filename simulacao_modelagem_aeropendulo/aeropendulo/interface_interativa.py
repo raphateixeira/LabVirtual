@@ -70,6 +70,6 @@ class Interface:
                   step=0.001, value=-5)
         self.scene.append_to_caption("\n\n\t")
         self.scene.append_to_caption("Referência : ")
-        vp.slider(bind=self.slide_angle_referencia, min=0, max=3,
+        vp.slider(bind=self.slide_angle_referencia, min=0, max=2,
                   step=0.001, value=0)
         self.scene.append_to_caption("\n\n")
