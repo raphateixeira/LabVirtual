@@ -26,6 +26,7 @@ class Interface:
     """
     def __init__(self, animacao_aeropendulo, controlador) -> None:
         self.EXE = False
+        self.valor_angle = 0.0
         self.controlador = controlador
         self.animacao_aeropendulo = animacao_aeropendulo
         self.scene = animacao_aeropendulo.scene
@@ -50,6 +51,12 @@ class Interface:
                                                      angle=angle.value*0.01,
                                                      origin=vp.vec(0, 5.2, 0))
 
+    def Rotate(self, angle) -> None:
+        self.valor_angle = (angle.number)*(vp.pi/180.0)
+        self.animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
+                                                     angle=self.valor_angle,
+                                                     origin=vp.vec(0, 5.2, 0))
+
     def __slide_angle_referencia(self, valor):
         self.controlador.r = valor.value
         print(valor.value)
@@ -57,19 +64,28 @@ class Interface:
     def __criar_interface(self) -> None:
         self.scene.append_to_caption(
             "\tMenu Interativo Aeropêndulo\n")
-        self.scene.append_to_caption("\t ")
+        self.scene.append_to_caption("\n\t ")
         self.buttom_exe = vp.button(bind=self.__executar,
                                     text="Excecutar",
                                     color=vp.color.white,
-                                    background=vp.color.red)
-        self.scene.append_to_caption("\n\n\t")
-        self.scene.append_to_caption("Ângulo +  :  ")
-        vp.slider(bind=self.slide_angle_up, min=0, max=5,
-                  step=0.001, value=0)
-        self.scene.append_to_caption("\n\n\t")
-        self.scene.append_to_caption("Ângulo -   :  ")
-        vp.slider(bind=self.__slide_angle_down, min=-5, max=0,
-                  step=0.001, value=-5)
+                                    background=vp.color.red,
+                                    width=100, _height=40)
+        self.scene.append_to_caption("\t\t")
+        self.scene.append_to_caption(
+            "Posição Inicial\t")
+        vp.winput(bind=self.Rotate, prompt="Rotate: ", type="numeric",
+                  width=100, _height=40)
+        vp.wtext(text=" Graus")
+        self.scene.append_to_caption('\n')
+
+        # self.scene.append_to_caption("Ângulo +  :  ")
+        # vp.slider(bind=self.slide_angle_up, min=0, max=5,
+        #          step=0.001, value=0)
+        # self.scene.append_to_caption("\n\n\t")
+        # self.scene.append_to_caption("Ângulo -   :  ")
+        # vp.slider(bind=self.__slide_angle_down, min=-5, max=0,
+        #          step=0.001, value=-5)
+
         self.scene.append_to_caption("\n\n\t")
         self.scene.append_to_caption("Referência : ")
         vp.slider(bind=self.__slide_angle_referencia, min=0, max=2,

@@ -75,10 +75,10 @@ while True:
                                                 origin=vp.vec(0, 5.2, 0))
 
         # Gráfico do ângulo.
-        plot1.plot(t, x[1]+np.pi/3.)
-        # Gráfico da velocidade ângular.
-        plot2.plot(t, x[0])
-        # Gráfico do sinal de controle
-        plot3.plot(t, u)
+        plot1.plot(t, x[1] + interface.valor_angle)
         # Gráfico do sinal de referência
-        plot4.plot(t, controlador.r+np.pi/3.)
+        plot2.plot(t, controlador.r + interface.valor_angle)
+        # Gráfico da velocidade ângular.
+        plot3.plot(t, x[0])
+        # Gráfico do sinal de controle
+        plot4.plot(t, u)
