@@ -514,16 +514,12 @@ $$
 
 com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
 
-<br>
-
-___
-
-<br>
+<br><br>
 
 # Referências
 
 <dl>
-<dt></dt>
+
 <dd><b>[1.]</b> JOB, Mila Mary; JOSE, P. Subha Hency. <b> Modeling and control of mechatronic aeropendulum.</b> In: 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS). IEEE, 2015. p. 1-5.</dd>
 
 <br>
