@@ -17,19 +17,23 @@ import vpython as vp
 
 
 class Interface:
-    # ############# INICIO SESSÃO - TESTE MUNU INTERATIVO ##############
+    """
+    Classe que implementa a interface interativa do simulador do Aeropêndulo.
+
+    Atributo:
+        animacao_aeropendulo: Instância da classe AnimacaoAeropendulo.
+        controlador: Instância da classe AnimacaoAeropendulo.
+    """
     def __init__(self, animacao_aeropendulo, controlador) -> None:
         self.EXE = False
-        # controlador
         self.controlador = controlador
-
         self.animacao_aeropendulo = animacao_aeropendulo
         self.scene = animacao_aeropendulo.scene
 
         # Criando a interface
-        self.criar_interface()
+        self.__criar_interface()
 
-    def executar(self, b) -> None:
+    def __executar(self, b) -> None:
         if self.EXE:
             b.text = "Executar"
         else:
@@ -41,22 +45,20 @@ class Interface:
                                                      angle=angle.value*0.01,
                                                      origin=vp.vec(0, 5.2, 0))
 
-    def slide_angle_down(self, angle) -> None:
+    def __slide_angle_down(self, angle) -> None:
         self.animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
                                                      angle=angle.value*0.01,
                                                      origin=vp.vec(0, 5.2, 0))
-        # print("teste", angle.value)
 
-    def slide_angle_referencia(self, valor):
+    def __slide_angle_referencia(self, valor):
         self.controlador.r = valor.value
         print(valor.value)
 
-    def criar_interface(self) -> None:
+    def __criar_interface(self) -> None:
         self.scene.append_to_caption(
             "\tMenu Interativo Aeropêndulo\n")
-        self.scene.append_to_caption("\tRefazer Simulação\n\n")
         self.scene.append_to_caption("\t ")
-        self.buttom_exe = vp.button(bind=self.executar,
+        self.buttom_exe = vp.button(bind=self.__executar,
                                     text="Excecutar",
                                     color=vp.color.white,
                                     background=vp.color.red)
@@ -66,10 +68,10 @@ class Interface:
                   step=0.001, value=0)
         self.scene.append_to_caption("\n\n\t")
         self.scene.append_to_caption("Ângulo -   :  ")
-        vp.slider(bind=self.slide_angle_down, min=-5, max=0,
+        vp.slider(bind=self.__slide_angle_down, min=-5, max=0,
                   step=0.001, value=-5)
         self.scene.append_to_caption("\n\n\t")
         self.scene.append_to_caption("Referência : ")
-        vp.slider(bind=self.slide_angle_referencia, min=0, max=2,
+        vp.slider(bind=self.__slide_angle_referencia, min=0, max=2,
                   step=0.001, value=0)
         self.scene.append_to_caption("\n\n")

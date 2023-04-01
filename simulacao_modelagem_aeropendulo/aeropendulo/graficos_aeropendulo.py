@@ -20,7 +20,6 @@ from typing import Tuple
 class Graficos:
     """
     Gráfico para polagem dos dados dos estados do Aeroèndulo.
-
     """
     def __init__(self):
         ...

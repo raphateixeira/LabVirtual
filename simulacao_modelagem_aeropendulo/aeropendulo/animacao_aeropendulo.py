@@ -55,7 +55,7 @@ class AnimacaoAeropendulo:
                              text="AEROPÊNDULO", color=vp.vec(1, 0.6, 0.6),
                              align='center', depth=0)
 
-        self.desenhar_pendulo()
+        self.__desenhar_pendulo()
 
         # Eixo de sustentação.
         self.eixo = vp.cylinder(pos=vp.vec(0, 5.2, 0.3), radius=0.09,
@@ -79,7 +79,7 @@ class AnimacaoAeropendulo:
 
         return self.pendulo
 
-    def desenhar_pendulo(self):
+    def __desenhar_pendulo(self):
         # Braço do Aeropêndulo.
         self.barra = vp.box(pos=vp.vec(0, -1.4, 0),
                             size=vp.vec(0.2, self.comprimento_braco, 0.2),
