@@ -65,7 +65,7 @@
 </div>
 </center>
 
-<div align="justify"><p style="text-indent: 50px;">Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $(01)$ que modela o sistema em questão.</p></div>
+<div align="justify"><p style="text-indent: 50px;">Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(01)$$ que modela o sistema em questão.</p></div>
 
 $$
 \begin{align}
