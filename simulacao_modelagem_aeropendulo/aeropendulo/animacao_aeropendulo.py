@@ -110,7 +110,7 @@ class AnimacaoAeropendulo:
                                   self.base_helice])
 
         # Motor + Hélice.
-        self.motor_helice = vp.compound([self.motor, self.helice])
+        self.motor_helice = self.motor # vp.compound([self.motor, self.helice])
 
         # Aeropêndulo
         self.pendulo = vp.compound([self.barra, self.motor_helice])
