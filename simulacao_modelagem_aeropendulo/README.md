@@ -10,7 +10,7 @@
 
 ## Objetivo de Sistemas de Controle
 
-Sistemas de controle têm como objetivos modelar, controlar e regular o comportamento de um processo ou sistema físico. Ele é amplamente utilizado em diversas áreas, como engenharia, física, química e biologia, para garantir que o sistema ou processo seja mantido dentro de um determinado conjunto de parâmetros ou condições.
+<div align="justify"><p style="text-indent: 50px;">Sistemas de controle têm como objetivos modelar, controlar e regular o comportamento de um processo ou sistema físico. Ele é amplamente utilizado em diversas áreas, como engenharia, física, química e biologia, para garantir que o sistema ou processo seja mantido dentro de um determinado conjunto de parâmetros ou condições.</p></div>
 
 <center>
 <div class="figure" >
@@ -20,9 +20,9 @@ Sistemas de controle têm como objetivos modelar, controlar e regular o comporta
 </div>
 </center>
 
-Nas Engenharias, muito dos sistemas estudados são físicos, quando se modela matematicamente esses sistemas, fica complicado para o aluna assimilar o comportamento do sistema real a partir dos gráficos dos estados, por outro lado, a implementação de protótipos se torna um empecilho para o processo de aprendizagem, já que demanda conhecimento de outra áreas, além do custo na compra de componentes, sendo assim, a simulação gráfica desses sistemas usando liguagens de programação proporciona ao aluno uma excelente forma de visualizar o comportamento do sistema real sem custos de implementação já que as linguagens de programação são gratuitas.
+<div align="justify"><p style="text-indent: 50px;">Nas Engenharias, muito dos sistemas estudados são físicos, quando se modela matematicamente esses sistemas, fica complicado para o aluna assimilar o comportamento do sistema real a partir dos gráficos dos estados, por outro lado, a implementação de protótipos se torna um empecilho para o processo de aprendizagem, já que demanda conhecimento de outra áreas, além do custo na compra de componentes, sendo assim, a simulação gráfica desses sistemas usando liguagens de programação proporciona ao aluno uma excelente forma de visualizar o comportamento do sistema real sem custos de implementação já que as linguagens de programação são gratuitas.</p></div>
 
-Para a implementação da simulação gráfica do Aeropêndulo, foi usada a linguagem de programação Python com a biblioteca Vpython, a Figura 2 mostra o simulador.
+<div align="justify"><p style="text-indent: 50px;">Para a implementação da simulação gráfica do Aeropêndulo, foi usada a linguagem de programação Python com a biblioteca Vpython, a Figura 2 mostra o simulador.</p></div>
 
 <center>
 <div class="figure" >
@@ -35,7 +35,7 @@ Para a implementação da simulação gráfica do Aeropêndulo, foi usada a ling
 
 ## O que é o Aeropêndulo?
 
-O aeropêndulo é um dispositivo utilizado em experimentos de física que combina os princípios de um pêndulo e da aerodinâmica. Ele consiste em uma haste suspensa por um ponto fixo em um suporte, com uma asa em uma das extremidades da haste.
+<div align="justify"><p style="text-indent: 50px;">O aeropêndulo é um dispositivo utilizado em experimentos de física que combina os princípios de um pêndulo e da aerodinâmica. Ele consiste em uma haste suspensa por um ponto fixo em um suporte, com uma asa em uma das extremidades da haste.</p></div>
 
 
 <center>
@@ -47,7 +47,7 @@ O aeropêndulo é um dispositivo utilizado em experimentos de física que combin
 </center>
 
 
-Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que a haste comece a oscilar em torno do ponto de suspensão. A asa no final da haste também gera uma força aerodinâmica que pode afetar o movimento do pêndulo. A interação entre as forças gravitacionais e aerodinâmicas faz com que o aeropêndulo execute movimentos complexos e interessantes.
+<div align="justify"><p style="text-indent: 50px;">Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que a haste comece a oscilar em torno do ponto de suspensão. A asa no final da haste também gera uma força aerodinâmica que pode afetar o movimento do pêndulo. A interação entre as forças gravitacionais e aerodinâmicas faz com que o aeropêndulo execute movimentos complexos e interessantes.</p></div>
 
 <br>
 
@@ -65,7 +65,7 @@ Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que 
 </div>
 </center>
 
-Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(01)$$ que modela o sistema em questão.
+<div align="justify"><p style="text-indent: 50px;">Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(01)$$ que modela o sistema em questão.</p></div>
 
 $$
 \begin{align}
@@ -74,7 +74,7 @@ $$
 $$
 
 
-Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $$T$$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $$(02)$$.
+<div align="justify"><p style="text-indent: 50px;">Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $$T$$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $$(02)$$.</p></div>
 
 $$
 \begin{align}
@@ -121,7 +121,8 @@ Onde:
 
 ## Linearização do Sistema
 
-Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $$(07)$$.
+<div align="justify"><p style="text-indent: 50px;">Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $$(07)$$.
+</p></div>
 
 $$
 \begin{align}
@@ -129,7 +130,7 @@ $$
 \end{align}
 $$
 
-Aplicando a transformada de Laplace, temos:
+<div align="justify"><p style="text-indent: 50px;">Aplicando a transformada de Laplace, temos:</p></div>
 
 $$
 \begin{align}
@@ -207,7 +208,7 @@ $$
 
 ## Resposta ao degrau usando Python
 
-Para realizar a simulação da resposta ao degrau foi usado Python com o auxílio das bibliotecas numpy, matplotlib e control, sendo que as bibliotecas numpy e matplotlib são usada para criar as matrizes A, B, C e D e plotar a resposta do do sistema, respectivamente, já a biblioteca control é usada para criar o sistema no espaço de estados e obter a função de transferência, além disso, é possível obter a resposta ao degrau usando a função **step** da biblioteca control, que recebe como parâmetro o sistema criado anteriormente, no espaço de estados ou função de transferência.
+<div align="justify"><p style="text-indent: 50px;">Para realizar a simulação da resposta ao degrau foi usado Python com o auxílio das bibliotecas numpy, matplotlib e control, sendo que as bibliotecas numpy e matplotlib são usada para criar as matrizes A, B, C e D e plotar a resposta do do sistema, respectivamente, já a biblioteca control é usada para criar o sistema no espaço de estados e obter a função de transferência, além disso, é possível obter a resposta ao degrau usando a função **step** da biblioteca control, que recebe como parâmetro o sistema criado anteriormente, no espaço de estados ou função de transferência.</p></div>
 
 ### Importando as bibliotecas Python usadas
 
@@ -250,7 +251,7 @@ D = 0
 
 <br>
 
-Para criar o sistema no espaço de estados, foi usado a biblioteca Python, **control**, essa biblioteca permite criar um sistema no espaço de estados a partir das matrizes **A**, **B**, **C**, **D**
+<div align="justify"><p style="text-indent: 50px;">Para criar o sistema no espaço de estados, foi usado a biblioteca Python, **control**, essa biblioteca permite criar um sistema no espaço de estados a partir das matrizes **A**, **B**, **C**, **D**</p></div>
 
 ```python
 sys = ct.ss(A, B, C, D)
@@ -259,7 +260,7 @@ print(sys)
 
 ### Obtendo a Função de Transferência a partir do Espaço de Estados
 
-Para obter a função de transferência a partir do sistema no espaço de estados, a biblioteca control implementa uma função, ct.ss2tf(sys), que recebe como parâmetro, o sistema no espaço de estados e retorna a função de transferência.
+<div align="justify"><p style="text-indent: 50px;">Para obter a função de transferência a partir do sistema no espaço de estados, a biblioteca control implementa uma função, ct.ss2tf(sys), que recebe como parâmetro, o sistema no espaço de estados e retorna a função de transferência.</p></div>
 
 ```python
 Gs = ct.ss2tf(sys)
@@ -268,11 +269,11 @@ Gs
 
 ### Informações do sistema em malha aberta
 
-Antes de realizar a simulação em malha aberta, é interessante observar as características do sistema, para isso, a biblioteca control implementa algumas função.
+<div align="justify"><p style="text-indent: 50px;">Antes de realizar a simulação em malha aberta, é interessante observar as características do sistema, para isso, a biblioteca control implementa algumas função.</p></div>
 
 #### Explicando as diferentes funções da biblioteca control
 
-A função **ct.step_info()** recebe como parâmetro o sistema no espaço de estados ou uma função de transferência e retorna as características do sistema, para esse exemplo, ao aplicar a função ela retorna diversas características, exemplo:
+<div align="justify"><p style="text-indent: 50px;">A função **ct.step_info()** recebe como parâmetro o sistema no espaço de estados ou uma função de transferência e retorna as características do sistema, para esse exemplo, ao aplicar a função ela retorna diversas características, exemplo:</p></div>
 
 <ul>
   <li><b>Tempo de acomodação</b> ->    'SettlingTime': 10.308519357198815'</li>
@@ -298,7 +299,7 @@ ct.step_info(sys)
  'SteadyStateValue': 0.2796674225245654}
 ```
 
-A função **ct.damp()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os Autovalores, amortecimento e frequência natural para cada polo do sistema.
+<div align="justify"><p style="text-indent: 50px;">A função **ct.damp()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os Autovalores, amortecimento e frequência natural para cada polo do sistema.</p></div>
 
 ```python
 ct.damp(sys);
@@ -312,7 +313,7 @@ _____Eigenvalue______ Damping___ Frequency_
    -0.3585    -3.139j     0.1135       3.16
 ```
 
-A função **ct.poles()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os polos do sistema, para esse caso o sistema é de segunda ordem, pois possui dois pólos.
+<div align="justify"><p style="text-indent: 50px;">A função **ct.poles()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os polos do sistema, para esse caso o sistema é de segunda ordem, pois possui dois pólos.</p></div>
 
 ```python
 ct.poles(sys)
@@ -324,7 +325,7 @@ ct.poles(sys)
 array([-0.35849057+3.13948884j, -0.35849057-3.13948884j])
 ```
 
-A função **ct.zeros()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os zeros do sistema. para esse caso o sistema não possui zeros.
+<div align="justify"><p style="text-indent: 50px;">A função **ct.zeros()** recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os zeros do sistema. para esse caso o sistema não possui zeros.</p></div>
 
 ```python
 ct.zeros(sys)
@@ -365,7 +366,7 @@ plt.show()
 ## Controlador projetado usando LGR com auxílio do Matlab
 
 
-Para fins de teste foi projetado um controlador simples usando o matlab e encontrada a função de transferência com o auxílio da biblioteca Control, por fim foi obtida a equação de diferenças para implementar o controlador no simulador.
+<div align="justify"><p style="text-indent: 50px;">Para fins de teste foi projetado um controlador simples usando o matlab e encontrada a função de transferência com o auxílio da biblioteca Control, por fim foi obtida a equação de diferenças para implementar o controlador no simulador.</p></div>
 
 
 <center>
@@ -448,13 +449,13 @@ plt.show()
 </center>
 
 
-Ao analisar o sistema com o controlador, temos que o sistema não possui erro em regime permanente e seu overshoot é zero, no entanto, para que esses requisitos fossem obtidos ouve um aumento no tempo de acomodação.
+<div align="justify"><p style="text-indent: 50px;">Ao analisar o sistema com o controlador, temos que o sistema não possui erro em regime permanente e seu overshoot é zero, no entanto, para que esses requisitos fossem obtidos ouve um aumento no tempo de acomodação.</p></div>
 
 <br>
 
 ## Função de Transferência Discreta C(z)
 
-Para discretizar o sistema foi usado um período de amostragem de 0,01s.
+<div align="justify"><p style="text-indent: 50px;">Para discretizar o sistema foi usado um período de amostragem de 0,01s.</p></div>
 
 ```python
 from control.matlab import c2d
@@ -504,7 +505,7 @@ $$
 
 
 
-Agora é possível implementar uma classe python para o controlador a partir da equação de diferenças.
+<div align="justify"><p style="text-indent: 50px;">Agora é possível implementar uma classe python para o controlador a partir da equação de diferenças.</p></div>
 
 $$
 \begin{align}
@@ -512,14 +513,14 @@ $$
 \end{align}
 $$
 
-com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
+<div align="justify"><p style="text-indent: 50px;">com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.</p></div>
 
 <br><br>
 
 # Referências
 
+<div align="justify"><p style="text-indent: 50px;">
 <dl>
-
 <dd><b>[1.]</b> JOB, Mila Mary; JOSE, P. Subha Hency. <b> Modeling and control of mechatronic aeropendulum.</b> In: 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS). IEEE, 2015. p. 1-5.</dd>
 
 <br>
@@ -536,3 +537,5 @@ com a função de diferenças encontrada, agora é possível implementa-la usand
 <dd><b>[4.]</b> SILVA, Yago Luiz Monteiro et al. <b>Projeto, construção e controle de um aeropêndulo<b>. 2018.</dd>
 
 </dl>
+
+</p></div>
