@@ -46,7 +46,7 @@ t_ant = 0.0
 helice = vp.box(pos=vp.vec(0.8, 0.6, 0), size=vp.vec(0.05, 0.2, 2),
                 color=vp.vec(1, 1, 0))
 helice2 = vp.box(pos=vp.vec(0.8, 0.6, 0), size=vp.vec(0.05, 2, 0.2),
-                color=vp.vec(1, 1, 0))
+                 color=vp.vec(1, 1, 0))
 
 # Simulação do Sistema
 while True:
@@ -80,8 +80,7 @@ while True:
                                                 angle=x[0]*ts,
                                                 origin=vp.vec(0, 5.2, 0))
 
-
-######################   DINÂMICAS DAS HÉLICES DO AEROPÊNDULO   #####################
+# #################   DINÂMICAS DAS HÉLICES DO AEROPÊNDULO   ###############
         helice.size = vp.vec(0.05, 0.2, 2)
         helice2.size = vp.vec(0.05, 2, 0.2)
         helice.axis = animacao_aeropendulo.aeropendulo.axis
@@ -108,7 +107,7 @@ while True:
         helice2.rotate(axis=vp.vec(1, 0, 0),
                        angle=0.1)
 
-######################   DINÂMICAS DAS HÉLICES DO AEROPÊNDULO   #####################
+# ##################   DINÂMICAS DAS HÉLICES DO AEROPÊNDULO   #################
 
         print(x[1] + interface.valor_angle)
         # Gráfico do ângulo.
