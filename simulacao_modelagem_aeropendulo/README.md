@@ -1,9 +1,12 @@
+---
+title: Simulação Gráfica do Aeropêndulo com a Biblioteca **VPython**
+author: Oséias Farias
+date: 2 Abril 2023
+---
+
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-
-
-# Simulação Gráfica do Aeropêndulo com a Biblioteca **VPython**
 
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/813595903?h=98af6ee09d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="demo_simulacao.mp4"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
@@ -65,16 +68,16 @@
 </div>
 </center>
 
-<div align="justify"><p style="text-indent: 50px;">Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $$(01)$$ que modela o sistema em questão.</p></div>
+<div align="justify"><p style="text-indent: 50px;">Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação $\bf(01)$ que modela o sistema em questão.</p></div>
 
 $$
 \begin{align}
- T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{01}\\
+  T &= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{01}
 \end{align}
 $$
 
 
-<div align="justify"><p style="text-indent: 50px;">Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $$T$$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $$(02)$$.</p></div>
+<div align="justify"><p style="text-indent: 50px;">Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $\bf T$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $\bf(02)$.</p></div>
 
 $$
 \begin{align}
@@ -83,6 +86,7 @@ $$
 \end{align}
 $$
 
+<br>
 
 <center>
 <div class="figure" >
@@ -91,6 +95,8 @@ $$
   <p>Figura 5 - Diagrama de blocos do modelo do Aeropêndulo.</p>
 </div>
 </center>
+
+<br>
 
 $$
 \begin{align}
@@ -121,7 +127,7 @@ Onde:
 
 ## Linearização do Sistema
 
-<div align="justify"><p style="text-indent: 50px;">Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $$(07)$$.
+<div align="justify"><p style="text-indent: 50px;">Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é  considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação $\bf(07)$.
 </p></div>
 
 $$
@@ -188,7 +194,7 @@ $$
 ### Parâmetros para Simulação
 
 
-Para simulação foi usado os parâmetros do artigo $$[1]$$.
+Para simulação foi usado os parâmetros do artigo $\bf[1]$.
 
 $$
 \begin{align}
@@ -474,18 +480,14 @@ $$
          &= \dfrac{0,2165z −0,2087}{z-1} \cdot \dfrac{z^{-1}}{z^{-1}} \tag{15}\\
          &= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{16}\\
 \end{align}
-
 $$
 
 #### Encontrando a equação de diferenças do controlador
 
 $$
 \begin{align}
-
 C(z) &= \dfrac{U(z)}{E(z)} \tag{20}
-
 \end{align}
-
 $$
 
 onde:
@@ -537,5 +539,4 @@ $$
 <dd><b>[4.]</b> SILVA, Yago Luiz Monteiro et al. <b>Projeto, construção e controle de um aeropêndulo<b>. 2018.</dd>
 
 </dl>
-
 </p></div>
