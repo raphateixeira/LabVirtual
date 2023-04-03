@@ -76,7 +76,7 @@ $$
 $$
 
 
-<div align="justify"><p style="text-indent: 50px;">Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $$V$$ nos terminais do motor e o empuxo $\bf T$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $\bf(02)$.</p></div>
+<div align="justify"><p style="text-indent: 50px;">Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão $\bf V$ nos terminais do motor e o empuxo $\bf T$ gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão $\bf(02)$.</p></div>
 
 $$
 \begin{align}
@@ -388,9 +388,7 @@ plt.show()
 
 $$
 \begin{align}
-
 C(s) &= \frac{0,2126s + 0,7893}{s} \tag{13}
-
 \end{align}
 $$
 

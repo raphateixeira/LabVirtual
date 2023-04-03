@@ -121,8 +121,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <span class="doc-title">Simulação Gráfica do Aeropêndulo com a Biblioteca <strong>VPython</strong></span>
         <ul class="nav pull-right doc-info">
                     <li><p class="navbar-text">Oséias Farias</p></li>
-                              <li><p class="navbar-text">2 Abril 2023</p></li>
-                  </ul>
+                            </ul>
       </div>
     </div>
   </div>
@@ -251,7 +250,7 @@ Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemá
 \]</span></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
-Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão <span class="math display">\[V\]</span> nos terminais do motor e o empuxo <span class="math inline">\(\bf T\)</span> gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão <span class="math inline">\(\bf(02)\)</span>.
+Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão <span class="math inline">\(\bf V\)</span> nos terminais do motor e o empuxo <span class="math inline">\(\bf T\)</span> gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão <span class="math inline">\(\bf(02)\)</span>.
 </p>
 </div>
 <p><span class="math display">\[
@@ -526,11 +525,11 @@ Figura 6 - Diagrama de blocos do Sistema em Malha Fechada.
 </div>
 </center>
 <h3 id="função-de-transferência-do-controlador">Função de Transferência do Controlador</h3>
-<p>$$ <span class="math display">\[\begin{align}
-
+<p><span class="math display">\[
+\begin{align}
 C(s) &amp;= \frac{0,2126s + 0,7893}{s} \tag{13}
-
-\end{align}\]</span> $$</p>
+\end{align}
+\]</span></p>
 <p><strong>Função de Transferência do Controlador usando a biblioteca Control do Python</strong></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1">numc <span class="op">=</span> np.array([<span class="fl">0.2126</span>, <span class="fl">0.7893</span>])</a>
 <a class="sourceLine" id="cb15-2" title="2">denc <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">0</span>])</a>
