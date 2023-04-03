@@ -1,7 +1,7 @@
 ---
 title: Simulação Gráfica do Aeropêndulo com a Biblioteca **VPython**
 author: Oséias Farias
-date: 2 Abril 2023 
+
 ---
 
 <script type="text/javascript" id="MathJax-script" async
