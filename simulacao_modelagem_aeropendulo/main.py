@@ -45,8 +45,27 @@ t_ant = 0.0
 
 helice = vp.box(pos=vp.vec(0.8, 0.6, 0), size=vp.vec(0.05, 0.2, 2),
                 color=vp.vec(1, 1, 0))
-helice2 = vp.box(pos=vp.vec(0.8, 0.6, 0), size=vp.vec(0.05, 2, 0.2),
+
+helice1 = vp.box(pos=vp.vec(0.8, 0.6, 0), size=vp.vec(0.05, 0.2, 2),
                  color=vp.vec(1, 1, 0))
+helice1.axis = animacao_aeropendulo.aeropendulo.axis
+helice1.size = vp.vec(0.05, 0.2, 2)
+helice1.rotate(axis=vp.vec(1, 0, 0),
+               angle=vp.pi/4)
+
+helice2 = vp.box(pos=vp.vec(0.8, 0.6, 0), size=vp.vec(0.05, 0.2, 2),
+                 color=vp.vec(1, 1, 0))
+helice2.axis = animacao_aeropendulo.aeropendulo.axis
+helice2.size = vp.vec(0.05, 0.2, 2)
+helice2.rotate(axis=vp.vec(1, 0, 0),
+               angle=vp.pi/2)
+
+helice3 = vp.box(pos=vp.vec(0.8, 0.6, 0), size=vp.vec(0.05, 0.2, 2),
+                 color=vp.vec(1, 1, 0))
+helice3.axis = animacao_aeropendulo.aeropendulo.axis
+helice3.size = vp.vec(0.05, 0.2, 2)
+helice3.rotate(axis=vp.vec(1, 0, 0),
+               angle=3*vp.pi/4.)
 
 # Simulação do Sistema
 while True:
@@ -82,19 +101,33 @@ while True:
 
 # #################   DINÂMICAS DAS HÉLICES DO AEROPÊNDULO   ###############
         helice.size = vp.vec(0.05, 0.2, 2)
-        helice2.size = vp.vec(0.05, 2, 0.2)
+        helice1.size = vp.vec(0.05, 0.2, 2)
+        helice2.size = vp.vec(0.05, 0.2, 2)
+        helice3.size = vp.vec(0.05, 0.2, 2)
         helice.axis = animacao_aeropendulo.aeropendulo.axis
+        helice1.axis = animacao_aeropendulo.aeropendulo.axis
         helice2.axis = animacao_aeropendulo.aeropendulo.axis
+        helice3.axis = animacao_aeropendulo.aeropendulo.axis
         helice.size = vp.vec(0.05, 0.2, 2)
-        helice2.size = vp.vec(0.05, 2, 0.2)
+        helice1.size = vp.vec(0.05, 0.2, 2)
+        helice2.size = vp.vec(0.05, 0.2, 2)
+        helice3.size = vp.vec(0.05, 0.2, 2)
         helice.rotate(axis=vp.vec(0, 0, 1),
                       angle=x[0]*ts,
                       origin=vp.vec(0, 5.2, 0))
+        helice1.rotate(axis=vp.vec(0, 0, 1),
+                       angle=x[0]*ts,
+                       origin=vp.vec(0, 5.2, 0))
         helice2.rotate(axis=vp.vec(0, 0, 1),
                        angle=x[0]*ts,
                        origin=vp.vec(0, 5.2, 0))
+        helice3.rotate(axis=vp.vec(0, 0, 1),
+                       angle=x[0]*ts,
+                       origin=vp.vec(0, 5.2, 0))
         helice.size = vp.vec(0.05, 0.2, 2)
-        helice2.size = vp.vec(0.05, 2, 0.2)
+        helice1.size = vp.vec(0.05, 0.2, 2)
+        helice2.size = vp.vec(0.05, 0.2, 2)
+        helice3.size = vp.vec(0.05, 0.2, 2)
 
         # obs tentando ajustar o diro das hélices apenas para um lado ....
         if x[1] + interface.valor_angle < np.pi/2:
@@ -104,7 +137,11 @@ while True:
 
         helice.rotate(axis=vp.vec(1, 0, 0),
                       angle=0.1)
+        helice1.rotate(axis=vp.vec(1, 0, 0),
+                       angle=0.1)
         helice2.rotate(axis=vp.vec(1, 0, 0),
+                       angle=0.1)
+        helice3.rotate(axis=vp.vec(1, 0, 0),
                        angle=0.1)
 
 # ##################   DINÂMICAS DAS HÉLICES DO AEROPÊNDULO   #################
