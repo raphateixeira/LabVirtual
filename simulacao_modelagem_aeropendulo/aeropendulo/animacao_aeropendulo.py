@@ -122,6 +122,27 @@ class AnimacaoAeropendulo:
         self.helice1.visible = False
         self.helice2.visible = False
         self.helice3.visible = False
+    
+    def set_posicao_helice(self, angle):
+        self.helice.rotate(axis=vp.vec(0, 0, 1),
+                           angle=angle,
+                           origin=vp.vec(0, 5.2, 0))
+        self.helice.size = vp.vec(0.05, 0.2, 2)
+
+        self.helice1.rotate(axis=vp.vec(0, 0, 1),
+                            angle=angle,
+                            origin=vp.vec(0, 5.2, 0))
+        self.helice1.size = vp.vec(0.05, 0.2, 2)
+
+        self.helice2.rotate(axis=vp.vec(0, 0, 1),
+                            angle=angle,
+                            origin=vp.vec(0, 5.2, 0))
+        self.helice2.size = vp.vec(0.05, 0.2, 2)
+
+        self.helice3.rotate(axis=vp.vec(0, 0, 1),
+                            angle=angle,
+                            origin=vp.vec(0, 5.2, 0))
+        self.helice3.size = vp.vec(0.05, 0.2, 2)
 
     def update_helice(self, angle, ts) -> None:
 

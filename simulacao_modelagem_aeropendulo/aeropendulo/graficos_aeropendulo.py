@@ -37,7 +37,7 @@ class Graficos:
                                 xtitle='tempo (s)', fast=True,
                                 width=self.width, height=self.height,
                                 center=vp.vector(0, 12, 0), scroll=True,
-                                xmin=0, xmax=14, ymin=-0.5, ymax=3, dot=True,
+                                xmin=0, xmax=14, ymin=-0.5, ymax=6, dot=True,
                                 background=vp.vector(0.95, 0.95, 0.95))
 
         self.curva1 = vp.gcurve(color=vp.color.blue, width=3,

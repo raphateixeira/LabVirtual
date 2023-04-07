@@ -43,21 +43,12 @@ class Interface:
             self.animacao_aeropendulo.pause_giro()
         self.EXE = not self.EXE
 
-    def slide_angle_up(self, angle) -> None:
-        self.animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
-                                                     angle=angle.value*0.01,
-                                                     origin=vp.vec(0, 5.2, 0))
-
-    def __slide_angle_down(self, angle) -> None:
-        self.animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
-                                                     angle=angle.value*0.01,
-                                                     origin=vp.vec(0, 5.2, 0))
-
-    def Rotate(self, angle) -> None:
+    def rotate(self, angle) -> None:
         self.valor_angle = (angle.number)*(vp.pi/180.0)
         self.animacao_aeropendulo.aeropendulo.rotate(axis=vp.vec(0, 0, 1),
                                                      angle=self.valor_angle,
                                                      origin=vp.vec(0, 5.2, 0))
+        self.animacao_aeropendulo.set_posicao_helice(self.valor_angle)
 
     def __slide_angle_referencia(self, valor) -> None:
         self.controlador.r = valor.value
@@ -75,7 +66,7 @@ class Interface:
         self.scene.append_to_caption("\t\t")
         self.scene.append_to_caption(
             "Posição Inicial\t")
-        vp.winput(bind=self.Rotate, prompt="Rotate: ", type="numeric",
+        vp.winput(bind=self.rotate, prompt="Rotate: ", type="numeric",
                   width=100, _height=40)
         vp.wtext(text=" Graus")
         self.scene.append_to_caption('\n')
