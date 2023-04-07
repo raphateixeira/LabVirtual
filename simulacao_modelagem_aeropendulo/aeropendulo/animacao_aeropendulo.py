@@ -36,6 +36,7 @@ class AnimacaoAeropendulo:
         self.scene.range = 6
         # chamando a função para criar a aminação gráfica do Aeropêndulo.
         self.aeropendulo = self.__aminacao()
+        self.__helice()
 
     def __aminacao(self) -> vp.compound:
         """
@@ -78,6 +79,76 @@ class AnimacaoAeropendulo:
                             align='center', depth=0)
 
         return self.pendulo
+
+    def __helice(self):
+        self.helice = vp.box(pos=vp.vec(0.8, 0.6, 0),
+                             size=vp.vec(0.05, 0.2, 2),
+                             color=vp.vec(1, 1, 0))
+
+        self.helice1 = vp.box(pos=vp.vec(0.8, 0.6, 0),
+                              size=vp.vec(0.05, 0.2, 2),
+                              color=vp.vec(1, 1, 0))
+        self.helice1.axis = self.pendulo.axis
+        self.helice1.size = vp.vec(0.05, 0.2, 2)
+        self.helice1.rotate(axis=vp.vec(1, 0, 0),
+                            angle=vp.pi/4)
+
+        self.helice2 = vp.box(pos=vp.vec(0.8, 0.6, 0),
+                              size=vp.vec(0.05, 0.2, 2),
+                              color=vp.vec(1, 1, 0))
+        self.helice2.axis = self.pendulo.axis
+        self.helice2.size = vp.vec(0.05, 0.2, 2)
+        self.helice2.rotate(axis=vp.vec(1, 0, 0),
+                            angle=vp.pi/2)
+
+        self.helice3 = vp.box(pos=vp.vec(0.8, 0.6, 0),
+                              size=vp.vec(0.05, 0.2, 2),
+                              color=vp.vec(1, 1, 0))
+        self.helice3.axis = self.pendulo.axis
+        self.helice3.size = vp.vec(0.05, 0.2, 2)
+        self.helice3.rotate(axis=vp.vec(1, 0, 0),
+                            angle=3*vp.pi/4.)
+
+    def update_helice(self, angle, ts):
+        self.helice.size = vp.vec(0.05, 0.2, 2)
+        self.helice1.size = vp.vec(0.05, 0.2, 2)
+        self.helice2.size = vp.vec(0.05, 0.2, 2)
+        self.helice3.size = vp.vec(0.05, 0.2, 2)
+        self.helice.axis = self.pendulo.axis
+        self.helice1.axis = self.pendulo.axis
+        self.helice2.axis = self.pendulo.axis
+        self.helice3.axis = self.pendulo.axis
+        self.helice.size = vp.vec(0.05, 0.2, 2)
+        self.helice1.size = vp.vec(0.05, 0.2, 2)
+        self.helice2.size = vp.vec(0.05, 0.2, 2)
+        self.helice3.size = vp.vec(0.05, 0.2, 2)
+        self.helice.rotate(axis=vp.vec(0, 0, 1),
+                           angle=angle*ts,
+                           origin=vp.vec(0, 5.2, 0))
+        self.helice1.rotate(axis=vp.vec(0, 0, 1),
+                            angle=angle*ts,
+                            origin=vp.vec(0, 5.2, 0))
+        self.helice2.rotate(axis=vp.vec(0, 0, 1),
+                            angle=angle*ts,
+                            origin=vp.vec(0, 5.2, 0))
+        self.helice3.rotate(axis=vp.vec(0, 0, 1),
+                            angle=angle*ts,
+                            origin=vp.vec(0, 5.2, 0))
+        self.helice.size = vp.vec(0.05, 0.2, 2)
+        self.helice1.size = vp.vec(0.05, 0.2, 2)
+        self.helice2.size = vp.vec(0.05, 0.2, 2)
+        self.helice3.size = vp.vec(0.05, 0.2, 2)
+
+        # obs tentando ajustar o diro das hélices apenas para um lado ....
+        # if x[1] + interface.valor_angle < np.pi/2:
+        #     ag = 0.3
+        # else:
+        #     ag = -0.8
+
+        self.helice.rotate(axis=vp.vec(1, 0,  0), angle=0.1)
+        self.helice1.rotate(axis=vp.vec(1, 0, 0), angle=0.1)
+        self.helice2.rotate(axis=vp.vec(1, 0, 0), angle=0.1)
+        self.helice3.rotate(axis=vp.vec(1, 0, 0), angle=0.1)
 
     def __desenhar_pendulo(self):
         # Braço do Aeropêndulo.
