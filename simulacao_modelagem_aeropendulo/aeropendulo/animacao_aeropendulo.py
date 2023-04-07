@@ -37,7 +37,6 @@ class AnimacaoAeropendulo:
         # chamando a função para criar a aminação gráfica do Aeropêndulo.
         self.aeropendulo = self.__aminacao()
         self.__helice()
-        self.RUN_HELICES = False
 
     def __aminacao(self) -> vp.compound:
         """
@@ -52,7 +51,7 @@ class AnimacaoAeropendulo:
                            texture=vp.textures.wood)
         self.parede = vp.box(pos=vp.vec(0, 7.1, -7.55),
                              size=vp.vec(30, 16, 0.2),
-                             color=vp.vec(0.1, 0.1, 0.1), shininess=0.05)
+                             color=vp.vec(0.1, 0.1, 0.1), shininess=0.01)
         self.sitio = vp.text(pos=vp.vec(0, 8.1, -7.45),
                              text="AEROPÊNDULO", color=vp.vec(1, 0.6, 0.6),
                              align='center', depth=0)
@@ -71,8 +70,8 @@ class AnimacaoAeropendulo:
         self.b2 = vp.box(pos=vp.vec(0, -0.6, -1.5), size=vp.vec(4.5, 0.4, 2.5),
                          color=vp.vec(0.8, 0.8, 0.8))
 
-        self.logo = vp.box(pos=vp.vec(0, 2.5, -1.7),
-                           texture="https://i.imgur.com/odcLHxB.png",
+        self.logo = vp.box(pos=vp.vec(0, 2.5, -1.799),
+                           texture="https://i.imgur.com/D2xnkpF.png",
                            size=vp.vec(2, 2, 0.2))
 
         self.ufpa = vp.text(pos=vp.vec(0, 3.7, -1.7), text="UFPA",
@@ -211,18 +210,10 @@ class AnimacaoAeropendulo:
                                        axis=vp.vec(0.4, 0, 0),
                                        color=vp.vec(0.5, 0.5, 0.8))
 
-        # Hélice.
-        self.helice = vp.box(pos=vp.vec(0.8, -4, 0),
-                             size=vp.vec(0.05, 0.2, 2),
-                             color=vp.vec(1, 1, 0))
-
         # Motor completo.
         self.motor = vp.compound([self.base_motor,
                                   self.base2_motor,
                                   self.base_helice])
-
-        # Motor + Hélice.
-        # self.motor_helice = vp.compound([self.motor, self.helice])
 
         # Aeropêndulo
         self.pendulo = vp.compound([self.barra, self.motor])
