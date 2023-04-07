@@ -59,7 +59,7 @@ class Interface:
                                                      angle=self.valor_angle,
                                                      origin=vp.vec(0, 5.2, 0))
 
-    def __slide_angle_referencia(self, valor):
+    def __slide_angle_referencia(self, valor) -> None:
         self.controlador.r = valor.value
         print(valor.value)
 
@@ -79,14 +79,6 @@ class Interface:
                   width=100, _height=40)
         vp.wtext(text=" Graus")
         self.scene.append_to_caption('\n')
-
-        # self.scene.append_to_caption("Ângulo +  :  ")
-        # vp.slider(bind=self.slide_angle_up, min=0, max=5,
-        #          step=0.001, value=0)
-        # self.scene.append_to_caption("\n\n\t")
-        # self.scene.append_to_caption("Ângulo -   :  ")
-        # vp.slider(bind=self.__slide_angle_down, min=-5, max=0,
-        #          step=0.001, value=-5)
 
         self.scene.append_to_caption("\n\n\t")
         self.scene.append_to_caption("Referência : ")

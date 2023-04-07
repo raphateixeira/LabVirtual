@@ -81,7 +81,7 @@ class AnimacaoAeropendulo:
 
         return self.pendulo
 
-    def __helice(self):
+    def __helice(self) -> None:
         self.helice = vp.box(pos=vp.vec(0.8, 0.6, 0),
                              size=vp.vec(0.05, 0.2, 2),
                              color=vp.vec(1, 1, 0))
@@ -113,17 +113,17 @@ class AnimacaoAeropendulo:
         self.helice2.visible = False
         self.helice3.visible = False
 
-    def pause_giro(self):
+    def pause_giro(self) -> None:
         self.helice1.visible = True
         self.helice2.visible = True
         self.helice3.visible = True
 
-    def girar_helice(self):
+    def girar_helice(self) -> None:
         self.helice1.visible = False
         self.helice2.visible = False
         self.helice3.visible = False
 
-    def update_helice(self, angle, ts):
+    def update_helice(self, angle, ts) -> None:
 
         self.helice.size = vp.vec(0.05, 0.2, 2)
         self.helice1.size = vp.vec(0.05, 0.2, 2)
@@ -170,7 +170,7 @@ class AnimacaoAeropendulo:
         self.helice2.rotate(axis=vp.vec(1, 0, 0), angle=0.09)
         self.helice3.rotate(axis=vp.vec(1, 0, 0), angle=0.09)
 
-    def __desenhar_pendulo(self):
+    def __desenhar_pendulo(self) -> None:
         # Braço do Aeropêndulo.
         self.barra = vp.box(pos=vp.vec(0, -1.4, 0),
                             size=vp.vec(0.2, self.comprimento_braco, 0.2),
