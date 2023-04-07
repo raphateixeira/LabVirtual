@@ -19,7 +19,7 @@ from aeropendulo import (Graficos, AnimacaoAeropendulo,
                          Interface, ModeloMatAeropendulo,
                          ControladorDiscreto)
 
-# Instanciando um objeto AeropenduloAaeropendulo = Aeropendulo()
+# Instanciando um objeto AeropenduloAaeropendulo()
 animacao_aeropendulo = AnimacaoAeropendulo()
 
 # Instanciando um objeto para plotagem dos gráficos dinâmicos dos
