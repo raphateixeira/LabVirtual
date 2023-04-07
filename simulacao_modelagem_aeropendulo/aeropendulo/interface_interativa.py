@@ -36,9 +36,11 @@ class Interface:
 
     def __executar(self, b) -> None:
         if self.EXE:
+            self.animacao_aeropendulo.girar_helice()
             b.text = "Executar"
         else:
             b.text = "Pausar"
+            self.animacao_aeropendulo.pause_giro()
         self.EXE = not self.EXE
 
     def slide_angle_up(self, angle) -> None:

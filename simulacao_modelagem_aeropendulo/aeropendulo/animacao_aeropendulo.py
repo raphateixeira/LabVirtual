@@ -37,6 +37,7 @@ class AnimacaoAeropendulo:
         # chamando a função para criar a aminação gráfica do Aeropêndulo.
         self.aeropendulo = self.__aminacao()
         self.__helice()
+        self.RUN_HELICES = False
 
     def __aminacao(self) -> vp.compound:
         """
@@ -108,8 +109,22 @@ class AnimacaoAeropendulo:
         self.helice3.size = vp.vec(0.05, 0.2, 2)
         self.helice3.rotate(axis=vp.vec(1, 0, 0),
                             angle=3*vp.pi/4.)
+        self.helice1.visible = False
+        self.helice2.visible = False
+        self.helice3.visible = False
+
+    def pause_giro(self):
+        self.helice1.visible = True
+        self.helice2.visible = True
+        self.helice3.visible = True
+
+    def girar_helice(self):
+        self.helice1.visible = False
+        self.helice2.visible = False
+        self.helice3.visible = False
 
     def update_helice(self, angle, ts):
+
         self.helice.size = vp.vec(0.05, 0.2, 2)
         self.helice1.size = vp.vec(0.05, 0.2, 2)
         self.helice2.size = vp.vec(0.05, 0.2, 2)
