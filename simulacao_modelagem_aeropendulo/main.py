@@ -43,7 +43,6 @@ x = np.array([0.0, 0.0])
 t = 0.0
 t_ant = 0.0
 
-
 # Simulação do Sistema
 while True:
     vp.rate(100)
