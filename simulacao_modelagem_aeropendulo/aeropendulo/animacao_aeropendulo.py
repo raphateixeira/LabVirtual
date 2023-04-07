@@ -152,10 +152,10 @@ class AnimacaoAeropendulo:
         # else:
         #     ag = -0.8
 
-        self.helice.rotate(axis=vp.vec(1, 0,  0), angle=0.1)
-        self.helice1.rotate(axis=vp.vec(1, 0, 0), angle=0.1)
-        self.helice2.rotate(axis=vp.vec(1, 0, 0), angle=0.1)
-        self.helice3.rotate(axis=vp.vec(1, 0, 0), angle=0.1)
+        self.helice.rotate(axis=vp.vec(1, 0,  0), angle=0.01)
+        self.helice1.rotate(axis=vp.vec(1, 0, 0), angle=0.01)
+        self.helice2.rotate(axis=vp.vec(1, 0, 0), angle=0.01)
+        self.helice3.rotate(axis=vp.vec(1, 0, 0), angle=0.01)
 
     def __desenhar_pendulo(self):
         # Braço do Aeropêndulo.
