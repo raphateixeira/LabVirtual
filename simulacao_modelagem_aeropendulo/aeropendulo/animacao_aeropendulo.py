@@ -116,34 +116,32 @@ class AnimacaoAeropendulo:
         self.helice3.size = vp.vec(0.05, 0.2, 2)
 
         self.helice.axis = self.pendulo.axis
-        self.helice1.axis = self.pendulo.axis
-        self.helice2.axis = self.pendulo.axis
-        self.helice3.axis = self.pendulo.axis
-
         self.helice.size = vp.vec(0.05, 0.2, 2)
+        self.helice1.axis = self.pendulo.axis
         self.helice1.size = vp.vec(0.05, 0.2, 2)
+        self.helice2.axis = self.pendulo.axis
         self.helice2.size = vp.vec(0.05, 0.2, 2)
+        self.helice3.axis = self.pendulo.axis
         self.helice3.size = vp.vec(0.05, 0.2, 2)
 
         self.helice.rotate(axis=vp.vec(0, 0, 1),
                            angle=angle*ts,
                            origin=vp.vec(0, 5.2, 0))
+        self.helice.size = vp.vec(0.05, 0.2, 2)
 
         self.helice1.rotate(axis=vp.vec(0, 0, 1),
                             angle=angle*ts,
                             origin=vp.vec(0, 5.2, 0))
+        self.helice1.size = vp.vec(0.05, 0.2, 2)
 
         self.helice2.rotate(axis=vp.vec(0, 0, 1),
                             angle=angle*ts,
                             origin=vp.vec(0, 5.2, 0))
+        self.helice2.size = vp.vec(0.05, 0.2, 2)
 
         self.helice3.rotate(axis=vp.vec(0, 0, 1),
                             angle=angle*ts,
                             origin=vp.vec(0, 5.2, 0))
-
-        self.helice.size = vp.vec(0.05, 0.2, 2)
-        self.helice1.size = vp.vec(0.05, 0.2, 2)
-        self.helice2.size = vp.vec(0.05, 0.2, 2)
         self.helice3.size = vp.vec(0.05, 0.2, 2)
 
         # obs tentando ajustar o diro das hélices apenas para um lado ....
