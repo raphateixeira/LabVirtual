@@ -36,7 +36,7 @@ c = 0.0076
 mma = ModeloMatAeropendulo(K_m=Km, m=m, d=d, J=J, c=c)
 
 # Instânciando um objeto ControladorDiscreto
-controlador = ControladorDiscreto(referencia=0.1)  # np.pi/2.
+controlador = ControladorDiscreto(referencia=0.01)
 u = 0  # Sinal de controle inicial
 
 # Instanciando um objeto Interface
