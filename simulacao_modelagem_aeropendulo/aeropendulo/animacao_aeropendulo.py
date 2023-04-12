@@ -121,7 +121,7 @@ class AnimacaoAeropendulo:
         self.helice1.visible = False
         self.helice2.visible = False
         self.helice3.visible = False
-    
+
     def set_posicao_helice(self, angle):
         self.helice.rotate(axis=vp.vec(0, 0, 1),
                            angle=angle,
