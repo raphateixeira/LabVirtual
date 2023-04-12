@@ -28,7 +28,12 @@ g = Graficos()
 graf, plot1, plot2, plot3, plot4 = g.graficos()
 
 # Instânciando um objeto para solução matemática do sistema Aeropêndulo.
-mma = ModeloMatAeropendulo()
+Km = 0.0296
+m = 0.36
+d = 0.03
+J = 0.0106
+c = 0.0076
+mma = ModeloMatAeropendulo(K_m=Km, m=m, d=d, J=J, c=c)
 
 # Instânciando um objeto ControladorDiscreto
 controlador = ControladorDiscreto(referencia=0.1)  # np.pi/2.
