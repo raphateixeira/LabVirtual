@@ -110,6 +110,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
 
@@ -126,7 +127,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
     <div class="container">
     <div class="row">
-            <div class="span12">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+
+        <ul>
+        <li><a href="#objetivo-de-sistemas-de-controle">Objetivo de Sistemas de Controle</a></li>
+        <li><a href="#o-que-é-o-aeropêndulo">O que é o Aeropêndulo?</a></li>
+        <li><a href="#modelagem-e-simulação-aeropêndulo">Modelagem e Simulação Aeropêndulo</a><ul>
+        <li><a href="#linearização-do-sistema">Linearização do Sistema</a></li>
+        <li><a href="#sistema-no-espaço-de-estados">Sistema no Espaço de Estados</a><ul>
+        <li><a href="#forma-canônica-de-controlador">Forma Canônica de Controlador</a></li>
+        <li><a href="#parâmetros-para-simulação">Parâmetros para Simulação</a></li>
+        </ul></li>
+        <li><a href="#resposta-ao-degrau-usando-python">Resposta ao degrau usando Python</a><ul>
+        <li><a href="#importando-as-bibliotecas-python-usadas">Importando as bibliotecas Python usadas</a></li>
+        <li><a href="#sistema-no-espaço-de-estados-1">Sistema no Espaço de Estados</a></li>
+        <li><a href="#obtendo-a-função-de-transferência-a-partir-do-espaço-de-estados">Obtendo a Função de Transferência a partir do Espaço de Estados</a></li>
+        <li><a href="#informações-do-sistema-em-malha-aberta">Informações do sistema em malha aberta</a></li>
+        </ul></li>
+        <li><a href="#controlador-projetado-usando-lgr-com-auxílio-do-matlab">Controlador projetado usando LGR com auxílio do Matlab</a><ul>
+        <li><a href="#função-de-transferência-do-controlador">Função de Transferência do Controlador</a></li>
+        <li><a href="#simulação-do-sistema-em-malha-fechada">Simulação do Sistema em Malha Fechada</a></li>
+        <li><a href="#resposta-ao-degrau-unitário">Resposta ao degrau unitário</a></li>
+        </ul></li>
+        <li><a href="#função-de-transferência-discreta-cz">Função de Transferência Discreta C(z)</a></li>
+        </ul></li>
+        <li><a href="#referências">Referências</a></li>
+        </ul>
+
+        </div>
+      </div>
+            <div class="span9">
 
       
       <center>
@@ -242,25 +273,25 @@ Figura 4 - Diagrama esquemático do Aeropêndulo.
 </center>
 <div data-align="justify">
 <p style="text-indent: 50px;">
-Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação <span class="math inline">$\bf(01)$</span> que modela o sistema em questão.
+Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação <span class="math inline">\(\bf(01)\)</span> que modela o sistema em questão.
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
   T &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{01}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
-Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão <span class="math inline">$\bf V$</span> nos terminais do motor e o empuxo <span class="math inline">$\bf T$</span> gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão <span class="math inline">$\bf(02)$</span>.
+Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão <span class="math inline">\(\bf V\)</span> nos terminais do motor e o empuxo <span class="math inline">\(\bf T\)</span> gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão <span class="math inline">\(\bf(02)\)</span>.
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
     T &amp;\approx K_mV \tag{02} \\
     K_mV &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{03}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <p><br></p>
 <center>
 <div class="figure">
@@ -272,13 +303,13 @@ Figura 5 - Diagrama de blocos do modelo do Aeropêndulo.
 </div>
 </center>
 <p><br></p>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
     \dot{x_2} &amp;= x_1 \tag{04} \\
     \dot{x_1}J &amp;= - x_1c - mgdsen(x_2) + VK_m \tag{05} \\
     \dot{x_1} &amp;= \dfrac{- x_1c - mgdsen(x_2) + VK_m}{J} \tag{06}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <p>Onde:</p>
 <div>
 <ul>
@@ -315,20 +346,20 @@ $$</span><br /></p>
 <h2 id="linearização-do-sistema">Linearização do Sistema</h2>
 <div data-align="justify">
 <p style="text-indent: 50px;">
-Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação <span class="math inline">$\bf(07)$</span>.
+Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação <span class="math inline">\(\bf(07)\)</span>.
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
     K_mV &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{07}\\
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
 Aplicando a transformada de Laplace, temos:
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
     K_mV(s) &amp;= s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{08}\\
     K_mV(s) &amp;= (s^2J + sc +mgd)\theta(s) \tag{09}\\
@@ -336,16 +367,16 @@ Aplicando a transformada de Laplace, temos:
     \frac{\theta(s)}{K_mV(s)} &amp;= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{11}\\
     \frac{\theta(s)}{V(s)} &amp;= \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{12}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <p><br></p>
 <h2 id="sistema-no-espaço-de-estados">Sistema no Espaço de Estados</h2>
 <h3 id="forma-canônica-de-controlador">Forma Canônica de Controlador</h3>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
     x_1&amp;=\theta \quad x_2=\dot{\theta} \quad x_2 = \dot{x_1}
 \end{align}
-$$</span><br /></p>
-<p><br /><span class="math display">$$
+\]</span></p>
+<p><span class="math display">\[
 \begin{bmatrix}
     \dot{x}_1 \\
     \dot{x}_2
@@ -362,8 +393,8 @@ $$</span><br /></p>
     0 \\
     \frac{K_m}{J}
 \end{bmatrix}\cdot u
-$$</span><br /></p>
-<p><br /><span class="math display">$$
+\]</span></p>
+<p><span class="math display">\[
 Y= \begin{bmatrix}
     1 &amp; 0
 \end{bmatrix} \cdot
@@ -371,10 +402,10 @@ Y= \begin{bmatrix}
     0 \\
     \frac{K_m}{J}
 \end{bmatrix} + 0
-$$</span><br /></p>
+\]</span></p>
 <h3 id="parâmetros-para-simulação">Parâmetros para Simulação</h3>
-<p>Para simulação foi usado os parâmetros do artigo <span class="math inline">$\bf[1]$</span>.</p>
-<p><br /><span class="math display">$$
+<p>Para simulação foi usado os parâmetros do artigo <span class="math inline">\(\bf[1]\)</span>.</p>
+<p><span class="math display">\[
 \begin{align}
   \begin{array}{|c|c|}                                        \hline
   \text { Parâmetros do Aeropêndulo } &amp; \text{Valores}      \\ \hline
@@ -386,7 +417,7 @@ $$</span><br /></p>
   c       &amp;   0,0076 Nms/rad                                \\ \hline
   \end{array}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <p><br></p>
 <h2 id="resposta-ao-degrau-usando-python">Resposta ao degrau usando Python</h2>
 <div data-align="justify">
@@ -527,11 +558,11 @@ Figura 6 - Diagrama de blocos do Sistema em Malha Fechada.
 </div>
 </center>
 <h3 id="função-de-transferência-do-controlador">Função de Transferência do Controlador</h3>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
 C(s) &amp;= \frac{0,2126s + 0,7893}{s} \tag{13}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <p><strong>Função de Transferência do Controlador usando a biblioteca Control do Python</strong></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1">numc <span class="op">=</span> np.array([<span class="fl">0.2126</span>, <span class="fl">0.7893</span>])</a>
 <a class="sourceLine" id="cb15-2" title="2">denc <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">0</span>])</a>
@@ -539,17 +570,17 @@ $$</span><br /></p>
 <a class="sourceLine" id="cb15-4" title="4">Cs <span class="op">=</span> ct.tf(numc, denc)</a>
 <a class="sourceLine" id="cb15-5" title="5"><span class="bu">print</span>(Cs)</a></code></pre></div>
 <p><strong>saída:</strong></p>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \dfrac{0.2126 s + 0.7893}{s}
-$$</span><br /></p>
+\]</span></p>
 <h3 id="simulação-do-sistema-em-malha-fechada">Simulação do Sistema em Malha Fechada</h3>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" title="1">Fs <span class="op">=</span> ct.series(Gs, Cs)</a>
 <a class="sourceLine" id="cb16-2" title="2">Hs <span class="op">=</span> ct.feedback(Fs, <span class="dv">1</span>, sign<span class="op">=-</span><span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb16-3" title="3">Hs</a></code></pre></div>
 <p><strong>saída:</strong></p>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \dfrac{0.5937s+2.204}{s^3 +0.717s^2+10.58s+2.204}
-$$</span><br /></p>
+\]</span></p>
 <h3 id="resposta-ao-degrau-unitário">Resposta ao degrau unitário</h3>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1">t, yout <span class="op">=</span> ct.step_response(Hs)</a>
 <a class="sourceLine" id="cb17-2" title="2"></a>
@@ -588,24 +619,24 @@ Para discretizar o sistema foi usado um período de amostragem de 0,01s.
 <a class="sourceLine" id="cb18-2" title="2"></a>
 <a class="sourceLine" id="cb18-3" title="3">Cz <span class="op">=</span> c2d(Cs, Ts<span class="op">=</span><span class="fl">0.01</span>, method<span class="op">=</span><span class="st">&quot;tustin&quot;</span>)</a>
 <a class="sourceLine" id="cb18-4" title="4">Cz</a></code></pre></div>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \dfrac{0.2165 z + 0.2087}{z-1} \quad dt = 0.01
-$$</span><br /></p>
-<p><br /><span class="math display">$$
+\]</span></p>
+<p><span class="math display">\[
 \begin{align}
     C(z) &amp;= \dfrac{0,2165z −0,2087}{z-1} \tag{14}\\
          &amp;= \dfrac{0,2165z −0,2087}{z-1} \cdot \dfrac{z^{-1}}{z^{-1}} \tag{15}\\
          &amp;= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{16}\\
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <h4 id="encontrando-a-equação-de-diferenças-do-controlador">Encontrando a equação de diferenças do controlador</h4>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
 C(z) &amp;= \dfrac{U(z)}{E(z)} \tag{20}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <p>onde:</p>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
   U(z) &amp;= Z\{u[k]\} \tag{17}\\
   E(z) &amp;= Z\{e[k]\} \tag{18}\\
@@ -616,17 +647,17 @@ $$</span><br /></p>
   u[k] − u[k − 1] &amp;= 0,2165e[k] − 0,2087e[k − 1] \tag{23}\\
   u[k] &amp;= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{24}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
 Agora é possível implementar uma classe python para o controlador a partir da equação de diferenças.
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><span class="math display">\[
 \begin{align}
   u[k] &amp;= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{25}
 \end{align}
-$$</span><br /></p>
+\]</span></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
 com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
