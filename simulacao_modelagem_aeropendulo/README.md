@@ -9,6 +9,10 @@ author: Oséias Farias
             display: inline-block;
             margin-left: 40px;
         }
+        .tab1 {
+            display: inline-block;
+            margin-left: 80px;
+        }
 </style>
 
 
@@ -31,13 +35,13 @@ author: Oséias Farias
 
 <br>
 
-<b>Projeto:</b> Laboratório Virtual de Sistema de Controle\
-<b>Título:</b>: Simulação Gráfica do Aeropêndulo com a Biblioteca <b>VPython</b>\
-<b>Autor:</b><a href="https://github.com/Oseiasdfarias" target="_blank">
+<span class="tab"></span><b>Projeto:</b> Laboratório Virtual de Sistema de Controle\
+<span class="tab"></span><b>Título:</b>: Simulação Gráfica do Aeropêndulo com a Biblioteca <b>VPython</b>\
+<span class="tab"></span><b>Autor:</b><a href="https://github.com/Oseiasdfarias" target="_blank">
 Oséias Farias</a>\
-<b>Orientadores:</b>\
-<span class="tab"></span>Prof. Dr: Raphael Teixeira\
-<span class="tab"></span>Prof. Dr: Rafael Bayma
+<span class="tab"></span><b>Orientadores:</b>\
+<span class="tab1"></span>Prof. Dr: Raphael Teixeira\
+<span class="tab1"></span>Prof. Dr: Rafael Bayma
 
 <br><br>
 
