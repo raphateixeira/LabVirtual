@@ -4,6 +4,13 @@ author: Oséias Farias
 
 ---
 
+<style>
+        .tab {
+            display: inline-block;
+            margin-left: 40px;
+        }
+</style>
+
 
 <center>
 <div class="figure" >
@@ -11,7 +18,6 @@ author: Oséias Farias
        width="90">  
 </div>
 </center>
-
 
 <center>
 <b>Universidade Federal do Pará</b>
@@ -23,21 +29,23 @@ author: Oséias Farias
 <b>Faculdade de Engenharia Elétrica</b>
 </center>
 
-<b>Projeto:</b> Laboratório Virtual de Sistema de Controle\
-<b>Autor:</b> <a href="https://github.com/Oseiasdfarias" target="_blank">
-Oséias Farias</a>\
-<b>Orientadores:</b>
-
->>> Prof. Dr: Raphael Teixeira
-
->>> Prof. Dr: Rafael Bayma
-
 <br>
+
+<b>Projeto:</b> Laboratório Virtual de Sistema de Controle\
+<b>Título:</b>: Simulação Gráfica do Aeropêndulo com a Biblioteca <b>VPython</b>\
+<b>Autor: <a href="https://github.com/Oseiasdfarias" target="_blank">
+Oséias Farias</a>\
+<b>Orientadores:</b>\
+<span class="tab"></span>Prof. Dr: Raphael Teixeira\
+<span class="tab"></span>Prof. Dr: Rafael Bayma
+
+<br><br>
 
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
+## Demostração Sinmlador
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/815726684?h=80089a63c1&autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
