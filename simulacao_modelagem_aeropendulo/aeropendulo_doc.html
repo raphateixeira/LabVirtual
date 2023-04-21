@@ -128,7 +128,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <div class="span12">
 
       
-      <script type="text/javascript" id="MathJax-script" async
+      <center>
+<div class="figure">
+<p><img src="utils/logoufpa.png"
+       width="90"></p>
+</div>
+</center>
+<center>
+<b>Universidade Federal do Pará</b>
+</center>
+<center>
+<b>Campus Universitário de Tucuruí</b>
+</center>
+<center>
+<b>Faculdade de Engenharia Elétrica</b>
+</center>
+<p><b>Projeto:</b> Laboratório Virtual de Sistema de Controle<br />
+<b>Autor:</b> <a href="https://github.com/Oseiasdfarias" target="_blank"> Oséias Farias</a><br />
+<b>Orientadores:</b></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Prof. Dr: Raphael Teixeira</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Prof. Dr: Rafael Bayma</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><br></p>
+<script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 <div style="padding:56.25% 0 0 0;position:relative;">
@@ -208,25 +241,34 @@ Figura 4 - Diagrama esquemático do Aeropêndulo.
 </center>
 <div data-align="justify">
 <p style="text-indent: 50px;">
-Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação <span class="math inline">$\bf(01)$</span> que modela o sistema em questão.
+Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbf%2801%29" alt="\bf(01)" title="\bf(01)" /> que modela o sistema em questão.
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20T%20%26%3D%20J%5Cddot%7B%5Ctheta%7D%20%2B%20c%5Cdot%7B%5Ctheta%7D%20%2Bmgd%5Csin%7B%28%5Ctheta%29%7D%20%5Ctag%7B01%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
   T &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{01}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+  T &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{01}
+\end{align}
+" /><br /></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
-Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão <span class="math inline">$\bf V$</span> nos terminais do motor e o empuxo <span class="math inline">$\bf T$</span> gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão <span class="math inline">$\bf(02)$</span>.
+Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbf%20V" alt="\bf V" title="\bf V" /> nos terminais do motor e o empuxo <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbf%20T" alt="\bf T" title="\bf T" /> gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbf%2802%29" alt="\bf(02)" title="\bf(02)" />.
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%C2%A0%C2%A0%C2%A0%C2%A0T%20%26%5Capprox%20K_mV%20%5Ctag%7B02%7D%20%5C%5C%0A%C2%A0%C2%A0%C2%A0%C2%A0K_mV%20%26%3D%20J%5Cddot%7B%5Ctheta%7D%20%2B%20c%5Cdot%7B%5Ctheta%7D%20%2Bmgd%5Csin%7B%28%5Ctheta%29%7D%20%5Ctag%7B03%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
     T &amp;\approx K_mV \tag{02} \\
     K_mV &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{03}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+    T &amp;\approx K_mV \tag{02} \\
+    K_mV &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{03}
+\end{align}
+" /><br /></p>
 <p><br></p>
 <center>
 <div class="figure">
@@ -238,13 +280,19 @@ Figura 5 - Diagrama de blocos do modelo do Aeropêndulo.
 </div>
 </center>
 <p><br></p>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%C2%A0%C2%A0%C2%A0%C2%A0%5Cdot%7Bx_2%7D%20%26%3D%20x_1%20%5Ctag%7B04%7D%20%5C%5C%0A%C2%A0%C2%A0%C2%A0%C2%A0%5Cdot%7Bx_1%7DJ%20%26%3D%20-%20x_1c%20-%20mgdsen%28x_2%29%20%2B%20VK_m%20%5Ctag%7B05%7D%20%5C%5C%0A%C2%A0%C2%A0%C2%A0%C2%A0%5Cdot%7Bx_1%7D%20%26%3D%20%5Cdfrac%7B-%20x_1c%20-%20mgdsen%28x_2%29%20%2B%20VK_m%7D%7BJ%7D%20%5Ctag%7B06%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
     \dot{x_2} &amp;= x_1 \tag{04} \\
     \dot{x_1}J &amp;= - x_1c - mgdsen(x_2) + VK_m \tag{05} \\
     \dot{x_1} &amp;= \dfrac{- x_1c - mgdsen(x_2) + VK_m}{J} \tag{06}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+    \dot{x_2} &amp;= x_1 \tag{04} \\
+    \dot{x_1}J &amp;= - x_1c - mgdsen(x_2) + VK_m \tag{05} \\
+    \dot{x_1} &amp;= \dfrac{- x_1c - mgdsen(x_2) + VK_m}{J} \tag{06}
+\end{align}
+" /><br /></p>
 <p>Onde:</p>
 <div>
 <ul>
@@ -281,20 +329,24 @@ $$</span><br /></p>
 <h2 id="linearização-do-sistema">Linearização do Sistema</h2>
 <div data-align="justify">
 <p style="text-indent: 50px;">
-Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação <span class="math inline">$\bf(07)$</span>.
+Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbf%2807%29" alt="\bf(07)" title="\bf(07)" />.
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%20%20K_mV%20%26%3D%20J%5Cddot%7B%5Ctheta%7D%20%2B%20c%5Cdot%7B%5Ctheta%7D%20%2Bmgd%5Ctheta%20%5Ctag%7B07%7D%5C%5C%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
     K_mV &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{07}\\
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+    K_mV &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{07}\\
+\end{align}
+" /><br /></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
 Aplicando a transformada de Laplace, temos:
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%20%20K_mV%28s%29%20%26%3D%20s%5E2J%5Ctheta%28s%29%20%2B%20sc%5Ctheta%28s%29%20%2Bmgd%5Ctheta%28s%29%20%5Ctag%7B08%7D%5C%5C%0A%20%20%20%20K_mV%28s%29%20%26%3D%20%28s%5E2J%20%2B%20sc%20%2Bmgd%29%5Ctheta%28s%29%20%5Ctag%7B09%7D%5C%5C%0A%20%20%20%20%5Cfrac%7B%5Ctheta%28s%29%7D%7BK_mV%28s%29%7D%20%26%3D%20%5Cfrac%7B1%7D%7Bs%5E2J%20%2B%20sc%20%2Bmgd%7D%20%5Ctag%7B10%7D%5C%5C%0A%20%20%20%20%5Cfrac%7B%5Ctheta%28s%29%7D%7BK_mV%28s%29%7D%20%26%3D%20%5Cfrac%7B1%2FJ%7D%7Bs%5E2%20%2B%20sc%2FJ%20%2Bmgd%2FJ%7D%20%5Ctag%7B11%7D%5C%5C%0A%20%20%20%20%5Cfrac%7B%5Ctheta%28s%29%7D%7BV%28s%29%7D%20%26%3D%20%5Cfrac%7BK_m%2FJ%7D%7Bs%5E2%20%2B%20sc%2FJ%20%2Bmgd%2FJ%7D%20%5Ctag%7B12%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
     K_mV(s) &amp;= s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{08}\\
     K_mV(s) &amp;= (s^2J + sc +mgd)\theta(s) \tag{09}\\
@@ -302,16 +354,28 @@ Aplicando a transformada de Laplace, temos:
     \frac{\theta(s)}{K_mV(s)} &amp;= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{11}\\
     \frac{\theta(s)}{V(s)} &amp;= \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{12}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+    K_mV(s) &amp;= s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{08}\\
+    K_mV(s) &amp;= (s^2J + sc +mgd)\theta(s) \tag{09}\\
+    \frac{\theta(s)}{K_mV(s)} &amp;= \frac{1}{s^2J + sc +mgd} \tag{10}\\
+    \frac{\theta(s)}{K_mV(s)} &amp;= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{11}\\
+    \frac{\theta(s)}{V(s)} &amp;= \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{12}
+\end{align}
+" /><br /></p>
 <p><br></p>
 <h2 id="sistema-no-espaço-de-estados">Sistema no Espaço de Estados</h2>
 <h3 id="forma-canônica-de-controlador">Forma Canônica de Controlador</h3>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%20%20x_1%26%3D%5Ctheta%20%5Cquad%20x_2%3D%5Cdot%7B%5Ctheta%7D%20%5Cquad%20x_2%20%3D%20%5Cdot%7Bx_1%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
     x_1&amp;=\theta \quad x_2=\dot{\theta} \quad x_2 = \dot{x_1}
 \end{align}
-$$</span><br /></p>
-<p><br /><span class="math display">$$
+" title="
+\begin{align}
+    x_1&amp;=\theta \quad x_2=\dot{\theta} \quad x_2 = \dot{x_1}
+\end{align}
+" /><br /></p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Cdot%7Bx%7D_1%20%5C%5C%0A%20%20%20%20%5Cdot%7Bx%7D_2%0A%5Cend%7Bbmatrix%7D%3D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%20%20%20%20%20%20%20%20%20%20%20%20%26%201%5C%5C%0A%20%20%20%20-%5Cfrac%7Bmgd%7D%7BJ%7D%20%26%20-%5Cfrac%7Bc%7D%7BJ%7D%0A%5Cend%7Bbmatrix%7D%5Ccdot%20%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20x_1%20%5C%5C%0A%20%20%20%20x_2%0A%5Cend%7Bbmatrix%7D%2B%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%5C%5C%0A%20%20%20%20%5Cfrac%7BK_m%7D%7BJ%7D%0A%5Cend%7Bbmatrix%7D%5Ccdot%20u%0A" alt="
 \begin{bmatrix}
     \dot{x}_1 \\
     \dot{x}_2
@@ -328,8 +392,25 @@ $$</span><br /></p>
     0 \\
     \frac{K_m}{J}
 \end{bmatrix}\cdot u
-$$</span><br /></p>
-<p><br /><span class="math display">$$
+" title="
+\begin{bmatrix}
+    \dot{x}_1 \\
+    \dot{x}_2
+\end{bmatrix}=
+\begin{bmatrix}
+    0             &amp; 1\\
+    -\frac{mgd}{J} &amp; -\frac{c}{J}
+\end{bmatrix}\cdot 
+\begin{bmatrix}
+    x_1 \\
+    x_2
+\end{bmatrix}+
+\begin{bmatrix}
+    0 \\
+    \frac{K_m}{J}
+\end{bmatrix}\cdot u
+" /><br /></p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0AY%3D%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20%201%20%26%200%0A%5Cend%7Bbmatrix%7D%20%5Ccdot%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%200%20%5C%5C%0A%20%20%20%20%5Cfrac%7BK_m%7D%7BJ%7D%0A%5Cend%7Bbmatrix%7D%20%2B%200%0A" alt="
 Y= \begin{bmatrix}
     1 &amp; 0
 \end{bmatrix} \cdot
@@ -337,10 +418,18 @@ Y= \begin{bmatrix}
     0 \\
     \frac{K_m}{J}
 \end{bmatrix} + 0
-$$</span><br /></p>
+" title="
+Y= \begin{bmatrix}
+    1 &amp; 0
+\end{bmatrix} \cdot
+\begin{bmatrix}
+    0 \\
+    \frac{K_m}{J}
+\end{bmatrix} + 0
+" /><br /></p>
 <h3 id="parâmetros-para-simulação">Parâmetros para Simulação</h3>
-<p>Para simulação foi usado os parâmetros do artigo <span class="math inline">$\bf[1]$</span>.</p>
-<p><br /><span class="math display">$$
+<p>Para simulação foi usado os parâmetros do artigo <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbf%5B1%5D" alt="\bf[1]" title="\bf[1]" />.</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7C%7D%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Chline%0A%20%20%5Ctext%20%7B%20Par%C3%A2metros%20do%20Aerop%C3%AAndulo%20%7D%20%26%20%5Ctext%7BValores%7D%20%20%20%20%20%20%5C%5C%20%5Chline%0A%20%20K_m%20%20%20%20%20%26%20%20%200%2C0296%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%20%5Chline%0A%20%20d%20%20%20%20%20%20%20%26%20%20%200%2C03m%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%20%5Chline%0A%20%20J%20%20%20%20%20%20%20%26%20%20%200%2C0106%20Kgm%5E2%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%20%5Chline%0A%20%20m%20%20%20%20%20%20%20%26%20%20%200%2C36%20m%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%20%5Chline%0A%20%20g%20%20%20%20%20%20%20%26%20%20%209%2C8%20m%2Fs%5E2%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%20%5Chline%0A%20%20c%20%20%20%20%20%20%20%26%20%20%200%2C0076%20Nms%2Frad%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%20%5Chline%0A%20%20%5Cend%7Barray%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
   \begin{array}{|c|c|}                                        \hline
   \text { Parâmetros do Aeropêndulo } &amp; \text{Valores}      \\ \hline
@@ -352,7 +441,19 @@ $$</span><br /></p>
   c       &amp;   0,0076 Nms/rad                                \\ \hline
   \end{array}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+  \begin{array}{|c|c|}                                        \hline
+  \text { Parâmetros do Aeropêndulo } &amp; \text{Valores}      \\ \hline
+  K_m     &amp;   0,0296                                        \\ \hline
+  d       &amp;   0,03m                                         \\ \hline
+  J       &amp;   0,0106 Kgm^2                                  \\ \hline
+  m       &amp;   0,36 m                                        \\ \hline
+  g       &amp;   9,8 m/s^2                                     \\ \hline
+  c       &amp;   0,0076 Nms/rad                                \\ \hline
+  \end{array}
+\end{align}
+" /><br /></p>
 <p><br></p>
 <h2 id="resposta-ao-degrau-usando-python">Resposta ao degrau usando Python</h2>
 <div data-align="justify">
@@ -493,11 +594,15 @@ Figura 6 - Diagrama de blocos do Sistema em Malha Fechada.
 </div>
 </center>
 <h3 id="função-de-transferência-do-controlador">Função de Transferência do Controlador</h3>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0AC%28s%29%20%26%3D%20%5Cfrac%7B0%2C2126s%20%2B%200%2C7893%7D%7Bs%7D%20%5Ctag%7B13%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
 C(s) &amp;= \frac{0,2126s + 0,7893}{s} \tag{13}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+C(s) &amp;= \frac{0,2126s + 0,7893}{s} \tag{13}
+\end{align}
+" /><br /></p>
 <p><strong>Função de Transferência do Controlador usando a biblioteca Control do Python</strong></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1">numc <span class="op">=</span> np.array([<span class="fl">0.2126</span>, <span class="fl">0.7893</span>])</a>
 <a class="sourceLine" id="cb15-2" title="2">denc <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">0</span>])</a>
@@ -505,17 +610,21 @@ $$</span><br /></p>
 <a class="sourceLine" id="cb15-4" title="4">Cs <span class="op">=</span> ct.tf(numc, denc)</a>
 <a class="sourceLine" id="cb15-5" title="5"><span class="bu">print</span>(Cs)</a></code></pre></div>
 <p><strong>saída:</strong></p>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cdfrac%7B0.2126%20s%20%2B%200.7893%7D%7Bs%7D%0A" alt="
 \dfrac{0.2126 s + 0.7893}{s}
-$$</span><br /></p>
+" title="
+\dfrac{0.2126 s + 0.7893}{s}
+" /><br /></p>
 <h3 id="simulação-do-sistema-em-malha-fechada">Simulação do Sistema em Malha Fechada</h3>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" title="1">Fs <span class="op">=</span> ct.series(Gs, Cs)</a>
 <a class="sourceLine" id="cb16-2" title="2">Hs <span class="op">=</span> ct.feedback(Fs, <span class="dv">1</span>, sign<span class="op">=-</span><span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb16-3" title="3">Hs</a></code></pre></div>
 <p><strong>saída:</strong></p>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cdfrac%7B0.5937s%2B2.204%7D%7Bs%5E3%20%2B0.717s%5E2%2B10.58s%2B2.204%7D%0A" alt="
 \dfrac{0.5937s+2.204}{s^3 +0.717s^2+10.58s+2.204}
-$$</span><br /></p>
+" title="
+\dfrac{0.5937s+2.204}{s^3 +0.717s^2+10.58s+2.204}
+" /><br /></p>
 <h3 id="resposta-ao-degrau-unitário">Resposta ao degrau unitário</h3>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1">t, yout <span class="op">=</span> ct.step_response(Hs)</a>
 <a class="sourceLine" id="cb17-2" title="2"></a>
@@ -554,24 +663,36 @@ Para discretizar o sistema foi usado um período de amostragem de 0,01s.
 <a class="sourceLine" id="cb18-2" title="2"></a>
 <a class="sourceLine" id="cb18-3" title="3">Cz <span class="op">=</span> c2d(Cs, Ts<span class="op">=</span><span class="fl">0.01</span>, method<span class="op">=</span><span class="st">&quot;tustin&quot;</span>)</a>
 <a class="sourceLine" id="cb18-4" title="4">Cz</a></code></pre></div>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cdfrac%7B0.2165%20z%20%2B%200.2087%7D%7Bz-1%7D%20%5Cquad%20dt%20%3D%200.01%0A" alt="
 \dfrac{0.2165 z + 0.2087}{z-1} \quad dt = 0.01
-$$</span><br /></p>
-<p><br /><span class="math display">$$
+" title="
+\dfrac{0.2165 z + 0.2087}{z-1} \quad dt = 0.01
+" /><br /></p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%20%20C%28z%29%20%26%3D%20%5Cdfrac%7B0%2C2165z%20%E2%88%920%2C2087%7D%7Bz-1%7D%20%5Ctag%7B14%7D%5C%5C%0A%20%20%20%20%20%20%20%20%20%26%3D%20%5Cdfrac%7B0%2C2165z%20%E2%88%920%2C2087%7D%7Bz-1%7D%20%5Ccdot%20%5Cdfrac%7Bz%5E%7B-1%7D%7D%7Bz%5E%7B-1%7D%7D%20%5Ctag%7B15%7D%5C%5C%0A%20%20%20%20%20%20%20%20%20%26%3D%20%5Cdfrac%7B0%2C2165%20%E2%88%92%200%2C2087z%5E%7B-1%7D%7D%7B1-z%5E%7B-1%7D%7D%20%5Ctag%7B16%7D%5C%5C%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
     C(z) &amp;= \dfrac{0,2165z −0,2087}{z-1} \tag{14}\\
          &amp;= \dfrac{0,2165z −0,2087}{z-1} \cdot \dfrac{z^{-1}}{z^{-1}} \tag{15}\\
          &amp;= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{16}\\
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+    C(z) &amp;= \dfrac{0,2165z −0,2087}{z-1} \tag{14}\\
+         &amp;= \dfrac{0,2165z −0,2087}{z-1} \cdot \dfrac{z^{-1}}{z^{-1}} \tag{15}\\
+         &amp;= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{16}\\
+\end{align}
+" /><br /></p>
 <h4 id="encontrando-a-equação-de-diferenças-do-controlador">Encontrando a equação de diferenças do controlador</h4>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0AC%28z%29%20%26%3D%20%5Cdfrac%7BU%28z%29%7D%7BE%28z%29%7D%20%5Ctag%7B20%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
 C(z) &amp;= \dfrac{U(z)}{E(z)} \tag{20}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+C(z) &amp;= \dfrac{U(z)}{E(z)} \tag{20}
+\end{align}
+" /><br /></p>
 <p>onde:</p>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20U%28z%29%20%26%3D%20Z%5C%7Bu%5Bk%5D%5C%7D%20%5Ctag%7B17%7D%5C%5C%0A%20%20E%28z%29%20%26%3D%20Z%5C%7Be%5Bk%5D%5C%7D%20%5Ctag%7B18%7D%5C%5C%0A%20%20%5Cdfrac%7BU%28z%29%7D%7BE%28z%29%7D%20%26%3D%20%5Cdfrac%7B0%2C2165%20%E2%88%92%200%2C2087z%5E%7B-1%7D%7D%7B1-z%5E%7B-1%7D%7D%20%5Ctag%7B19%7D%5C%5C%0A%20%20%281-z%5E%7B-1%7D%29U%28z%29%20%26%3D%20%280%2C2165%20%E2%88%92%200%2C2087z%5E%7B-1%7D%29E%28z%29%20%5Ctag%7B20%7D%5C%5C%0A%20%20U%28z%29-z%5E%7B-1%7DU%28z%29%20%26%3D%200%2C2165E%28z%29%20%E2%88%92%200%2C2087z%5E%7B-1%7DE%28z%29%20%5Ctag%7B21%7D%5C%5C%0A%20%20Z%5E%7B-1%7D%5C%7BU%28z%29-z%5E%7B-1%7DU%28z%29%5C%7D%20%26%3D%20Z%5E%7B-1%7D%5C%7B0%2C2165E%28z%29%20%E2%88%92%200%2C2087z%5E%7B-1%7DE%28z%29%5C%7D%20%5Ctag%7B22%7D%5C%5C%0A%20%20u%5Bk%5D%20%E2%88%92%20u%5Bk%20%E2%88%92%201%5D%20%26%3D%200%2C2165e%5Bk%5D%20%E2%88%92%200%2C2087e%5Bk%20%E2%88%92%201%5D%20%5Ctag%7B23%7D%5C%5C%0A%20%20u%5Bk%5D%20%26%3D%20u%5Bk%20%E2%88%92%201%5D%20%2B%200%2C2165e%5Bk%5D%20%E2%88%92%200%2C2087e%5Bk%20%E2%88%92%201%5D%20%5Ctag%7B24%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
   U(z) &amp;= Z\{u[k]\} \tag{17}\\
   E(z) &amp;= Z\{e[k]\} \tag{18}\\
@@ -582,17 +703,32 @@ $$</span><br /></p>
   u[k] − u[k − 1] &amp;= 0,2165e[k] − 0,2087e[k − 1] \tag{23}\\
   u[k] &amp;= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{24}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+  U(z) &amp;= Z\{u[k]\} \tag{17}\\
+  E(z) &amp;= Z\{e[k]\} \tag{18}\\
+  \dfrac{U(z)}{E(z)} &amp;= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{19}\\
+  (1-z^{-1})U(z) &amp;= (0,2165 − 0,2087z^{-1})E(z) \tag{20}\\
+  U(z)-z^{-1}U(z) &amp;= 0,2165E(z) − 0,2087z^{-1}E(z) \tag{21}\\
+  Z^{-1}\{U(z)-z^{-1}U(z)\} &amp;= Z^{-1}\{0,2165E(z) − 0,2087z^{-1}E(z)\} \tag{22}\\
+  u[k] − u[k − 1] &amp;= 0,2165e[k] − 0,2087e[k − 1] \tag{23}\\
+  u[k] &amp;= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{24}
+\end{align}
+" /><br /></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
 Agora é possível implementar uma classe python para o controlador a partir da equação de diferenças.
 </p>
 </div>
-<p><br /><span class="math display">$$
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20u%5Bk%5D%20%26%3D%20u%5Bk%20%E2%88%92%201%5D%20%2B%200%2C2165e%5Bk%5D%20%E2%88%92%200%2C2087e%5Bk%20%E2%88%92%201%5D%20%5Ctag%7B25%7D%0A%5Cend%7Balign%7D%0A" alt="
 \begin{align}
   u[k] &amp;= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{25}
 \end{align}
-$$</span><br /></p>
+" title="
+\begin{align}
+  u[k] &amp;= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{25}
+\end{align}
+" /><br /></p>
 <div data-align="justify">
 <p style="text-indent: 50px;">
 com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
