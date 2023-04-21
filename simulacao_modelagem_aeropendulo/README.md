@@ -4,6 +4,32 @@ author: Oséias Farias
 
 ---
 
+<center>
+<div class="figure" >
+  <img src="utils/logoufpa.png"
+       width="90">  
+</div>
+</center>
+
+
+<center>
+<b>Universidade Federal do Pará</b>
+
+<b>Campus Universitário de Tucuruí</b>
+
+<b>Faculdade de Engenharia Elétrica</b>
+</center>
+
+<b>Projeto:</b> Laboratório Virtual de Sistema de Controle\
+<b>Autor:</b> <a href="https://github.com/Oseiasdfarias" target="_blank">
+Oséias Farias</a>\
+<b>Orientadores:</b>
+>>> Prof. Dr: Raphael Teixeira
+
+>>> Prof. Dr: Rafael Bayma
+
+<br>
+
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
