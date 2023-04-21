@@ -43,15 +43,17 @@ Oséias Farias</a>\
 <span class="tab1"></span>Prof. Dr: Raphael Teixeira\
 <span class="tab1"></span>Prof. Dr: Rafael Bayma
 
-<br><br>
+<br>
 
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
-## Demostração Sinmlador
+## Demostração Simulador
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/815726684?h=80089a63c1&autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+<br>
 
 ## Objetivo de Sistemas de Controle
 
