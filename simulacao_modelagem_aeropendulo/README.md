@@ -33,7 +33,7 @@ author: Oséias Farias
 
 <b>Projeto:</b> Laboratório Virtual de Sistema de Controle\
 <b>Título:</b>: Simulação Gráfica do Aeropêndulo com a Biblioteca <b>VPython</b>\
-<b>Autor: <a href="https://github.com/Oseiasdfarias" target="_blank">
+<b>Autor:</b><a href="https://github.com/Oseiasdfarias" target="_blank">
 Oséias Farias</a>\
 <b>Orientadores:</b>\
 <span class="tab"></span>Prof. Dr: Raphael Teixeira\
