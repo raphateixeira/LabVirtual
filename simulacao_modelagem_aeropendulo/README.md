@@ -4,6 +4,7 @@ author: Oséias Farias
 
 ---
 
+
 <center>
 <div class="figure" >
   <img src="utils/logoufpa.png"
@@ -14,9 +15,11 @@ author: Oséias Farias
 
 <center>
 <b>Universidade Federal do Pará</b>
-
+</center>
+<center>
 <b>Campus Universitário de Tucuruí</b>
-
+</center>
+<center>
 <b>Faculdade de Engenharia Elétrica</b>
 </center>
 
@@ -24,6 +27,7 @@ author: Oséias Farias
 <b>Autor:</b> <a href="https://github.com/Oseiasdfarias" target="_blank">
 Oséias Farias</a>\
 <b>Orientadores:</b>
+
 >>> Prof. Dr: Raphael Teixeira
 
 >>> Prof. Dr: Rafael Bayma
