@@ -64,12 +64,12 @@ while True:
         controlador.set_sensor(x[1])
 
         # O controlador calcula o sinal de controle
-        # controlador.control_pi()
+        controlador.control_pi()
 
         # Controle proporcional
-        controlador.controle_proporcional(kp=10.0)
+        # controlador.controle_proporcional(kp=10.0)
         # pega o sinal de controle calculado e salva na variável u
-        u = controlador.get_uk()
+        u = controlador.get_u()
 
         # Sinal de controle aplicado a entrada do sistema
         mma.set_u(u)

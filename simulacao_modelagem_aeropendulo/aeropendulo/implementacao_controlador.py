@@ -30,7 +30,7 @@ class ControladorDiscreto:
         self.yout = yout
 
     # disponibiliza o sinal de controle
-    def get_uk(self):
+    def get_u(self):
         return self.uk
 
     # Calcula o sinal de controle Proporcional Integral
