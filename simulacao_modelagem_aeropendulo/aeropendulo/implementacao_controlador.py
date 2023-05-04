@@ -33,10 +33,16 @@ class ControladorDiscreto:
     def get_uk(self):
         return self.uk
 
-    # Calcula o sinal de controle
-    def calc_uk(self):
+    # Calcula o sinal de controle Proporcional Integral
+    def control_pi(self):
         self.ek = self.r - self.yout
-        self.uk = self.uk1 + 0.2165*self.ek-0.2087*self.ek1
+        self.uk = self.uk1 + 0.2165 * self.ek - 0.2087 * self.ek1
         self.ek1 = self.ek
         self.uk1 = self.uk
-        self.k = self.k+1
+        self.k = self.k + 1
+
+        # Calcula o sinal de controle Proporcional
+    def controle_proporcional(self, kp=1.0):
+        self.ek = self.r - self.yout
+        self.KP = kp
+        self.uk = self.KP * self.ek

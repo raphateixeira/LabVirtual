@@ -13,6 +13,7 @@
 # Data: 2023
 #  ----------------------------------------------------
 #
+
 import vpython as vp
 import numpy as np
 from aeropendulo import (Graficos, AnimacaoAeropendulo,
@@ -63,8 +64,10 @@ while True:
         controlador.set_sensor(x[1])
 
         # O controlador calcula o sinal de controle
-        controlador.calc_uk()
+        # controlador.control_pi()
 
+        # Controle proporcional
+        controlador.controle_proporcional(kp=10.0)
         # pega o sinal de controle calculado e salva na variável u
         u = controlador.get_uk()
 
