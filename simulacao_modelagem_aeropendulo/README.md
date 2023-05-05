@@ -73,7 +73,7 @@ Oséias Farias</a>\
 
 <center>
 <div class="figure" >
-  <img src="utils/aeropendulo_1.png"
+  <img src="utils/simulacao.png"
        width="900">  
   <p>Figura 2 - Animação do aeropêndulo usando a biblioteca vpython.</p>
 </div>
@@ -106,7 +106,7 @@ Oséias Farias</a>\
 
 <center>
 <div class="figure" >
-  <img src="utils/aeropendulo.png"
+  <img src="utils/aeropendulo_1.png"
        width="60%"> 
   <p>Figura 4 - Diagrama esquemático do Aeropêndulo.</p>
 </div>
