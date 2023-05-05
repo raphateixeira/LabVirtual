@@ -107,7 +107,7 @@ Oséias Farias</a>\
 <center>
 <div class="figure" >
   <img src="utils/aeropendulo_1.png"
-       width="60%"> 
+       width="40%"> 
   <p>Figura 4 - Diagrama esquemático do Aeropêndulo.</p>
 </div>
 </center>
