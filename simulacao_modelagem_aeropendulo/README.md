@@ -73,7 +73,7 @@ Oséias Farias</a>\
 
 <center>
 <div class="figure" >
-  <img src="utils/simulacao.png"
+  <img src="utils/simulacao_1.png"
        width="900">  
   <p>Figura 2 - Animação do aeropêndulo usando a biblioteca vpython.</p>
 </div>
