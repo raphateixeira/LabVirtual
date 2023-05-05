@@ -1,0 +1,698 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+  
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+        
+  
+    <!-- <script src="script.js"></script> -->
+  
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+  <meta name="author" content="Oséias Farias" />
+  <title>Simulação Gráfica do Aeropêndulo com a Biblioteca VPython</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">Simulação Gráfica do Aeropêndulo com a Biblioteca <strong>VPython</strong></span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">Oséias Farias</p></li>
+                            </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+
+        <ul>
+        <li><a href="#demostração-simulador">Demostração Simulador</a></li>
+        <li><a href="#objetivo-de-sistemas-de-controle">Objetivo de Sistemas de Controle</a></li>
+        <li><a href="#o-que-é-o-aeropêndulo">O que é o Aeropêndulo?</a></li>
+        <li><a href="#modelagem-e-simulação-aeropêndulo">Modelagem e Simulação Aeropêndulo</a><ul>
+        <li><a href="#linearização-do-sistema">Linearização do Sistema</a></li>
+        <li><a href="#sistema-no-espaço-de-estados">Sistema no Espaço de Estados</a><ul>
+        <li><a href="#forma-canônica-de-controlador">Forma Canônica de Controlador</a></li>
+        <li><a href="#parâmetros-para-simulação">Parâmetros para Simulação</a></li>
+        </ul></li>
+        <li><a href="#resposta-ao-degrau-usando-python">Resposta ao degrau usando Python</a><ul>
+        <li><a href="#importando-as-bibliotecas-python-usadas">Importando as bibliotecas Python usadas</a></li>
+        <li><a href="#sistema-no-espaço-de-estados-1">Sistema no Espaço de Estados</a></li>
+        <li><a href="#obtendo-a-função-de-transferência-a-partir-do-espaço-de-estados">Obtendo a Função de Transferência a partir do Espaço de Estados</a></li>
+        <li><a href="#informações-do-sistema-em-malha-aberta">Informações do sistema em malha aberta</a></li>
+        </ul></li>
+        <li><a href="#controlador-projetado-usando-lgr-com-auxílio-do-matlab">Controlador projetado usando LGR com auxílio do Matlab</a><ul>
+        <li><a href="#função-de-transferência-do-controlador">Função de Transferência do Controlador</a></li>
+        <li><a href="#simulação-do-sistema-em-malha-fechada">Simulação do Sistema em Malha Fechada</a></li>
+        <li><a href="#resposta-ao-degrau-unitário">Resposta ao degrau unitário</a></li>
+        </ul></li>
+        <li><a href="#função-de-transferência-discreta-cz">Função de Transferência Discreta C(z)</a></li>
+        </ul></li>
+        <li><a href="#referências">Referências</a></li>
+        </ul>
+
+        </div>
+      </div>
+            <div class="span9">
+
+      
+      <style>
+        .tab {
+            display: inline-block;
+            margin-left: 40px;
+        }
+        .tab1 {
+            display: inline-block;
+            margin-left: 80px;
+        }
+</style>
+<center>
+<div class="figure">
+<p><img src="utils/logoufpa.png"
+       width="90"></p>
+</div>
+</center>
+<center>
+<b>Universidade Federal do Pará</b>
+</center>
+<center>
+<b>Campus Universitário de Tucuruí</b>
+</center>
+<center>
+<b>Faculdade de Engenharia Elétrica</b>
+</center>
+<p><br></p>
+<p><span class="tab"></span><b>Projeto:</b> Laboratório Virtual de Sistema de Controle<br />
+<span class="tab"></span><b>Título:</b>: Simulação Gráfica do Aeropêndulo com a Biblioteca <b>VPython</b><br />
+<span class="tab"></span><b>Autor:</b><a href="https://github.com/Oseiasdfarias" target="_blank"> Oséias Farias</a><br />
+<span class="tab"></span><b>Orientadores:</b><br />
+<span class="tab1"></span>Prof. Dr: Raphael Teixeira<br />
+<span class="tab1"></span>Prof. Dr: Rafael Bayma</p>
+<p><br></p>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<h2 id="demostração-simulador">Demostração Simulador</h2>
+<div style="padding:56.25% 0 0 0;position:relative;">
+<iframe src="https://player.vimeo.com/video/815726684?h=80089a63c1&amp;autoplay=1&amp;loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
+<p><br></p>
+<h2 id="objetivo-de-sistemas-de-controle">Objetivo de Sistemas de Controle</h2>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Sistemas de controle têm como objetivos modelar, controlar e regular o comportamento de um processo ou sistema físico. Ele é amplamente utilizado em diversas áreas, como engenharia, física, química e biologia, para garantir que o sistema ou processo seja mantido dentro de um determinado conjunto de parâmetros ou condições.
+</p>
+</div>
+<center>
+<div class="figure">
+<img src="utils/sistema_aeropendulo_malha_fechada.svg"
+       width="900"><br />
+
+<p>
+Figura 1 - Diagrama de blocos do Sistema em Malha Fechada.
+</p>
+</div>
+</center>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Nas Engenharias, muito dos sistemas estudados são físicos, quando se modela matematicamente esses sistemas, fica complicado para o aluna assimilar o comportamento do sistema real a partir dos gráficos dos estados, por outro lado, a implementação de protótipos se torna um empecilho para o processo de aprendizagem, já que demanda conhecimento de outra áreas, além do custo na compra de componentes, sendo assim, a simulação gráfica desses sistemas usando liguagens de programação proporciona ao aluno uma excelente forma de visualizar o comportamento do sistema real sem custos de implementação já que as linguagens de programação são gratuitas.
+</p>
+</div>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Para a implementação da simulação gráfica do Aeropêndulo, foi usada a linguagem de programação Python com a biblioteca Vpython, a Figura 2 mostra o simulador.
+</p>
+</div>
+<center>
+<div class="figure">
+<img src="utils/simulacao.png"
+       width="900"><br />
+
+<p>
+Figura 2 - Animação do aeropêndulo usando a biblioteca vpython.
+</p>
+</div>
+</center>
+<h2 id="o-que-é-o-aeropêndulo">O que é o Aeropêndulo?</h2>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+O aeropêndulo é um dispositivo utilizado em experimentos de física que combina os princípios de um pêndulo e da aerodinâmica. Ele consiste em uma haste suspensa por um ponto fixo em um suporte, com uma asa em uma das extremidades da haste.
+</p>
+</div>
+<center>
+<div class="figure">
+<img src="https://www.researchgate.net/profile/Giuseppe-Habib/publication/281578300/figure/fig1/AS:779421346709519@1562839938541/a-Aeropendulum-photo-b-schematic-physical-model.gif"
+       width="50%"><br />
+
+<p>
+Figura 3 - Aeropêndulo.
+</p>
+</div>
+</center>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Quando o aeropêndulo é movido para um lado, a força da gravidade faz com que a haste comece a oscilar em torno do ponto de suspensão. A asa no final da haste também gera uma força aerodinâmica que pode afetar o movimento do pêndulo. A interação entre as forças gravitacionais e aerodinâmicas faz com que o aeropêndulo execute movimentos complexos e interessantes.
+</p>
+</div>
+<p><br></p>
+<hr />
+<p><br></p>
+<h1 id="modelagem-e-simulação-aeropêndulo">Modelagem e Simulação Aeropêndulo</h1>
+<center>
+<div class="figure">
+<img src="utils/aeropendulo_1.png"
+       width="40%">
+<p>
+Figura 4 - Diagrama esquemático do Aeropêndulo.
+</p>
+</div>
+</center>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Usando as leis de Newton e momentos angulares podemos encontrar o modelo matemático que descreve a dinâmica do aeropêndulo, assim, temos a equação <span class="math inline">\(\bf(01)\)</span> que modela o sistema em questão.
+</p>
+</div>
+<p><span class="math display">\[
+\begin{align}
+  T &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{01}
+\end{align}
+\]</span></p>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Queremos controlar o ângulo do braço do aeropêndulo a partir da tensão aplicada aos terminais do motor, assim,devemos encontrar uma relação entre a tensão <span class="math inline">\(\bf V\)</span> nos terminais do motor e o empuxo <span class="math inline">\(\bf T\)</span> gerado pela hélice, essa relação é não linear, porém é possível aproximar por uma relação linear, como mostra a expressão <span class="math inline">\(\bf(02)\)</span>.
+</p>
+</div>
+<p><span class="math display">\[
+\begin{align}
+    T &amp;\approx K_mV \tag{02} \\
+    K_mV &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\sin{(\theta)} \tag{03}
+\end{align}
+\]</span></p>
+<p><br></p>
+<center>
+<div class="figure">
+<img src="utils/diagrama_bloco_aeropendulo_nao_linear.svg"
+       width="90%">
+<p>
+Figura 5 - Diagrama de blocos do modelo do Aeropêndulo.
+</p>
+</div>
+</center>
+<p><br></p>
+<p><span class="math display">\[
+\begin{align}
+    \dot{x_2} &amp;= x_1 \tag{04} \\
+    \dot{x_1}J &amp;= - x_1c - mgdsen(x_2) + VK_m \tag{05} \\
+    \dot{x_1} &amp;= \dfrac{- x_1c - mgdsen(x_2) + VK_m}{J} \tag{06}
+\end{align}
+\]</span></p>
+<p>Onde:</p>
+<div>
+<ul>
+<li>
+<b>T</b>: Empuxo gerado pela hélice;
+</li>
+<li>
+<b>J</b>: Momento de inércia;
+</li>
+<li>
+<b>θ</b>: posição angular do Aeropêndulo;
+</li>
+<li>
+<b>c</b>: coeficiente de amortecimento viscoso;
+</li>
+<li>
+<b>m</b>: peso do Aeropêndulo;
+</li>
+<li>
+<b>d</b>: a distância entre o centro de massa e o ponto de pivô;
+</li>
+<li>
+<b>V</b>: Tensão de Entrada do Motor CC Série;
+</li>
+<li>
+<b>Km</b>: Relação entre o torque e a tensão;
+</li>
+<li>
+<b>x1 e x2</b>: Estados do Sistema;
+</li>
+</ul>
+</div>
+<p><br><br></p>
+<h2 id="linearização-do-sistema">Linearização do Sistema</h2>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Uma das técnicas de linearização quando se tem sistemas não lineares que a componente não linear é o seno ou cosseno é considerar o seno ou cosseno sendo o valor do próprio ângulo, isso funciona bem para pequenas variações em torno do ângulo, aplicando essa técnica ao modelo do aeropêndulo, temos a equação <span class="math inline">\(\bf(07)\)</span>.
+</p>
+</div>
+<p><span class="math display">\[
+\begin{align}
+    K_mV &amp;= J\ddot{\theta} + c\dot{\theta} +mgd\theta \tag{07}\\
+\end{align}
+\]</span></p>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Aplicando a transformada de Laplace, temos:
+</p>
+</div>
+<p><span class="math display">\[
+\begin{align}
+    K_mV(s) &amp;= s^2J\theta(s) + sc\theta(s) +mgd\theta(s) \tag{08}\\
+    K_mV(s) &amp;= (s^2J + sc +mgd)\theta(s) \tag{09}\\
+    \frac{\theta(s)}{K_mV(s)} &amp;= \frac{1}{s^2J + sc +mgd} \tag{10}\\
+    \frac{\theta(s)}{K_mV(s)} &amp;= \frac{1/J}{s^2 + sc/J +mgd/J} \tag{11}\\
+    \frac{\theta(s)}{V(s)} &amp;= \frac{K_m/J}{s^2 + sc/J +mgd/J} \tag{12}
+\end{align}
+\]</span></p>
+<p><br></p>
+<h2 id="sistema-no-espaço-de-estados">Sistema no Espaço de Estados</h2>
+<h3 id="forma-canônica-de-controlador">Forma Canônica de Controlador</h3>
+<p><span class="math display">\[
+\begin{align}
+    x_1&amp;=\theta \quad x_2=\dot{\theta} \quad x_2 = \dot{x_1}
+\end{align}
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix}
+    \dot{x}_1 \\
+    \dot{x}_2
+\end{bmatrix}=
+\begin{bmatrix}
+    0             &amp; 1\\
+    -\frac{mgd}{J} &amp; -\frac{c}{J}
+\end{bmatrix}\cdot 
+\begin{bmatrix}
+    x_1 \\
+    x_2
+\end{bmatrix}+
+\begin{bmatrix}
+    0 \\
+    \frac{K_m}{J}
+\end{bmatrix}\cdot u
+\]</span></p>
+<p><span class="math display">\[
+Y= \begin{bmatrix}
+    1 &amp; 0
+\end{bmatrix} \cdot
+\begin{bmatrix}
+    0 \\
+    \frac{K_m}{J}
+\end{bmatrix} + 0
+\]</span></p>
+<h3 id="parâmetros-para-simulação">Parâmetros para Simulação</h3>
+<p>Para simulação foi usado os parâmetros do artigo <span class="math inline">\(\bf[1]\)</span>.</p>
+<p><span class="math display">\[
+\begin{align}
+  \begin{array}{|c|c|}                                        \hline
+  \text { Parâmetros do Aeropêndulo } &amp; \text{Valores}      \\ \hline
+  K_m     &amp;   0,0296                                        \\ \hline
+  d       &amp;   0,03m                                         \\ \hline
+  J       &amp;   0,0106 Kgm^2                                  \\ \hline
+  m       &amp;   0,36 m                                        \\ \hline
+  g       &amp;   9,8 m/s^2                                     \\ \hline
+  c       &amp;   0,0076 Nms/rad                                \\ \hline
+  \end{array}
+\end{align}
+\]</span></p>
+<p><br></p>
+<h2 id="resposta-ao-degrau-usando-python">Resposta ao degrau usando Python</h2>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Para realizar a simulação da resposta ao degrau foi usado Python com o auxílio das bibliotecas numpy, matplotlib e control, sendo que as bibliotecas numpy e matplotlib são usada para criar as matrizes A, B, C e D e plotar a resposta do do sistema, respectivamente, já a biblioteca control é usada para criar o sistema no espaço de estados e obter a função de transferência, além disso, é possível obter a resposta ao degrau usando a função <strong>step</strong> da biblioteca control, que recebe como parâmetro o sistema criado anteriormente, no espaço de estados ou função de transferência.
+</p>
+</div>
+<h3 id="importando-as-bibliotecas-python-usadas">Importando as bibliotecas Python usadas</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="im">import</span> control <span class="im">as</span> ct</a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">plt.style.use(<span class="st">&quot;ggplot&quot;</span>)</a></code></pre></div>
+<p>Variáveis com os parâmetros para simulação do modelo.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1">K_m <span class="op">=</span> <span class="fl">0.0296</span></a>
+<a class="sourceLine" id="cb2-2" title="2">m <span class="op">=</span> <span class="fl">0.36</span></a>
+<a class="sourceLine" id="cb2-3" title="3">d <span class="op">=</span> <span class="fl">0.03</span></a>
+<a class="sourceLine" id="cb2-4" title="4">J <span class="op">=</span> <span class="fl">0.0106</span></a>
+<a class="sourceLine" id="cb2-5" title="5">g <span class="op">=</span> <span class="fl">9.8</span></a>
+<a class="sourceLine" id="cb2-6" title="6">c <span class="op">=</span> <span class="fl">0.0076</span></a></code></pre></div>
+<p>Matrizes NumPy do sistema no espaço de estados</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1">A <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb3-2" title="2">              [<span class="op">-</span>(m<span class="op">*</span>g<span class="op">*</span>d)<span class="op">/</span>J, <span class="op">-</span>(c<span class="op">/</span>J)]])</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4">B <span class="op">=</span> np.array([[<span class="dv">0</span>, K_m<span class="op">/</span>J]]).T</a>
+<a class="sourceLine" id="cb3-5" title="5"></a>
+<a class="sourceLine" id="cb3-6" title="6">C <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">D <span class="op">=</span> <span class="dv">0</span></a></code></pre></div>
+<p><br></p>
+<h3 id="sistema-no-espaço-de-estados-1">Sistema no Espaço de Estados</h3>
+<p><br></p>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Para criar o sistema no espaço de estados, foi usado a biblioteca Python, <strong>control</strong>, essa biblioteca permite criar um sistema no espaço de estados a partir das matrizes <strong>A</strong>, <strong>B</strong>, <strong>C</strong>, <strong>D</strong>
+</p>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1">sys <span class="op">=</span> ct.ss(A, B, C, D)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="bu">print</span>(sys)</a></code></pre></div>
+<h3 id="obtendo-a-função-de-transferência-a-partir-do-espaço-de-estados">Obtendo a Função de Transferência a partir do Espaço de Estados</h3>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Para obter a função de transferência a partir do sistema no espaço de estados, a biblioteca control implementa uma função, ct.ss2tf(sys), que recebe como parâmetro, o sistema no espaço de estados e retorna a função de transferência.
+</p>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1">Gs <span class="op">=</span> ct.ss2tf(sys)</a>
+<a class="sourceLine" id="cb5-2" title="2">Gs</a></code></pre></div>
+<h3 id="informações-do-sistema-em-malha-aberta">Informações do sistema em malha aberta</h3>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Antes de realizar a simulação em malha aberta, é interessante observar as características do sistema, para isso, a biblioteca control implementa algumas função.
+</p>
+</div>
+<h4 id="explicando-as-diferentes-funções-da-biblioteca-control">Explicando as diferentes funções da biblioteca control</h4>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+A função <strong>ct.step_info()</strong> recebe como parâmetro o sistema no espaço de estados ou uma função de transferência e retorna as características do sistema, para esse exemplo, ao aplicar a função ela retorna diversas características, exemplo:
+</p>
+</div>
+<ul>
+<li>
+<b>Tempo de acomodação</b> -&gt; ‘SettlingTime’: 10.308519357198815’
+</li>
+<li>
+<b>Ultrapassagem Percentual</b> -&gt; ‘Overshoot’: 69.54106137593485,
+</li>
+<li>
+<b>Tempo de Subida</b> -&gt; ‘RiseTime’: 0.396481513738416
+</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1">ct.step_info(sys)</a></code></pre></div>
+<p><strong>saída:</strong></p>
+<pre><code>{&#39;RiseTime&#39;: 0.396481513738416,
+ &#39;SettlingTime&#39;: 10.308519357198815,
+ &#39;SettlingMin&#39;: 0.14343794449344063,
+ &#39;SettlingMax&#39;: 0.47415111647086844,
+ &#39;Overshoot&#39;: 69.54106137593485,
+ &#39;Undershoot&#39;: 0,
+ &#39;Peak&#39;: 0.47415111647086844,
+ &#39;PeakTime&#39;: 1.0308519357198815,
+ &#39;SteadyStateValue&#39;: 0.2796674225245654}</code></pre>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+A função <strong>ct.damp()</strong> recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os Autovalores, amortecimento e frequência natural para cada polo do sistema.
+</p>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1">ct.damp(sys)<span class="op">;</span></a></code></pre></div>
+<p><strong>saída:</strong></p>
+<pre><code>_____Eigenvalue______ Damping___ Frequency_
+   -0.3585    +3.139j     0.1135       3.16
+   -0.3585    -3.139j     0.1135       3.16</code></pre>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+A função <strong>ct.poles()</strong> recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os polos do sistema, para esse caso o sistema é de segunda ordem, pois possui dois pólos.
+</p>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1">ct.poles(sys)</a></code></pre></div>
+<p><strong>saída:</strong></p>
+<pre><code>array([-0.35849057+3.13948884j, -0.35849057-3.13948884j])</code></pre>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+A função <strong>ct.zeros()</strong> recebe como argumento o sistema no espaço de estados ou a função de transferência e retorna os zeros do sistema. para esse caso o sistema não possui zeros.
+</p>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1">ct.zeros(sys)</a></code></pre></div>
+<p><strong>saída:</strong></p>
+<pre><code>array([], dtype=float64)</code></pre>
+<h4 id="resposta-ao-degrau">Resposta ao degrau</h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" title="1">t, yout <span class="op">=</span> ct.step_response(Gs)</a>
+<a class="sourceLine" id="cb14-2" title="2"></a>
+<a class="sourceLine" id="cb14-3" title="3">fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="fl">3.5</span>))</a>
+<a class="sourceLine" id="cb14-4" title="4">ax.set_title(<span class="st">&quot;Aeropêndulo em Malha Aberta&quot;</span>)</a>
+<a class="sourceLine" id="cb14-5" title="5">ax.set_ylabel(<span class="st">&quot;Ângulo (Graus°)&quot;</span>)</a>
+<a class="sourceLine" id="cb14-6" title="6">ax.set_xlabel(<span class="st">&quot;Tempo (s)&quot;</span>)</a>
+<a class="sourceLine" id="cb14-7" title="7">ax.plot(t, np.rad2deg(yout))</a>
+<a class="sourceLine" id="cb14-8" title="8">plt.show()</a></code></pre></div>
+<p><strong>Saída:</strong></p>
+<center>
+<div class="figure">
+<p><img src="utils/simu_malha_aberta.svg"
+       width="800"></p>
+</div>
+</center>
+<p><br><br></p>
+<h2 id="controlador-projetado-usando-lgr-com-auxílio-do-matlab">Controlador projetado usando LGR com auxílio do Matlab</h2>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Para fins de teste foi projetado um controlador simples usando o matlab e encontrada a função de transferência com o auxílio da biblioteca Control, por fim foi obtida a equação de diferenças para implementar o controlador no simulador.
+</p>
+</div>
+<center>
+<div class="figure">
+<img src="utils/sistema_aeropendulo_malha_fechada.svg"
+       width="90%">
+<p>
+Figura 6 - Diagrama de blocos do Sistema em Malha Fechada.
+</p>
+</div>
+</center>
+<h3 id="função-de-transferência-do-controlador">Função de Transferência do Controlador</h3>
+<p><span class="math display">\[
+\begin{align}
+C(s) &amp;= \frac{0,2126s + 0,7893}{s} \tag{13}
+\end{align}
+\]</span></p>
+<p><strong>Função de Transferência do Controlador usando a biblioteca Control do Python</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1">numc <span class="op">=</span> np.array([<span class="fl">0.2126</span>, <span class="fl">0.7893</span>])</a>
+<a class="sourceLine" id="cb15-2" title="2">denc <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb15-3" title="3"></a>
+<a class="sourceLine" id="cb15-4" title="4">Cs <span class="op">=</span> ct.tf(numc, denc)</a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="bu">print</span>(Cs)</a></code></pre></div>
+<p><strong>saída:</strong></p>
+<p><span class="math display">\[
+\dfrac{0.2126 s + 0.7893}{s}
+\]</span></p>
+<h3 id="simulação-do-sistema-em-malha-fechada">Simulação do Sistema em Malha Fechada</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" title="1">Fs <span class="op">=</span> ct.series(Gs, Cs)</a>
+<a class="sourceLine" id="cb16-2" title="2">Hs <span class="op">=</span> ct.feedback(Fs, <span class="dv">1</span>, sign<span class="op">=-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb16-3" title="3">Hs</a></code></pre></div>
+<p><strong>saída:</strong></p>
+<p><span class="math display">\[
+\dfrac{0.5937s+2.204}{s^3 +0.717s^2+10.58s+2.204}
+\]</span></p>
+<h3 id="resposta-ao-degrau-unitário">Resposta ao degrau unitário</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1">t, yout <span class="op">=</span> ct.step_response(Hs)</a>
+<a class="sourceLine" id="cb17-2" title="2"></a>
+<a class="sourceLine" id="cb17-3" title="3">plt.rc(<span class="st">&#39;xtick&#39;</span>, labelsize<span class="op">=</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb17-4" title="4">plt.rc(<span class="st">&#39;ytick&#39;</span>, labelsize<span class="op">=</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb17-5" title="5"></a>
+<a class="sourceLine" id="cb17-6" title="6">fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb17-7" title="7">ax.set_title(<span class="st">&quot;Aeropêndulo em Malha Fechada&quot;</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb17-8" title="8">ax.set_ylabel(<span class="st">&quot;Ângulo (Graus°)&quot;</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb17-9" title="9">ax.set_xlabel(<span class="st">&quot;Tempo (s)&quot;</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb17-10" title="10">ax.plot([<span class="dv">0</span>, <span class="dv">0</span>, t[<span class="op">-</span><span class="dv">1</span>]], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>], <span class="st">&quot;--&quot;</span>, lw<span class="op">=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb17-11" title="11">        label<span class="op">=</span><span class="st">&quot;Sinal Degrau Unitário U(S)&quot;</span>)</a>
+<a class="sourceLine" id="cb17-12" title="12">ax.plot(t, yout, lw<span class="op">=</span><span class="fl">1.</span>, label<span class="op">=</span><span class="st">&quot;Sinal de Saída Y(S)&quot;</span>)</a>
+<a class="sourceLine" id="cb17-13" title="13">ax.legend(fontsize<span class="op">=</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb17-14" title="14">plt.show()</a></code></pre></div>
+<p><strong>saída:</strong></p>
+<center>
+<div class="figure">
+<p><img src="utils/simu_malha_fechada.svg"
+       width="800"></p>
+</div>
+</center>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Ao analisar o sistema com o controlador, temos que o sistema não possui erro em regime permanente e seu overshoot é zero, no entanto, para que esses requisitos fossem obtidos ouve um aumento no tempo de acomodação.
+</p>
+</div>
+<p><br></p>
+<h2 id="função-de-transferência-discreta-cz">Função de Transferência Discreta C(z)</h2>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Para discretizar o sistema foi usado um período de amostragem de 0,01s.
+</p>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" title="1"><span class="im">from</span> control.matlab <span class="im">import</span> c2d</a>
+<a class="sourceLine" id="cb18-2" title="2"></a>
+<a class="sourceLine" id="cb18-3" title="3">Cz <span class="op">=</span> c2d(Cs, Ts<span class="op">=</span><span class="fl">0.01</span>, method<span class="op">=</span><span class="st">&quot;tustin&quot;</span>)</a>
+<a class="sourceLine" id="cb18-4" title="4">Cz</a></code></pre></div>
+<p><span class="math display">\[
+\dfrac{0.2165 z + 0.2087}{z-1} \quad dt = 0.01
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+    C(z) &amp;= \dfrac{0,2165z −0,2087}{z-1} \tag{14}\\
+         &amp;= \dfrac{0,2165z −0,2087}{z-1} \cdot \dfrac{z^{-1}}{z^{-1}} \tag{15}\\
+         &amp;= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{16}\\
+\end{align}
+\]</span></p>
+<h4 id="encontrando-a-equação-de-diferenças-do-controlador">Encontrando a equação de diferenças do controlador</h4>
+<p><span class="math display">\[
+\begin{align}
+C(z) &amp;= \dfrac{U(z)}{E(z)} \tag{20}
+\end{align}
+\]</span></p>
+<p>onde:</p>
+<p><span class="math display">\[
+\begin{align}
+  U(z) &amp;= Z\{u[k]\} \tag{17}\\
+  E(z) &amp;= Z\{e[k]\} \tag{18}\\
+  \dfrac{U(z)}{E(z)} &amp;= \dfrac{0,2165 − 0,2087z^{-1}}{1-z^{-1}} \tag{19}\\
+  (1-z^{-1})U(z) &amp;= (0,2165 − 0,2087z^{-1})E(z) \tag{20}\\
+  U(z)-z^{-1}U(z) &amp;= 0,2165E(z) − 0,2087z^{-1}E(z) \tag{21}\\
+  Z^{-1}\{U(z)-z^{-1}U(z)\} &amp;= Z^{-1}\{0,2165E(z) − 0,2087z^{-1}E(z)\} \tag{22}\\
+  u[k] − u[k − 1] &amp;= 0,2165e[k] − 0,2087e[k − 1] \tag{23}\\
+  u[k] &amp;= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{24}
+\end{align}
+\]</span></p>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+Agora é possível implementar uma classe python para o controlador a partir da equação de diferenças.
+</p>
+</div>
+<p><span class="math display">\[
+\begin{align}
+  u[k] &amp;= u[k − 1] + 0,2165e[k] − 0,2087e[k − 1] \tag{25}
+\end{align}
+\]</span></p>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+com a função de diferenças encontrada, agora é possível implementa-la usando python e fecha a malha com o controlador para simular, essa lógica está implementada no simulador.
+</p>
+</div>
+<p><br><br></p>
+<h1 id="referências">Referências</h1>
+<div data-align="justify">
+<p style="text-indent: 50px;">
+<dl>
+<dd>
+<b>[1.]</b> JOB, Mila Mary; JOSE, P. Subha Hency. <b> Modeling and control of mechatronic aeropendulum.</b> In: 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS). IEEE, 2015. p. 1-5.
+</dd>
+<p><br></p>
+<dd>
+<b>[2.]</b> Silva. Yago. <b> Projeto, construção e controle de um aeropêndulo </b>. Centro de Engenharia Elétrica e Informática, Departamento de Engenharia Elétrica e Informática, Universidade Federal de Campina Grande - UFCG, 2018.
+</dd>
+<p><br></p>
+<dd>
+<b>[3.]</b> MOHAMMADBAGHERI, Amin; YAGHOOBI, Mahdi. <b>A new approach to control a driven pendulum with PID method.</b> In: 2011 UkSim 13th International Conference on Computer Modelling and Simulation. IEEE, 2011. p. 207-211.
+</dd>
+<p><br></p>
+<dd>
+<b>[4.]</b> SILVA, Yago Luiz Monteiro et al. <b>Projeto, construção e controle de um aeropêndulo<b>. 2018.
+</dd>
+</dl>
+</p>
+</div>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
