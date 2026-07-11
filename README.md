@@ -1,5 +1,7 @@
 # LabVirtual
 
+🔗 Site: https://raphateixeira.github.io/LabVirtual/
+
 Compartilhamos aqui alguns conteúdos que estamos desenvolvendo buscando formatar um laboratório virtual para sistemas dinâmicos e controle na Faculdade de Engenharia Elétrica da UFPA-Tucuruí.
 
 ## Ferramentas do nosso interesse:
@@ -17,7 +19,7 @@ Compartilhamos aqui alguns conteúdos que estamos desenvolvendo buscando formata
 
 ## Conteúdo em desenvolvimento:
 
-[Simulação de sistema dinâmico com python](Notas\IntegracaoNumerica\ManimEDO.html)
+[Simulação de sistema dinâmico com python](Notas/IntegracaoNumerica/ManimEDO.html)
 
 ## Sistemas de interesse:
 
