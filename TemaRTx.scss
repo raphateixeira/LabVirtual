@@ -1,0 +1,33 @@
+/*-- scss:defaults --*/
+
+// Paleta e tipografia institucionais: fonte única em
+// https://github.com/raphateixeira/.github/blob/main/assets/rtx-palette.scss
+// (baixada para rtx-palette.scss pelo workflow de publish a cada build).
+@import "rtx-palette";
+
+/*-- scss:rules --*/
+
+.categoria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.categoria-card {
+    display: block;
+    padding: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none !important;
+    color: $cor-texto !important;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+
+    h3 { color: $cor-primaria; margin-bottom: 0.3rem; }
+    p  { margin: 0; color: #666; font-size: 0.9em; }
+
+    &:hover {
+        border-color: $cor-primaria;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+}

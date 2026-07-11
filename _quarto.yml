@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - "simulacao_modelagem_aeropendulo/Modelagem_matematica_do_aeropendulo.ipynb"
+
+website:
+  title: "Laboratório Virtual"
+  site-url: https://raphateixeira.github.io/LabVirtual/
+  repo-url: https://github.com/raphateixeira/LabVirtual
+
+format:
+  html:
+    theme: [cosmo, TemaRTx.scss]
+    lang: pt-BR
+    toc: true
+
+execute:
+  enabled: false

@@ -1,0 +1,51 @@
+---
+title: "Laboratório Virtual"
+subtitle: "Modelagem e simulação de sistemas dinâmicos e de controle"
+author: "Prof. Dr. Raphael Teixeira"
+---
+
+Laboratório virtual para modelagem e controle de sistemas dinâmicos na
+Faculdade de Engenharia Elétrica da UFPA-Tucuruí, com simulações interativas
+em Python (NumPy, SciPy, Matplotlib, VPython, Manim).
+
+## Conteúdo com página própria
+
+* [Modelagem matemática do aeropêndulo](simulacao_modelagem_aeropendulo/Modelagem_matematica_do_aeropendulo.html)
+
+## Demais simulações
+
+```{=html}
+<div class="categoria-grid">
+
+<a class="categoria-card" href="https://github.com/raphateixeira/LabVirtual/tree/main/simulacao_maglev">
+  <h3>Levitador eletromagnético (MAGLEV)</h3>
+  <p>Modelagem e simulação interativa de um MAGLEV.</p>
+</a>
+
+<a class="categoria-card" href="https://github.com/raphateixeira/LabVirtual/tree/main/simulacao_modelagem_aeropendulo">
+  <h3>Aeropêndulo (VPython)</h3>
+  <p>Simulação gráfica 3D do aeropêndulo com a biblioteca VPython.</p>
+</a>
+
+<a class="categoria-card" href="https://github.com/raphateixeira/LabVirtual/tree/main/simulacao_modelagem_drone">
+  <h3>Drone QuadRotor</h3>
+  <p>Modelagem e simulação de um veículo aéreo não tripulado quadrirrotor.</p>
+</a>
+
+<a class="categoria-card" href="https://github.com/raphateixeira/LabVirtual/tree/main/simulacao_motor_dc">
+  <h3>Motor DC</h3>
+  <p>Modelagem, simulação e controle de posição de um motor de corrente contínua.</p>
+</a>
+
+<a class="categoria-card" href="https://github.com/raphateixeira/LabVirtual/tree/main/simulacao_pendulo_invertido">
+  <h3>Pêndulo invertido com carro</h3>
+  <p>Modelagem e simulação do pêndulo invertido sobre carro.</p>
+</a>
+
+<a class="categoria-card" href="https://github.com/raphateixeira/LabVirtual/tree/main/simulacao_pendulo_simples">
+  <h3>Pêndulo simples</h3>
+  <p>Animações do pêndulo simples e do sistema massa-mola (VPython/Manim).</p>
+</a>
+
+</div>
+```

@@ -1,0 +1,55 @@
+/*-- scss:defaults --*/
+
+// Paleta institucional das disciplinas (Prof. Raphael Teixeira / UFPA-CAMTUC)
+// Fonte única de verdade — não edite cópias locais deste bloco nos repos de
+// disciplina; edite aqui e o workflow de publish busca a versão mais recente
+// a cada build (ver .github/workflows/quarto-publish.yml neste repo).
+
+$cor-primaria:    #1F3A5F;   // títulos, links, destaques
+$cor-secundaria:  #B23A48;   // ênfases, segundo plano
+$cor-texto:       #1A1A1A;   // corpo de texto
+$cor-fundo:       #FFFFFF;   // fundo dos slides/página
+$cor-acento:      #E8B23A;   // detalhes pontuais
+$white:           #FFFFFF;
+
+// Fontes
+$main-font-size: 1.1em;
+$code-font-family: 'Courier New', Courier, monospace;
+
+// Configuração do tema Bootstrap/Quarto
+$primary:    $cor-primaria;
+$secondary:  $cor-secundaria;
+$body-bg:    $cor-fundo;
+$body-color: $cor-texto;
+$link-color: $cor-primaria;
+$navbar-dark-bg: $cor-primaria;
+$navbar-dark-color: $white;
+
+/*-- scss:rules --*/
+
+// --- Customizações Gerais ---
+h1, h2, h3, h4, h5, h6 {
+    color: $cor-texto !important;
+}
+
+// --- Barra Lateral do Site (quando o projeto usa sidebar) ---
+.sidebar-item.active > a {
+    background-color: lighten($cor-primaria, 50%);
+    color: $cor-primaria !important;
+    font-weight: bold;
+}
+
+.sidebar-item > a:hover {
+    background-color: lighten($cor-primaria, 40%);
+    color: $white !important;
+}
+
+.sidebar-item > a {
+    color: $cor-texto !important;
+}
+
+// --- Rodapé do Site (quando o projeto usa page-footer) ---
+footer.site-footer {
+    background-color: $cor-primaria;
+    color: $white;
+}
