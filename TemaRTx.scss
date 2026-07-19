@@ -1,33 +1,934 @@
 /*-- scss:defaults --*/
 
-// Paleta e tipografia institucionais: fonte única em
-// https://github.com/raphateixeira/.github/blob/main/assets/rtx-palette.scss
-// (baixada para rtx-palette.scss pelo workflow de publish a cada build).
-@import "rtx-palette";
+// --- Paleta acadêmica (navy/slate) ---
+$primary: #1B365D;
+$accent: #4A6FA5;
+$secondary: #6C757D;
+$highlight-color: #E8C547;
+$success: #2E7D32;
+$warning-color: #E65100;
+$info: #0277BD;
+$vermelho-ufpa: #B23A48;
+
+// --- Cores do tema ---
+$body-bg: #ffffff;
+$body-color: #222222;
+$link-color: $accent;
+$link-color-hover: lighten($accent, 15%);
+$selection-bg: lighten($secondary, 30%);
+$selection-color: $primary;
+
+// --- Cores de título ---
+$heading-h1-color: $primary;
+$heading-h2-color: $primary;
+$heading-h3-color: $secondary;
+$heading-h4-color: $accent;
+$heading-font-family: "Lato", sans-serif;
+
+// --- Cores de tabela ---
+$table-header-bg: #D6DCE5;
+$table-stripe-bg: #F5F7FA;
+$table-border-color: $secondary;
+
+// --- Cores de ênfase ---
+$emphasis-alert: $primary;
+$emphasis-fg: $accent;
+$emphasis-bg: $accent;
+$emphasis-highlight: $highlight-color;
+$emphasis-note: darken($highlight-color, 10%);
+$emphasis-warning: $warning-color;
+
+// --- Cores de blocos personalizados ---
+$callout-example-color: $success;
+$callout-question-color: $warning-color;
+$callout-insight-color: $info;
+$callout-note-title-bg: lighten($accent, 35%);
+
+// --- Fontes ---
+$font-family-sans-serif: "Roboto", sans-serif !default;
+$font-family-monospace: "Fira Code", monospace !default;
+$font-family-heading: "Lato", sans-serif;
+
+// --- Tamanhos de fonte ---
+$slide-font-size-root: 38px;
+$font-size: 1em !default;
+$font-size-medium-small: 0.8em !default;
+$font-size-small: 0.75em !default;
+$font-size-tiny: 0.4em !default;
+
+// --- Espaçamentos ---
+// Múltiplos fixos de $slide-font-size-root (não rem): estas medidas descrevem o
+// slide dos decks revealjs (canvas lógico 1600x900, ver $slide-font-size-root
+// abaixo) e precisam do mesmo valor não importa onde a regra seja aplicada.
+// "rem" dependeria do font-size do <html> real da página, que agora é o
+// padrão do navegador nas páginas HTML comuns (ver seção "Base").
+$spacing-xxs: 0.25 * $slide-font-size-root;
+$spacing-xs: 0.5 * $slide-font-size-root;
+$spacing-sm: 0.75 * $slide-font-size-root;
+$spacing-md: 1 * $slide-font-size-root;
+$spacing-lg: 1.5 * $slide-font-size-root;
+$spacing-xl: 2 * $slide-font-size-root;
+$spacing-xxl: 3 * $slide-font-size-root;
+
+// --- Alturas de linha ---
+$line-height-body: 1.5;
+$line-height-heading: 1.2;
+
+// --- Variáveis de apresentação (Quarto) ---
+$presentation-font-size-root: $slide-font-size-root;
+// Múltiplos fixos de $slide-font-size-root (não em): o título de um slide
+// precisa do mesmo tamanho não importa se o slide usa {.small-slide} (que
+// reduz o font-size do conteúdo do slide todo) — em "em" o título encolheria
+// junto, dando títulos inconsistentes entre slides.
+$presentation-h1-font-size: 2.3 * $slide-font-size-root !default;
+$presentation-h2-font-size: 1.85 * $slide-font-size-root !default;
+$presentation-h3-font-size: 1.1 * $slide-font-size-root !default;
+$presentation-heading-font: $font-family-heading !default;
+$presentation-heading-color: $primary;
+$presentation-heading-line-height: $line-height-heading;
+$presentation-font-smaller: $font-size-medium-small !default;
+
+// --- Blocos de código ---
+$code-line-height: 1.4 !default;
+$code-font-family: $font-family-monospace !default;
+// Múltiplo fixo de $slide-font-size-root (não rem/em): tamanho do código fica
+// igual em qualquer slide, mesmo dentro de .small-slide (que reduz o
+// font-size ambiente do slide todo, incluindo o código, se usado em em).
+$code-block-font-size: 0.78 * $slide-font-size-root !default;
+$code-block-bg: #f0f3f7 !default;
+$code-output-bg: #f8f9fa !default;
 
 /*-- scss:rules --*/
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+// ============================================================
+// Base
+// ============================================================
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-family-sans-serif;
+    font-size: $font-size;
+    color: $body-color;
+    background-color: $body-bg;
+    line-height: $line-height-body;
+}
+
+// $slide-font-size-root (32px) é o tamanho-base do canvas lógico dos slides
+// (1600x900 no revealjs) — fica em .reveal, não em html, para não inflar
+// o tamanho de texto das páginas HTML comuns (índice, notas de pesquisa),
+// que devem usar o tamanho padrão do navegador.
+.reveal {
+    font-size: $presentation-font-size-root;
+    font-family: $font-family-sans-serif;
+    color: $body-color;
+    background-color: $body-bg;
+    line-height: $line-height-body;
+
+    .slide:not(.scrollable) {
+        overflow-y: hidden !important;
+    }
+
+    .slides a {
+        color: $accent;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+        text-decoration-color: rgba($accent, 0.4);
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+}
+
+// ============================================================
+// Títulos
+// ============================================================
+
+// IMPORTANTE: cada apresentação precisa de "center: false" no bloco
+// format.revealjs do seu .qmd. O default do revealjs (center: true)
+// centraliza verticalmente o bloco inteiro (título + conteúdo) do slide,
+// então o título "flutua" para cima ou para baixo conforme o slide tem
+// mais ou menos conteúdo abaixo. Com center: false, os slides usam o
+// fluxo normal (título sempre no topo); só a capa (#title-slide, ver
+// abaixo) restaura a centralização via flex.
+
+.reveal h1 {
+    color: $heading-h1-color;
+    font-weight: 600;
+    font-size: $presentation-h1-font-size;
+    font-family: $heading-font-family;
+    text-align: center;
+    margin: $spacing-lg 0;
+    padding: $spacing-xxl 0 $spacing-xl 0;
+    line-height: $presentation-heading-line-height;
+}
+
+.reveal h2 {
+    color: $heading-h2-color;
+    font-weight: 600;
+    font-size: $presentation-h2-font-size;
+    font-family: $heading-font-family;
+    text-align: center;
+    margin: 0 0 $spacing-xl 0;
+    padding: 0;
+    line-height: $presentation-heading-line-height;
+}
+
+.reveal h3 {
+    color: $heading-h3-color;
+    font-weight: normal;
+    font-size: $presentation-h3-font-size;
+    padding-left: $spacing-xs;
+}
+
+.reveal h4 {
+    color: $heading-h4-color;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+// ============================================================
+// Blocos de código
+// ============================================================
+
+.reveal pre {
+    margin: $spacing-xxs 0;
+    background-color: $code-block-bg;
+    border-radius: 6px;
+    font-family: $code-font-family;
+    font-size: $code-block-font-size;
+    line-height: $code-line-height;
+    overflow: auto;
+    border: 0;
+}
+
+.reveal pre code {
+    font-size: inherit;
+    background-color: $code-block-bg;
+    border-radius: 6px;
+    padding: $spacing-md;
+    font-family: $code-font-family;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    color: $body-color;
+    border: 0;
+}
+
+.reveal code {
+    font-size: 0.8em;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 6px;
+    border: 0;
+}
+
+.reveal div.sourceCode {
+    border: 0;
+    border-radius: 6px;
+    margin-bottom: 0.3em;
+}
+
+.reveal div.cell-output-stdout pre,
+.reveal div.cell-output pre {
+    background-color: $code-output-bg;
+    border-left: 3px solid $accent;
+    border-radius: 0 6px 6px 0;
+}
+
+.reveal div.sourceCode + div.cell-output {
+    margin-top: 0;
+}
+
+.reveal div.cell-output {
+    margin-bottom: $spacing-xs;
+}
+
+.reveal div.sourceCode {
+    margin-bottom: 0;
+
+    & + div.cell-output pre {
+        margin-top: 0;
+        border-radius: 0 0 6px 6px;
+        border-top: 1px solid rgba($accent, 0.2);
+    }
+}
+
+.reveal .cell {
+    .sourceCode + .cell-output-display {
+        margin-top: $spacing-xs;
+    }
+
+    .cell-output-display table {
+        margin-top: $spacing-xs;
+    }
+}
+
+// ============================================================
+// Utilitários de tamanho de fonte
+// ============================================================
+
+.largest { font-size: 1.20em; }
+.larger  { font-size: 1.50em; }
+.large   { font-size: 1.25em; }
+.small   { font-size: 0.8em; }
+.smaller { font-size: 0.64em; }
+.smallest { font-size: 0.512em; }
+
+.reveal .largest pre  { font-size: 1.20em; }
+.reveal .larger pre   { font-size: 1.50em; }
+.reveal .large pre    { font-size: 1.25em; }
+.reveal .small pre    { font-size: 0.8em; }
+.reveal .smaller pre  { font-size: 0.64em; }
+.reveal .smallest pre { font-size: 0.512em; }
+
+.reveal .largest code  { font-size: 1.56em; }
+.reveal .larger code   { font-size: 1.25em; }
+.reveal .large code    { font-size: 1em; }
+.reveal .small code    { font-size: 0.64em; }
+.reveal .smaller code  { font-size: 0.51em; }
+.reveal .smallest code { font-size: 0.41em; }
+
+// ============================================================
+// Alinhamento de texto e vertical
+// ============================================================
+
+.reveal .left   { display: block; text-align: left; }
+.reveal .center { display: block; text-align: center; }
+.reveal .right  { display: block; text-align: right; }
+
+.reveal .v-center { display: grid; align-items: center; height: 90%; }
+.reveal .v-top    { display: grid; align-items: start; height: 90%; }
+.reveal .v-bottom { display: grid; align-items: end; height: 90%; }
+
+// ============================================================
+// Listas
+// ============================================================
+
+.reveal ul li ul,
+.reveal ol li ol {
+    font-size: 0.9em;
+}
+
+.reveal ol {
+    list-style-type: decimal;
+    margin-left: $spacing-sm;
+    padding-left: $spacing-sm;
+}
+
+.reveal ul {
+    list-style-type: disc;
+    margin-left: $spacing-sm;
+    padding-left: $spacing-sm;
+}
+
+.reveal .slide ul,
+.reveal .slide ol {
+    line-height: 1.4;
+}
+
+.reveal .slide ul li,
+.reveal .slide ol li {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.reveal .slide ul li ul li,
+.reveal .slide ol li ol li {
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+// ============================================================
+// Tabelas
+// ============================================================
+
+.reveal table {
+    width: 85%;
+    margin: $spacing-sm auto;
+    border-collapse: collapse;
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-small;
+    padding: $spacing-md;
+
+    tr:nth-child(even) {
+        background-color: $table-stripe-bg;
+    }
+
+    th {
+        text-align: left;
+        background-color: $table-header-bg;
+        color: $body-color;
+        padding: $spacing-xs;
+        border-bottom: 2px solid $table-border-color;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: $spacing-xs;
+        border-bottom: 1px solid lighten($table-border-color, 20%);
+        color: $body-color;
+        vertical-align: middle;
+    }
+}
+
+// ============================================================
+// Tipos de slide
+// ============================================================
+
+.small-slide {
+    font-size: $presentation-font-smaller;
+}
+
+.tiny-slide {
+    font-size: $font-size-small;
+}
+
+.quote-slide {
+    color: $heading-h2-color;
+    font-size: $font-size-small;
+    text-align: center;
+
+    blockquote {
+        font-style: italic;
+        color: $heading-h3-color;
+        border-left: 5px solid $heading-h1-color;
+        padding-left: 20px;
+    }
+}
+
+// Slides de seção (# Título {.section-slide}): título mais próximo do topo
+.reveal .slides section.section-slide {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-start !important;
+    align-items: center;
+
+    h1 {
+        font-size: $presentation-h1-font-size;
+        color: $heading-h2-color;
+        text-align: center;
+        border-bottom: 3px solid $accent;
+        padding-bottom: $spacing-md;
+        display: inline-block;
+    }
+}
+
+.slide-code {
+    font-size: $font-size-medium-small;
+}
+
+// ============================================================
+// Classes de ênfase
+// ============================================================
+
+@mixin emphasis($bg-color, $border-color, $text-color,
+    $padding-y: $spacing-xxs, $padding-x: $spacing-xs,
+    $font-weight: normal, $font-style: normal, $border-radius: 4px) {
+    background-color: $bg-color;
+    padding: $padding-y $padding-x;
+    margin: $spacing-xxs 0;
+    border-radius: $border-radius;
+    color: $text-color;
+    font-weight: $font-weight;
+    font-style: $font-style;
+}
+
+.alert {
+    @include emphasis(
+        rgba($emphasis-alert, 0.1), $emphasis-alert, $emphasis-alert,
+        $spacing-xxs, $spacing-xxs, bold
+    );
+}
+
+.fg {
+    color: $emphasis-fg;
+    font-weight: bold;
+}
+
+.bg {
+    background-color: $emphasis-bg;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+.highlight {
+    background-color: $emphasis-highlight;
+    color: $body-color;
+    padding: $spacing-xxs;
+    margin: $spacing-md 0;
+    border-radius: 2px;
+}
+
+.note {
+    @include emphasis(
+        rgba($emphasis-note, 0.1), $emphasis-note, $emphasis-note,
+        $spacing-xxs, $spacing-xxs, normal, italic
+    );
+}
+
+.warning {
+    @include emphasis(
+        rgba($emphasis-warning, 0.1), $emphasis-warning, $emphasis-warning,
+        $spacing-xxs, $spacing-xxs, bold
+    );
+}
+
+// ============================================================
+// Citação (blockquote)
+// ============================================================
+
+.reveal .blockquote {
+    font-size: inherit;
+    padding: 0 $spacing-md;
+    color: $heading-h3-color;
+    border-left: 0.25rem solid lighten($table-border-color, 20%);
+    margin-bottom: $spacing-md;
+}
+
+// ============================================================
+// Slide de título (apresentações revealjs)
+// ============================================================
+
+#title-slide {
+    text-align: center;
+
+    // Cada apresentação define "center: false" no format.revealjs do .qmd
+    // (veja o comentário em ".reveal .slides section" mais abaixo) para que
+    // os slides comuns fiquem ancorados no topo. Isso também tira a
+    // centralização automática da capa, então ela é restaurada aqui, só
+    // para a capa, via flex: logo pequeno no topo (via data-background-image
+    // no title-slide-attributes do .qmd) e bloco de texto centralizado.
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    // .title é um <h1>, então zera o padding grande herdado de `.reveal h1`
+    .title {
+        font-size: 2.0em;
+        color: $heading-h2-color;
+        font-family: $heading-font-family;
+        line-height: $presentation-heading-line-height;
+        margin: 0;
+        margin-bottom: 0.5em;
+        padding: 0;
+    }
+
+    .subtitle {
+        font-size: 1.4em;
+        font-family: $heading-font-family;
+        line-height: $presentation-heading-line-height;
+        color: #555;
+        margin: 0;
+        margin-bottom: 1.5em;
+    }
+
+    .quarto-title-authors {
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+        margin-top: 2em;
+        font-size: 1em;
+    }
+
+    // Removidos da capa: e-mail e data
+    .quarto-title-author-email,
+    .date {
+        display: none;
+    }
+}
+
+// ============================================================
+// Logo, numeração de slide e menu
+// ============================================================
+
+.slide-number,
+.reveal.has-logo .slide-number {
+    bottom: 10px !important;
+    right: 10px !important;
+    top: unset !important;
+    color: $body-color;
+    font-family: $font-family-sans-serif;
+}
+
+// Ícone de navegação (menu) no canto inferior esquerdo, em tamanho reduzido
+.reveal .slide-menu-button {
+    top: auto;
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 1000;
+    transform: scale(0.65);
+    transform-origin: bottom left;
+}
+
+// ============================================================
+// Blocos de alerta padrão do Quarto
+// ============================================================
+
+.reveal div.callout {
+    border-radius: 0;
+}
+
+.reveal div.callout.callout-style-default,
+.reveal div.callout.callout-style-simple {
+    border: solid lighten($table-border-color, 20%) 1px;
+}
+
+.reveal div.callout.callout-style-simple div.callout-title,
+.reveal div.callout.callout-style-default div.callout-title {
+    font-size: 1.1em;
+}
+
+.reveal div.callout.callout-style-simple div.callout-content,
+.reveal div.callout.callout-style-default div.callout-content {
+    font-size: 0.95em;
+}
+
+.reveal div.callout.callout-titled .callout-title p {
+    margin-top: 0.2em;
+    margin-bottom: 0;
+}
+
+.reveal div.callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.1em;
+}
+
+.reveal div.callout.callout-style-simple .callout-icon::before,
+.reveal div.callout.callout-style-default .callout-icon::before {
+    height: 1em;
+    width: 1em;
+    background-size: 0.95em 0.95em;
+}
+
+.reveal div.callout.callout-titled .callout-icon::before {
+    margin-top: 0.25em;
+}
+
+.reveal div.callout-note.callout-style-default .callout-title {
+    background-color: $callout-note-title-bg;
+}
+
+// ============================================================
+// Blocos personalizados
+// ============================================================
+
+.callout-example,
+.callout-question,
+.callout-insight,
+.callout-definition,
+.callout-theorem {
+    padding: $spacing-xxs $spacing-sm;
+    margin: $spacing-xxs 0;
+    border-left: 5px solid;
+    border-radius: 6px;
+    position: relative;
+
+    p {
+        margin: 0;
+    }
+}
+
+.callout-example::before,
+.callout-question::before,
+.callout-insight::before,
+.callout-definition::before,
+.callout-theorem::before {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 0.1em;
+}
+
+.callout-example {
+    border-left-color: $callout-example-color;
+    background-color: rgba($callout-example-color, 0.08);
+
+    &::before {
+        content: "📚 Exemplo";
+        color: $callout-example-color;
+    }
+}
+
+.callout-question {
+    border-left-color: $callout-question-color;
+    background-color: rgba($callout-question-color, 0.08);
+
+    &::before {
+        content: "❓ Pergunta";
+        color: $callout-question-color;
+    }
+}
+
+.callout-insight {
+    border-left-color: $callout-insight-color;
+    background-color: rgba($callout-insight-color, 0.08);
+
+    &::before {
+        content: "💡 Insight";
+        color: $callout-insight-color;
+    }
+}
+
+.callout-definition {
+    border-left-color: $primary;
+    background-color: rgba($primary, 0.06);
+
+    &::before {
+        content: "📘 Definição";
+        color: $primary;
+    }
+}
+
+.callout-theorem {
+    border-left-color: $info;
+    background-color: rgba($info, 0.06);
+
+    &::before {
+        content: "📐 Teorema";
+        color: $info;
+    }
+}
+
+// ============================================================
+// Slide de encerramento
+// ============================================================
+
+.reveal .slides section.encerramento {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+
+    h2 { display: none; }
+
+    .encerramento-logo {
+        // !important necessário: o Quarto marca esta imagem com a classe
+        // "r-stretch" (única imagem do slide), que define largura/altura
+        // via estilo inline calculado em tempo de execução pelo Reveal.js.
+        width: 80px !important;
+        height: auto !important;
+        max-width: 80px !important;
+        max-height: 103px !important;
+        margin: 0 auto $spacing-md auto;
+        border-radius: 0;
+    }
+
+    p {
+        margin: 0.2em 0;
+        color: $accent;
+    }
+
+    p:first-of-type {
+        color: $heading-h2-color;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    // E-mail: menor que o restante e com a cor/sublinhado padrão de link
+    // do tema (herdados de `.reveal .slides a`), não a cor de texto comum.
+    .encerramento-email {
+        font-size: 0.7em;
+    }
+}
+
+// ============================================================
+// Links de retorno na bibliografia (injetados via JS em aula.qmd)
+// ============================================================
+
+.csl-entry {
+    .ref-backlinks {
+        font-size: 0.75em;
+        color: $secondary;
+        white-space: nowrap;
+    }
+
+    .ref-backlink {
+        color: $accent;
+        font-weight: bold;
+
+        &:hover {
+            color: lighten($accent, 15%);
+        }
+    }
+}
+
+// ============================================================
+// Páginas HTML (portal / índice) — fora do contexto .reveal
+// ============================================================
+
+.title {
+    font-size: 2.0em !important;
+    color: $primary !important;
+    line-height: 1.1;
+    margin-bottom: 0.5em !important;
+}
+
+.subtitle {
+    font-size: 1.4em !important;
+    color: #555 !important;
+    margin-bottom: 1.5em !important;
+}
+
+.quarto-title-authors {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 80px !important;
+    margin-top: 2em !important;
+    font-size: 1.0em !important;
+}
+
+// --- Grid de links (index.qmd) ---
 .categoria-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    // 260px (não 220px): com page-layout:article o conteúdo é estreito, e
+    // títulos de uma palavra só (ex.: "Koopman") precisam desse mínimo para
+    // não quebrar no meio da palavra.
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1rem;
     margin: 1.5rem 0;
 }
 
 .categoria-card {
     display: block;
+    // min-width:0 evita que um item de grid cresça além da própria coluna
+    // por causa de uma palavra longa sem ponto de quebra (ex.: "Apresentação");
+    // o default do CSS Grid é min-width:auto, que respeita o conteúdo e
+    // pode empurrar o card para cima do vizinho.
+    min-width: 0;
     padding: 1.2rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     text-decoration: none !important;
-    color: $cor-texto !important;
+    color: $body-color !important;
     transition: box-shadow 0.15s ease, border-color 0.15s ease;
 
-    h3 { color: $cor-primaria; margin-bottom: 0.3rem; }
+    h3 { color: $primary; margin-bottom: 0.3rem; overflow-wrap: break-word; }
     p  { margin: 0; color: #666; font-size: 0.9em; }
 
     &:hover {
-        border-color: $cor-primaria;
+        border-color: $primary;
         box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
+}
+
+// ============================================================
+// Galerias de figuras/animações (páginas de categoria: TikZ, Manim)
+// ============================================================
+
+.hero-figura {
+    text-align: center;
+    margin: 0.5rem 0 2rem;
+
+    img {
+        max-width: 100%;
+        width: 720px;
+        height: auto;
+    }
+}
+
+.categoria-vazia {
+    color: #888;
+    font-style: italic;
+    padding: 1.5rem 0;
+}
+
+.figura-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.figura-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.figura-preview {
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+
+    img, video { max-width: 100%; max-height: 260px; }
+}
+
+.figura-pendente {
+    font-size: 0.85em;
+    color: #999;
+    text-align: center;
+    padding: 1rem;
+}
+
+.figura-body {
+    padding: 0.9rem 1rem;
+
+    h3 { font-size: 1.05em; color: $primary; margin: 0 0 0.3rem; }
+    p  { font-size: 0.9em; color: #555; margin: 0 0 0.5rem; }
+
+    details {
+        font-size: 0.85em;
+
+        summary { cursor: pointer; color: $secondary; }
+        pre { max-height: 260px; overflow: auto; font-size: 0.85em; }
+    }
+}
+
+.figura-tags {
+    margin-bottom: 0.6rem;
+}
+
+.figura-tag {
+    display: inline-block;
+    font-size: 0.72em;
+    background: lighten($primary, 55%);
+    color: $primary;
+    border-radius: 999px;
+    padding: 0.15em 0.7em;
+    margin: 0 0.25em 0.25em 0;
+}
+
+.figura-downloads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.figura-download {
+    font-size: 0.8em;
+    border: 1px solid $primary;
+    color: $primary !important;
+    border-radius: 5px;
+    padding: 0.2em 0.6em;
+    text-decoration: none !important;
+
+    &:hover { background: $primary; color: #fff !important; }
+}
+
+// --- Layout de duas colunas (alinhamento vertical centralizado) ---
+.columns {
+    display: flex !important;
+    align-items: center !important;
 }
