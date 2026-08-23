@@ -816,8 +816,22 @@ body {
     color: $body-color !important;
     transition: box-shadow 0.15s ease, border-color 0.15s ease;
 
-    h3 { color: $primary; margin-bottom: 0.3rem; overflow-wrap: break-word; }
-    p  { margin: 0; color: #666; font-size: 0.9em; }
+    h3 {
+        color: #888;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 0.3rem;
+        overflow-wrap: break-word;
+    }
+    p {
+        margin: 0;
+        color: $body-color;
+        font-size: 1.05rem;
+        font-weight: 600;
+        overflow-wrap: break-word;
+    }
 
     &:hover {
         border-color: $primary;
