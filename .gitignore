@@ -4,6 +4,6 @@ __pycache__/
 **/*.quarto_ipynb
 /_site/
 
-# Tema compartilhado: baixado de raphateixeira/.github no build (ver GitRTx/atualizar-tema.sh)
+# Tema compartilhado: baixado de raphateixeira/.github no build (ver .github/scripts/atualizar-tema.sh na raiz de GitRTx)
 /TemaRTx.scss
 *.pyc
