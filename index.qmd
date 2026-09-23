@@ -4,6 +4,8 @@ subtitle: "Modelagem e simulação de sistemas dinâmicos e de controle"
 author: "Prof. Dr. Raphael Teixeira"
 ---
 
+[⬅ Site principal](https://raphateixeira.github.io)
+
 Laboratório virtual para modelagem e controle de sistemas dinâmicos na
 Faculdade de Engenharia Elétrica da UFPA-Tucuruí, com simulações interativas
 em Python (NumPy, SciPy, Matplotlib, VPython, Manim).
