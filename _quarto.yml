@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: _site
   render:
     - index.qmd
     - "simulacao_modelagem_aeropendulo/Modelagem_matematica_do_aeropendulo.ipynb"

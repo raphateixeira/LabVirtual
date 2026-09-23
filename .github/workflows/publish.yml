@@ -13,4 +13,4 @@ jobs:
       id-token: write
     uses: raphateixeira/.github/.github/workflows/quarto-publish.yml@main
     with:
-      output_dir: "docs"
+      output_dir: "_site"
