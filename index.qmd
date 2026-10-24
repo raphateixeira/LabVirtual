@@ -1,14 +1,21 @@
 ---
-title: "Laboratório Virtual"
-subtitle: "Modelagem e simulação de sistemas dinâmicos e de controle"
-author: "Prof. Dr. Raphael Teixeira"
+pagetitle: "Laboratório Virtual"
+
 ---
 
-[⬅ Site principal](https://raphateixeira.github.io)
+::: {.rtx-hero}
+[Laboratório · Simulações interativas]{.rtx-eyebrow}
 
-Laboratório virtual para modelagem e controle de sistemas dinâmicos na
-Faculdade de Engenharia Elétrica da UFPA-Tucuruí, com simulações interativas
-em Python (NumPy, SciPy, Matplotlib, VPython, Manim).
+# Laboratório Virtual {.unnumbered .unlisted}
+
+Modelagem e simulação de sistemas dinâmicos e de controle, com simulações interativas em Python (NumPy, SciPy, Matplotlib, VPython, Manim).
+
+[Prof. Dr. Raphael Teixeira]{.rtx-meta}
+
+::: {.rtx-acoes}
+[GitHub](https://github.com/raphateixeira/LabVirtual){.rtx-btn} [Site do professor](https://raphateixeira.github.io){.rtx-btn}
+:::
+:::
 
 ## Conteúdo com página própria
 
